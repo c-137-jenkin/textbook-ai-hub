@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html data-sp-mode="scroll" lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="《经济管理应用数学基础——微积分（上）》第 1–5 章重点知识详解：必备基础、题型总结、考点拆解与考前速查，按教学进度计划表的考核范围组织。">
+<title>第4章 中值定理与导数应用 · 重点知识详解</title>
+<link rel="stylesheet" href="assets/css/base.css">
+</head>
+<body>
+<nav class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#top">第4章 · 中值定理与导数应用</a>
+    <a href="#map">本章地图</a>
+    <a href="#base">必备基础</a>
+    <a href="#list">题型总结</a>
+    <a href="#points">考点详解</a>
+    <a href="#cheat">考前速查</a>
+    <a href="overview.html">全书地图</a>
+  <a href="index.html">合订本</a>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div>
+      <div class="kicker">微积分（上）· 第四章</div>
+      <h1>中值定理与导数应用<br><em>让导数真正开始干活</em></h1>
+      <p class="hero-sub">第 3 章学会了“怎么求导”，本章回答“求导能干什么”。四件事：用中值定理把整体和局部焊在一起（理论）、用洛必达回收第 2 章算不动的未定式（计算）、用一阶二阶导的符号把函数画出来（形态）、用“求导 = 0 找驻点”解决五类经济最优化（应用）。期末的计算题、应用题、证明题，大半落在这章。</p>
+      <div class="hero-meta">
+        依据教材：齐亚伟等《经济管理应用数学基础——微积分（上）》，高等教育出版社，2022&nbsp;年&nbsp;9&nbsp;月第&nbsp;1&nbsp;版<br>
+        对应范围：§4.1–§4.6（原书 p161–p214，含 MATLAB 实验 p209–p214）　·　配套：全书思维地图、本章作业全解、教学进度与考核要求
+      </div>
+    </div>
+    <div class="statbox">
+      <div class="stat"><div class="n">6</div><div class="l">节内容</div></div>
+      <div class="stat"><div class="n">17</div><div class="l">考点拆解</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">个中值定理</div></div>
+      <div class="stat"><div class="n">5</div><div class="l">类经济最优化模型</div></div>
+    </div>
+  </header>
+
+  <!-- ================= 目录 ================= -->
+  <section id="toc" style="margin-top:44px">
+    <div class="toc">
+      <a href="#map">一、本章地图：四个层次<span>逻辑链</span></a>
+      <a href="#base">二、必备基础知识（10&nbsp;块）<span>看懂的入口</span></a>
+      <a href="#list">三、题型总结 · 例题怎么解<span>17&nbsp;考点</span></a>
+      <a href="#p1">考点&nbsp;01–04　中值定理与证明<span>10% 分数</span></a>
+      <a href="#p5">考点&nbsp;05–09　洛必达与未定式<span>计算主力</span></a>
+      <a href="#p10">考点&nbsp;10–12　单调·极值·最值<span>必考</span></a>
+      <a href="#p13">考点&nbsp;13–15　凹凸·渐近线·作图<span>综合题</span></a>
+      <a href="#p16">考点&nbsp;16–17　经济最优化<span>应用题核心</span></a>
+      <a href="#cheat">四、考前速查页<span>10&nbsp;分钟</span></a>
+      <a href="#plan">五、对照教学计划自检<span>学时·权重</span></a>
+    </div>
+  </section>
+
+  <!-- ================= 本章地图 ================= -->
+  <section id="map">
+    <div class="sec-head"><div class="idx">一</div><h2>本章地图：四个层次</h2></div>
+    <p class="sec-intro">本章是全书的“收割章”：第 2 章留下的 0/0、∞/∞，这里统一解决；第 3 章攒下的求导技术，这里全部变现。四个层次从理论到应用，一层比一层实用，考试分数也是越往下越多。</p>
+
+    <div class="chain">
+      <div class="node"><div class="s">§4.1</div><div class="t">理论层：中值定理</div><div class="d">罗尔 → 拉格朗日 → 柯西；用导数信息反推函数信息</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="s">§4.2</div><div class="t">计算层：洛必达</div><div class="d">0/0、∞/∞ 及五种变体的统一解法</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="s">§4.3</div><div class="t">形态层：单调与极值</div><div class="d">一阶导符号 → 单调性 → 极值 → 闭区间最值</div></div>
+    </div>
+    <div class="chain" style="margin-top:10px">
+      <div class="node"><div class="s">§4.4–4.5</div><div class="t">形态层：凹凸与作图</div><div class="d">二阶导符号 → 凹凸与拐点；三类渐近线 → 完整图像</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="s">§4.6</div><div class="t">应用层：经济最优化</div><div class="d">利润最大、收益最大、平均成本最小、存货控制、经济寿命</div></div>
+      <div class="arrow">→</div>
+      <div class="node" style="background:var(--accent-soft); border-color:var(--accent-line)"><div class="s">往下</div><div class="t">整章升维</div><div class="d">第 5 章把“驻点 + 二阶判据”升级为“偏导 = 0 + 二阶判别式 + 拉格朗日”</div></div>
+    </div>
+
+    <div class="callout plain">
+      <div class="tag">本章的两处“前埋线、后收网”</div>
+      <p><b>① 第 2 章算不动的 0/0、∞/∞，这里给出通用武器。</b>第 2 章只能靠因式分解、有理化硬凑，凑不出来就没办法；本章用“分子分母分别求导”一步解决，效率高一个量级。<br><b>② 第 2 章闭区间连续函数的最值定理，是本章“闭区间最值一定存在”的理论保证。</b>没有那条性质，下面的“比较驻点值和端点值”就失去了前提。</p>
+    </div>
+    <div class="callout warn">
+      <div class="tag">本章最容易丢掉的分：条件写不全</div>
+      <p>中值定理的证明题，<b>不写“闭区间连续、开区间可导”直接扣分</b>；洛必达法则<b>不写“属 0/0 型”直接扣分</b>；拐点<b>不验证两侧变号直接扣分</b>。这三句话不是啰嗦，是评分点。本章的计算能力大家差不多，分数差在“格式”上。</p>
+    </div>
+  </section>
+
+  <!-- ================= 必备基础知识 ================= -->
+  <section id="base">
+    <div class="sec-head"><div class="idx">二</div><h2>必备基础知识</h2></div>
+    <p class="sec-intro">这 10 块里，第 1–3 块（三个中值定理）和第 6 块（极值判据）是必须逐字记住的；第 4 块（洛必达）决定计算题速度；第 10 块（五个经济模型）决定应用题分数。</p>
+
+    <!-- KB1 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">01</span><h3>罗尔定理：两端一样高，中间必有水平切线</h3><span class="p">§4.1 一（p162–p168）</span></div>
+      <p><b>条件：</b>f 在 [a, b] 上连续，在 (a, b) 内可导，且 <b>f(a) = f(b)</b>。<b>结论：</b>至少存在一点 ξ ∈ (a, b)，使 f′(ξ) = 0。</p>
+      <div class="eq">
+        f 在 [a,b] 连续，在 (a,b) 可导，f(a) = f(b)　⟹　∃ξ ∈ (a,b)，f′(ξ) = 0
+        <span class="note">几何：曲线两端等高，中间至少有一处切线水平</span>
+      </div>
+      <ul>
+        <li><b>三个条件缺一不可</b>：f(x) = x 在 [0,1] 连续可导，但 f(0) ≠ f(1)，没有 f′(ξ) = 0；f(x) = |x| 在 [−1,1] 端点相等、连续，但在 0 处不可导，也没有。</li>
+        <li><b>ξ 不唯一</b>：f(x) = sin x 在 [0, 2π] 上 f(0) = f(2π) = 0，而 cos x = 0 在 (0, 2π) 内有两个解 π/2 与 3π/2，<b>两个都符合要求</b>。定理只说“至少存在一个”。</li>
+        <li><b>主要用途</b>：证明“存在一点使某式成立”，是构造辅助函数类证明题的总开关。</li>
+      </ul>
+    </div>
+
+    <!-- KB2 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">02</span><h3>拉格朗日中值定理：切线平行于弦</h3><span class="p">§4.1 二（p168–p171）　最常用</span></div>
+      <p><b>条件：</b>f 在 [a, b] 连续，在 (a, b) 可导。<b>结论：</b>至少存在一点 ξ ∈ (a, b)，使</p>
+      <div class="eq">
+        f(b) − f(a) = f′(ξ)(b − a)　⟺　f′(ξ) = <span class="frac"><span class="fn">f(b) − f(a)</span><span class="fd">b − a</span></span>
+        <span class="note">几何：曲线上至少有一点的切线，与两端点连线（弦）平行</span>
+      </div>
+      <ul>
+        <li><b>与罗尔的关系</b>：罗尔是拉格朗日在 f(a) = f(b) 时的特例；拉格朗日可由罗尔构造辅助函数 F(x) = f(x) − [f(a) + (f(b)−f(a))(x−a)/(b−a)] 证出。</li>
+        <li><b>有限增量公式</b>：Δy = f′(x₀ + θΔx)·Δx（0 &lt; θ &lt; 1）。这是第 3 章“Δy ≈ dy”的<b>精确版</b>——不是近似，是等式，只是导数取在某个中间点。</li>
+        <li><b>推论（极其常用）</b>：若在区间内恒有 f′(x) = 0，则 f(x) ≡ C；若 f′ = g′，则 f = g + C。</li>
+        <li><b>主要用途</b>：证明不等式（把 f(b) − f(a) 换成 f′(ξ)(b−a)，再对 f′ 放缩）。</li>
+      </ul>
+    </div>
+
+    <!-- KB3 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">03</span><h3>柯西中值定理：两个函数的比值版</h3><span class="p">§4.1 三（p171–p172）</span></div>
+      <p><b>条件：</b>f、g 在 [a, b] 连续，在 (a, b) 可导，且 g′(x) ≠ 0。<b>结论：</b>至少存在 ξ ∈ (a, b)，使</p>
+      <div class="eq">
+        <span class="frac"><span class="fn">f(b) − f(a)</span><span class="fd">g(b) − g(a)</span></span> = <span class="frac"><span class="fn">f′(ξ)</span><span class="fd">g′(ξ)</span></span>
+        <span class="note">g(x) = x 时退化为拉格朗日；它的真正用途是给洛必达法则提供理论基础</span>
+      </div>
+      <p style="margin-bottom:0">三个定理的关系是一条链：<b>罗尔 ⟹ 拉格朗日 ⟹ 柯西</b>（后者由前者构造辅助函数证出）。考试中：证“存在 ξ 使 f′(ξ) = 0”用罗尔；证不等式、证“f(b) − f(a) = f′(ξ)(b−a)”用拉格朗日；证“两个函数之比”用柯西。</p>
+    </div>
+
+    <!-- KB4 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">04</span><h3>洛必达法则：五种未定式的统一处理</h3><span class="p">§4.2（p173–p180）　计算主力</span></div>
+      <p><b>基本型（0/0 与 ∞/∞）：</b>若 lim f = lim g = 0（或都为 ∞），且 g′(x) ≠ 0，<b>lim f′/g′ 存在（或为 ∞）</b>，则</p>
+      <div class="eq">
+        lim <span class="frac"><span class="fn">f(x)</span><span class="fd">g(x)</span></span> = lim <span class="frac"><span class="fn">f′(x)</span><span class="fd">g′(x)</span></span>
+        <span class="note">三个前提：① 是 0/0 或 ∞/∞ 型；② 求导后的极限存在或为 ∞；③ 在去心邻域内 g′ ≠ 0</span>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>类型</th><th>长什么样</th><th>化归动作</th><th>化成</th></tr></thead>
+          <tbody>
+            <tr><td><b>0/0</b></td><td class="m">分子分母同时 → 0</td><td>直接洛必达（可连续用，每次都要重验型）</td><td>—</td></tr>
+            <tr><td><b>∞/∞</b></td><td class="m">分子分母同时 → ∞</td><td>直接洛必达</td><td>—</td></tr>
+            <tr><td><b>0·∞</b></td><td class="m">x ln x（x → 0⁺）</td><td>把一个因子写成倒数，搬到分母</td><td>0/0 或 ∞/∞</td></tr>
+            <tr><td><b>∞ − ∞</b></td><td class="m">1/x − 1/(e<sup>x</sup>−1)</td><td>通分（分式差）或分子有理化（根式差）</td><td>0/0</td></tr>
+            <tr><td><b>1<sup>∞</sup></b></td><td class="m">(1 + 1/x)<sup>x</sup></td><td>取对数，或用 e<sup>lim v(u−1)</sup></td><td>0·∞ → 0/0</td></tr>
+            <tr><td><b>0<sup>0</sup>、∞<sup>0</sup></b></td><td class="m">x<sup>x</sup>、x<sup>1/x</sup></td><td>取对数</td><td>0·∞</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warn" style="margin-bottom:0">
+        <div class="tag">洛必达的三条红线</div>
+        <p>① <b>不是未定式不能用</b>（0/1 直接用代入法）；② <b>求导后极限不存在，不代表原极限不存在</b>——此时法则失效，要换方法（例：lim<sub>x→∞</sub>(x + sin x)/x = 1，但求导后 (1 + cos x)/1 无极限）；③ <b>不能循环</b>（如 x/√(x²+1) 求导后又回到同类形式，说明该换“同除最高次幂”）。</p>
+      </div>
+    </div>
+
+    <!-- KB5 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">05</span><h3>单调性判别：一阶导的符号说了算</h3><span class="p">§4.3 一（p181–p182）</span></div>
+      <div class="eq">
+        在 (a, b) 内 f′(x) &gt; 0 ⟹ f 单调递增；　f′(x) &lt; 0 ⟹ f 单调递减
+        <span class="note">逆命题也成立（在可导前提下）：f 单调增 ⟹ f′(x) ≥ 0（注意是 ≥，不是 &gt;）</span>
+      </div>
+      <ul>
+        <li><b>求单调区间的三步</b>：① 求定义域；② 求 f′(x)，解 f′(x) = 0 与 f′ 不存在的点；③ 用这些点把定义域分段，逐段判 f′ 的符号。</li>
+        <li><b>证不等式的主力</b>：要证 f(x) &gt; g(x)（x &gt; a），令 F = f − g，证 F(a) ≥ 0 且 F′ &gt; 0。</li>
+        <li>单调性还能用来<b>判方程根的个数</b>：严格单调 + 端点异号 ⟹ 恰有一个根。</li>
+      </ul>
+    </div>
+
+    <!-- KB6 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">06</span><h3>极值：必要条件和两个充分条件</h3><span class="p">§4.3 二（p183–p190）　必考</span></div>
+      <p><b>必要条件：</b>若 f 在 x₀ 可导且取极值，则 f′(x₀) = 0（这样的点叫<b>驻点</b>）。<b>注意：驻点不一定是极值点</b>（f(x) = x³ 在 0 处 f′ = 0 但不是极值）。</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>判据</th><th>条件</th><th>结论</th><th>适用场景</th></tr></thead>
+          <tbody>
+            <tr><td><b>第一充分条件</b></td><td>f′(x₀) = 0（或 f′ 不存在），且在 x₀ 两侧 f′ <b>变号</b></td><td>左正右负 → 极大值；左负右正 → 极小值；不变号 → 不是极值</td><td>f′ 容易因式分解、符号好判时</td></tr>
+            <tr><td><b>第二充分条件</b></td><td>f′(x₀) = 0 且 f″(x₀) ≠ 0</td><td>f″(x₀) &lt; 0 → 极大值；f″(x₀) &gt; 0 → 极小值</td><td>二阶导好算时（更省事）</td></tr>
+            <tr><td>失效情形</td><td>f′(x₀) = 0 且 f″(x₀) = 0</td><td>第二判据失效，回到第一判据</td><td class="m">x⁴ 在 0 处（极小）、x³ 在 0 处（非极值）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-bottom:0"><b>极值是局部概念</b>：只和“附近”比，不和整个函数比。所以一个函数可以有多个极大值、多个极小值，它们之间<b>没有固定的大小关系</b>——后面出现的极小值完全可能比前面的极大值还大。例如 f(x) = x + 2sin x：在 x = 2π/3 处取极大值 2π/3 + √3 ≈ 3.83，而在 x = 10π/3 处取极小值 10π/3 − √3 ≈ 8.74，后者更大。这正是“极大（小）值”不能叫“最大（小）值”的原因。</p>
+
+      <p style="margin-bottom:0; margin-top:8px"><b>顺带把三个“值”分清</b>（每年都有人混）：<b>极大值</b>是局部范围内的最大值，可以有多个；<b>最大值</b>是整个区间上最大的那一个，只有一个（若存在）；<b>极大值点</b>指 x 的取值，<b>极大值</b>指对应的函数值。求“最值”时，比较的对象必须包含<b>驻点、不可导点、区间端点</b>三类，只看驻点会漏掉端点。</p>
+    </div>
+
+    <!-- KB7 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">07</span><h3>闭区间上的最值：三步比较法</h3><span class="p">§4.3 二（p188–p190）</span></div>
+      <div class="eq left" style="text-align:left">
+        最大值/最小值 = max/min { f(驻点), f(不可导点), f(端点) }
+        <span class="note">前提：f 在 [a,b] 连续（第 2 章最值定理保证一定存在）</span>
+      </div>
+      <ul>
+        <li><b>三步</b>：① 求 f′，找出区间内所有驻点和 f′ 不存在的点；② 计算这些点与两个端点的函数值；③ 比较大小，最大的就是最大值。</li>
+        <li><b>应用题里的简化</b>：如果实际问题保证最值在区间内部取得，且只有一个驻点，那这个驻点就是最值点（<b>不必再比较端点</b>）——这一条在经济应用题里天天用。</li>
+        <li><b>开区间要小心</b>：最值可能不存在（如 1/x 在 (0,1)）。</li>
+      </ul>
+    </div>
+
+    <!-- KB8 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">08</span><h3>凹凸性与拐点：二阶导的符号</h3><span class="p">§4.4（p191–p193）</span></div>
+      <div class="eq">
+        f″(x) &gt; 0 ⟹ 曲线呈 ∪ 形（下凸，切线在曲线下方）；　f″(x) &lt; 0 ⟹ 曲线呈 ∩ 形（上凸，切线在曲线上方）
+        <span class="note">拐点：凹凸性发生改变的点 (x₀, f(x₀))，必须两侧 f″ 变号</span>
+      </div>
+      <div class="callout warn" style="margin:0">
+        <div class="tag">关于“凹”“凸”的叫法（很重要，别被教材和老师绕晕）</div>
+        <p>不同教材对“凹/凸”的命名<b>正好相反</b>：有的把 ∪ 叫凹、∩ 叫凸，有的反过来。<b>本材料一律用 ∪ / ∩ 描述形状</b>，考试时按老师课上的说法写，只要符号（f″ 的正负）判对，结论就不会错。</p>
+      </div>
+      <p style="margin-top:14px; margin-bottom:0"><b>求凹凸区间与拐点的三步：</b>① 求 f″；② 解 f″ = 0 及 f″ 不存在的点；③ 逐段判 f″ 符号，写出凹凸区间；只在<b>符号改变</b>的点处才有拐点（f″ = 0 但不变号的不是拐点，如 y = x⁴ 在 0 处）。</p>
+    </div>
+
+    <!-- KB9 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">09</span><h3>渐近线与函数作图</h3><span class="p">§4.5（p194–p198）</span></div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>类型</th><th>求法</th><th>例子</th></tr></thead>
+          <tbody>
+            <tr><td><b>水平渐近线</b></td><td class="m">lim<sub>x→±∞</sub> f(x) = b ⟹ y = b</td><td class="m">(2x)/(x−1) → 2，故 y = 2</td></tr>
+            <tr><td><b>垂直渐近线</b></td><td class="m">lim<sub>x→x₀</sub> f(x) = ∞ ⟹ x = x₀（通常在分母零点、对数端点）</td><td class="m">1/x 在 x = 0；ln x 在 x = 0⁺</td></tr>
+            <tr><td><b>斜渐近线</b></td><td class="m">a = lim f(x)/x（x→∞），b = lim [f(x) − ax]（都要存在且 a ≠ 0）⟹ y = ax + b</td><td class="m">(x²+1)/x = x + 1/x，故 y = x</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><b>作图五步法：</b>① 定义域、奇偶性、周期性；② 求 f′ 定单调区间与极值；③ 求 f″ 定凹凸区间与拐点；④ 求三类渐近线；⑤ 补几个关键点（与坐标轴交点），连线成图。</p>
+      <p style="margin-bottom:0"><b>讨论方程 f(x) = 0 的根</b>：把方程改写成 f(x) = 0，用单调性 + 端点异号定“有几个根、在哪两个数之间”；或用“分离参数”把方程化成 g(x) = a，看 y = g(x) 与水平线 y = a 的交点个数。</p>
+    </div>
+
+    <!-- KB10 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">10</span><h3>五类经济最优化模型（应用题的全部来源）</h3><span class="p">§4.6（p199–p205）</span></div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>模型</th><th>目标函数</th><th>求法</th><th>关键结论</th></tr></thead>
+          <tbody>
+            <tr><td><b>利润最大</b></td><td class="m">L(q) = R(q) − C(q)</td><td class="m">L′(q) = 0，即 MR = MC</td><td>边际收益 = 边际成本时利润最大</td></tr>
+            <tr><td><b>收益最大</b></td><td class="m">R(q) = p·q（p 由需求函数反解）</td><td class="m">R′(q) = 0，即 MR = 0</td><td>等价于需求弹性 E<sub>d</sub> = 1</td></tr>
+            <tr><td><b>平均成本最小</b></td><td class="m">AC(q) = C(q)/q</td><td class="m">AC′(q) = 0</td><td>最小值处 <b>MC = AC</b>（边际成本曲线穿过平均成本最低点）</td></tr>
+            <tr><td><b>存货控制（EOQ）</b></td><td class="m">T(Q) = KD/Q + cQ/2</td><td class="m">T′(Q) = 0</td><td class="m">Q* = √(2KD/c)（D 年需求、K 每次订货费、c 单位年存储费）</td></tr>
+            <tr><td><b>经济寿命</b></td><td class="m">年均成本 = 年均折旧 + 年均维护费</td><td class="m">对其求导 = 0</td><td>使“年均总成本”最小的使用年限</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout plain" style="margin-bottom:0">
+        <div class="tag">应用题的四步固定流程</div>
+        <p>① <b>设变量</b>（通常是产量 q 或价格 p，只设一个）；② <b>写目标函数</b>（用第 1 章的七个经济函数）；③ <b>求导 = 0 找驻点</b>，并用第二充分条件或实际意义确认是最大值；④ <b>回答问题</b>（问价格就代回需求函数，问利润就代回 L(q)）。<b>第 ② 步错，后面全错；第 ③ 步漏“确认最大”，扣 2 分。</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 题型总结 ================= -->
+  <section id="list">
+    <div class="sec-head"><div class="idx">三</div><h2>题型总结：例题是怎么解的</h2></div>
+    <p class="sec-intro">本章题型跨度最大：从纯证明（中值定理）到纯计算（洛必达）到纯应用（最优化）。前半张表按解法动作归类；后半张表是考点与考频。<b>分数结构：洛必达 + 单调极值最值（约 45%）、经济应用（约 20%）、凹凸作图（约 15%）、中值定理证明（约 10%）、概念判断（约 10%）。</b></p>
+
+    <div class="blk">
+      <div class="blk-t">题型总结 · 按解法动作归类（覆盖 §4.1–§4.6 全部例题类型）</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>序号</th><th>题型（长什么样）</th><th>教材位置</th><th>解法动作（照做即可）</th><th>对应考点</th></tr></thead>
+          <tbody>
+            <tr><td>01</td><td><b>验证中值定理并求 ξ</b></td><td>§4.1（p162–p172）<br>练习4.1（P169）</td><td>① 逐条验证三条件（连续、可导、端点值）；② 写出定理等式；③ 解出 ξ；④ <b>检验 ξ 是否落在开区间内</b></td><td>01</td></tr>
+            <tr><td>02</td><td><b>用罗尔定理证“存在 ξ”</b></td><td>§4.1（p162–p168）</td><td>① 把结论变形，凑成“某函数的导数 = 0”；② 构造辅助函数 F（乘 e<sup>kx</sup>、乘 x、除以 x 是三大套路）；③ 验证 F 两端相等；④ 用罗尔得结论</td><td>02</td></tr>
+            <tr><td>03</td><td><b>用拉格朗日证不等式</b></td><td>§4.1 二（p168–p171）</td><td>① 选 f 与区间 [a, x]；② 写 f(x) − f(a) = f′(ξ)(x − a)；③ 对 f′(ξ) 放缩（用 ξ 的范围）；④ 得不等式</td><td>03</td></tr>
+            <tr><td>04</td><td><b>柯西中值定理</b></td><td>§4.1 三（p171–p172）</td><td>① 认准两个函数 f、g；② 验证条件（g′ ≠ 0）；③ 写等式；④ 解 ξ 或做放缩</td><td>04</td></tr>
+            <tr><td>05</td><td><b>0/0 型极限</b></td><td>§4.2（p173–p177）<br>练习4.2（P176）</td><td>① 先代入验型；② 洛必达（必要时连续用）；③ 每用一次都重新验型；④ 化简后代入</td><td>05</td></tr>
+            <tr><td>06</td><td><b>∞/∞ 型极限</b></td><td>§4.2（p177–p179）</td><td>① 验型；② 洛必达；③ 若循环，改用“同除最高次幂”或“抓大头”</td><td>06</td></tr>
+            <tr><td>07</td><td><b>0·∞ 与 ∞−∞ 型</b></td><td>§4.2 三（p179–p180）</td><td>① 0·∞：把一个因子搬到分母变倒数；② ∞−∞：分式差通分、根式差有理化；③ 化成 0/0 后洛必达</td><td>07</td></tr>
+            <tr><td>08</td><td><b>幂指型（1<sup>∞</sup>、0⁰、∞⁰）</b></td><td>§4.2 三（p179–p180）</td><td>① 取对数（或直接用 e<sup>lim v ln u</sup>）；② 化归 0·∞；③ 求指数部分的极限；④ 答案写成 e<sup>L</sup></td><td>08</td></tr>
+            <tr><td>09</td><td><b>洛必达的陷阱</b></td><td>§4.2（p173–p180）</td><td>① 先验型（不是未定式就别用）；② 关注“求导后极限不存在”的情形；③ 出现循环立刻换方法</td><td>09</td></tr>
+            <tr><td>10</td><td><b>单调区间 / 用单调性证不等式</b></td><td>§4.3 一（p181–p182）</td><td>① 定义域；② f′ = 0 的点；③ 分段判号写区间；④ 证不等式：作差构造函数，证 F(a) ≥ 0 且 F′ &gt; 0</td><td>10</td></tr>
+            <tr><td>11</td><td><b>求极值</b></td><td>§4.3 二（p183–p190）</td><td>① 求驻点与不可导点；② 第一判据（判两侧 f′ 符号）或第二判据（f″ 符号）；③ 写出极值点的 x 与极值</td><td>11</td></tr>
+            <tr><td>12</td><td><b>闭区间最值</b></td><td>§4.3 二（p188–p190）</td><td>① 求区间内驻点；② 算这些点与两端点的函数值；③ 比较得最大最小；④ 写清“在 x = … 处取得”</td><td>12</td></tr>
+            <tr><td>13</td><td><b>凹凸区间与拐点</b></td><td>§4.4（p191–p193）</td><td>① 求 f″；② 解 f″ = 0；③ 分段判 f″ 符号；④ 只取<b>变号</b>的点作拐点，写出纵坐标</td><td>13</td></tr>
+            <tr><td>14</td><td><b>渐近线</b></td><td>§4.5 一（p194–p196）</td><td>① 水平：算 x → ∞ 的极限；② 垂直：找分母零点、对数端点；③ 斜：先算 a = lim f/x，再算 b</td><td>14</td></tr>
+            <tr><td>15</td><td><b>函数作图 / 方程根的个数</b></td><td>§4.5 二、三（p196–p198）</td><td>① 五步法作图；② 根的个数：单调性 + 端点异号，或分离参数看交点</td><td>15</td></tr>
+            <tr><td>16</td><td><b>利润最大 / 收益最大</b></td><td>§4.6（p199–p203）</td><td>① 反解需求函数得 p(q)；② 写 L = R − C；③ L′ = 0；④ 确认最大（L″ &lt; 0 或实际意义）；⑤ 问价格就代回 p(q)</td><td>16</td></tr>
+            <tr><td>17</td><td><b>平均成本最小 / 存货 / 经济寿命</b></td><td>§4.6（p203–p205）</td><td>① 写目标函数（AC、年总成本、年均成本）；② 求导 = 0；③ 确认最小；④ 答出最优值与对应量</td><td>17</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:13px; color:var(--ink3); margin:8px 0 0">读法：本章复习要分两条线——<b>计算线</b>（05–14）靠熟练，<b>应用线</b>（16–17）靠流程。证明线（01–04）只占 10%，但模板必须会背。</p>
+    </div>
+
+    <div class="blk-t" style="margin-top:26px">考点清单 · 按考频排序</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>考点</th><th>常见题型</th><th>考频</th><th>对应节</th></tr></thead>
+        <tbody>
+          <tr><td>16</td><td>利润最大 / 收益最大</td><td>应用题（必考）</td><td>★★★★★</td><td>§4.6</td></tr>
+          <tr><td>11</td><td>求极值（两个充分条件）</td><td>计算题</td><td>★★★★★</td><td>§4.3</td></tr>
+          <tr><td>10</td><td>单调区间与用单调性证不等式</td><td>计算 / 证明</td><td>★★★★★</td><td>§4.3</td></tr>
+          <tr><td>05</td><td>0/0 型洛必达</td><td>计算题（必有）</td><td>★★★★★</td><td>§4.2</td></tr>
+          <tr><td>12</td><td>闭区间最值</td><td>计算 / 应用</td><td>★★★★</td><td>§4.3</td></tr>
+          <tr><td>08</td><td>幂指型未定式</td><td>计算题</td><td>★★★★</td><td>§4.2</td></tr>
+          <tr><td>13</td><td>凹凸区间与拐点</td><td>计算题</td><td>★★★★</td><td>§4.4</td></tr>
+          <tr><td>01</td><td>验证中值定理并求 ξ</td><td>计算 / 证明</td><td>★★★★</td><td>§4.1</td></tr>
+          <tr><td>17</td><td>平均成本最小 / 存货模型</td><td>应用题</td><td>★★★★</td><td>§4.6</td></tr>
+          <tr><td>06</td><td>∞/∞ 型洛必达</td><td>计算 / 填空</td><td>★★★</td><td>§4.2</td></tr>
+          <tr><td>07</td><td>0·∞ 与 ∞−∞ 型</td><td>计算</td><td>★★★</td><td>§4.2</td></tr>
+          <tr><td>14</td><td>渐近线</td><td>计算 / 填空</td><td>★★★</td><td>§4.5</td></tr>
+          <tr><td>03</td><td>拉格朗日证不等式</td><td>证明题</td><td>★★★</td><td>§4.1</td></tr>
+          <tr><td>15</td><td>作图 / 方程根的个数</td><td>综合 / 简答</td><td>★★</td><td>§4.5</td></tr>
+          <tr><td>02</td><td>罗尔定理与辅助函数</td><td>证明题（提高）</td><td>★★</td><td>§4.1</td></tr>
+          <tr><td>09</td><td>洛必达失效的辨析</td><td>判断 / 选择</td><td>★★</td><td>§4.2</td></tr>
+          <tr><td>04</td><td>柯西中值定理</td><td>证明 / 了解</td><td>★</td><td>§4.1</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout plain">
+      <div class="tag">拿到一道题，先分它属于哪条线</div>
+      <p>本章三条线的动作完全不同，认错线会白做半天。下面这张表建议直接背下来。</p>
+    </div>
+    <div class="flow">
+      <div class="row"><div class="k">含“lim”</div><div class="v">先代入验型 → 0/0、∞/∞ 直接洛必达；其他型先化归 → 每次用完重验型</div></div>
+      <div class="row"><div class="k">含“证明存在 ξ”</div><div class="v">罗尔：构造 F 使 F′ 就是结论 → 验证 F(a) = F(b)</div></div>
+      <div class="row"><div class="k">含“证明不等式”</div><div class="v">作差构造函数用单调性；或拉格朗日把差换成 f′(ξ)(b−a) 再放缩</div></div>
+      <div class="row"><div class="k">含“极值 / 单调 / 最值”</div><div class="v">f′ = 0 → 判号（第一判据）或算 f″（第二判据）→ 写清区间与极值</div></div>
+      <div class="row"><div class="k">含“成本 / 收益 / 利润 / 订货”</div><div class="v">设一个变量 → 写目标函数 → 求导 = 0 → 确认最大 → 回答问题</div></div>
+    </div>
+  </section>
+
+  <!-- ================= 考点详解 ================= -->
+  <section id="points">
+    <div class="sec-head"><div class="idx">四</div><h2>考点详解 · 例题与解答</h2></div>
+    <p class="sec-intro">17 个考点，每个配一道<b>按教材题型自拟的同型题</b>（数值重新设计并逐题验算），解答按教材的解法顺序走，另附最易扣分处与可接着练的教材题位置。</p>
+
+    <!-- 01 -->
+    <article class="point" id="p1">
+      <div class="point-h"><div class="num">01</div><h3>验证中值定理并求 ξ</h3><div class="star">★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">送分题，但“条件不写”要扣分。答题格式固定三行：<b>验证条件 → 写出等式 → 解出 ξ 并说明它落在开区间内</b>。</p>
+        <div class="tagrow"><span class="chip">§4.1 · p162–p172</span><span class="chip">计算 / 证明</span><span class="chip hot">ξ 要检验落在区间内</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 逐条写“f 在 [a,b] 连续，在 (a,b) 可导”（多项式一句话即可）；② 罗尔还要写 f(a) = f(b)；③ 写出定理等式并解方程；④ 检验 ξ ∈ (a,b)，若不在，说明该定理对此函数不适用（或算错了）。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">验证 f(x) = x² − 4x + 3 在 [1, 3] 上满足罗尔定理，并求定理中的 ξ；再对 f(x) = x³ 在 [0, 2] 上验证拉格朗日中值定理。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① f 是多项式，在 [1,3] 上连续、在 (1,3) 内可导，且 f(1) = 0、f(3) = 0，故 f(1) = f(3)，三个条件全满足。</span>
+            <span class="step">② 由罗尔定理，存在 ξ ∈ (1,3) 使 f′(ξ) = 0。f′(x) = 2x − 4，令其为 0 得 ξ = 2。</span>
+            <span class="step">③ 2 ∈ (1,3) ✓。故 ξ = 2。</span>
+            <span class="step">④ 第二个函数：f(x) = x³ 在 [0,2] 连续、(0,2) 可导。f(2) − f(0) = 8 − 0 = 8，而 f′(ξ)(2 − 0) = 3ξ²·2 = 6ξ²。</span>
+            <span class="step res">⑤ 令 6ξ² = 8 得 ξ² = 4/3，ξ = 2/√3 ≈ 1.155 ∈ (0,2) ✓。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.1 基础题（P169）1–6；提高题 4–6（含“验证柯西中值定理”与“求 ξ 的极限”）。</p></div>
+        <div class="mistake"><b>易错：</b>不写条件直接列等式；解出 ξ 后不检验是否在开区间内；把“开区间可导”写成“闭区间可导”（虽然更强，但表述不严谨会扣分）。</div>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="point" id="p2">
+      <div class="point-h"><div class="num">02</div><h3>罗尔定理证“存在 ξ”：构造辅助函数</h3><div class="star">★★</div></div>
+      <div class="point-body">
+        <p class="lead">本章唯一的“需要想一下”的题型。套路固定：<b>把结论变形，凑成“某个函数的导数 = 0”</b>，那个函数就是你要构造的 F。</p>
+        <div class="tagrow"><span class="chip">§4.1 · p162–p168</span><span class="chip">证明题（提高）</span><span class="chip hot">三大构造套路</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>三大套路：① 结论含 f′ + f → 乘 e<sup>x</sup>（因为 (e<sup>x</sup>f)′ = e<sup>x</sup>(f′ + f)）；② 结论含 xf′ + f → 乘 x（(xf)′ = xf′ + f）；③ 结论含 xf′ − f → 除以 x（(f/x)′ = (xf′ − f)/x²）。构造后验证 F 两端相等，再用罗尔。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设 f 在 [0, 1] 上连续、在 (0, 1) 内可导，且 f(0) = f(1) = 0。证明：存在 ξ ∈ (0, 1)，使 f′(ξ) = f(ξ)。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 把结论变形：f′(ξ) − f(ξ) = 0，即 [f′ − f] 在 ξ 处为 0。</span>
+            <span class="step">② 观察 (e<sup>−x</sup>f(x))′ = e<sup>−x</sup>(f′ − f)。于是令 F(x) = e<sup>−x</sup>f(x)。</span>
+            <span class="step">③ F 在 [0,1] 连续、(0,1) 可导（e<sup>−x</sup> 与 f 都可导）；F(0) = e⁰·0 = 0，F(1) = e<sup>−1</sup>·0 = 0，故 F(0) = F(1)。</span>
+            <span class="step">④ 由罗尔定理，存在 ξ ∈ (0,1) 使 F′(ξ) = 0，即 e<sup>−ξ</sup>[f′(ξ) − f(ξ)] = 0。</span>
+            <span class="step res">⑤ 因 e<sup>−ξ</sup> ≠ 0，故 f′(ξ) = f(ξ)。证毕。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.1 提高题（P169）；同类经典：证存在 ξ 使 2ξf(ξ) + ξ²f′(ξ) = 0（构造 F = x²f(x)）、使 f′(ξ) + λf(ξ) = 0（构造 F = e<sup>λx</sup>f(x)）。</p></div>
+        <div class="mistake"><b>易错：</b>构造了 F 却不验证 F(a) = F(b)；对 F 求导时漏乘 e<sup>−x</sup>；把“存在 ξ”写成“对任意 ξ”。</div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="point" id="p3">
+      <div class="point-h"><div class="num">03</div><h3>拉格朗日证不等式</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">比用单调性更“高级”的一条路，题目里出现“两个函数的差”或“某种平均”时用它最快。核心动作：<b>把一个差换成 f′(ξ)(b − a)，再对 f′(ξ) 放缩</b>。</p>
+        <div class="tagrow"><span class="chip">§4.1 二 · p168–p171</span><span class="chip">证明题</span><span class="chip">放缩靠 ξ 的范围</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 选 f 与区间（一端通常是 0 或 a）；② 写 f(b) − f(a) = f′(ξ)(b − a)；③ 用 a &lt; ξ &lt; b 推出 f′(ξ) 的范围；④ 代入得不等式。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">证明：当 x &gt; 0 时，ln(1 + x) &lt; x。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 令 f(t) = ln(1 + t)，在 [0, x] 上考察（x &gt; 0）。f 在 [0,x] 连续、在 (0,x) 可导，f′(t) = 1/(1 + t)。</span>
+            <span class="step">② 由拉格朗日中值定理，存在 ξ ∈ (0, x) 使 f(x) − f(0) = f′(ξ)(x − 0)。</span>
+            <span class="step">③ 左边 = ln(1 + x) − 0 = ln(1 + x)；右边 = x/(1 + ξ)。</span>
+            <span class="step res">④ 因 ξ &gt; 0，有 1 + ξ &gt; 1，故 x/(1 + ξ) &lt; x。所以 ln(1 + x) &lt; x。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.1（P169）不等式证明题；经典变式：x &gt; 0 时 x/(1+x) &lt; ln(1+x)（同一个 f，换方向放缩）。</p></div>
+        <div class="mistake"><b>易错：</b>区间端点选错（要选使 f(a) 好算的 a）；忘记写“ξ 在区间内”就用 f′ 的范围；两边同时除以含 ξ 的量时不讨论符号。</div>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="point" id="p4">
+      <div class="point-h"><div class="num">04</div><h3>柯西中值定理：两个函数的比值</h3><div class="star">★</div></div>
+      <div class="point-body">
+        <p class="lead">考得少，但要知道它长什么样、什么时候用。<b>题目里出现“两个函数增量之比”就是它</b>。</p>
+        <div class="tagrow"><span class="chip">§4.1 三 · p171–p172</span><span class="chip">证明 / 了解</span><span class="chip">g′ ≠ 0 要写</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 认准 f、g 两个函数；② 验证都连续、可导，且 g′(x) ≠ 0（这保证 g(b) ≠ g(a)）；③ 写出等式；④ 解 ξ 或做放缩。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">对 f(x) = x²、g(x) = x³ 在 [1, 2] 上验证柯西中值定理，并求 ξ。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① f、g 都是多项式，在 [1,2] 连续、(1,2) 可导；g′(x) = 3x² 在 (1,2) 内不为 0。条件满足。</span>
+            <span class="step">② 左边：[f(2) − f(1)]/[g(2) − g(1)] = (4 − 1)/(8 − 1) = 3/7。</span>
+            <span class="step">③ 右边：f′(ξ)/g′(ξ) = 2ξ/(3ξ²) = 2/(3ξ)。</span>
+            <span class="step res">④ 令 2/(3ξ) = 3/7，得 9ξ = 14，ξ = 14/9 ≈ 1.556 ∈ (1,2) ✓。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.1 提高题（P169）；理论上它也是洛必达法则的证明工具，理解这一层就够，不必深挖。</p></div>
+        <div class="mistake"><b>易错：</b>忘记验证 g′ ≠ 0；把左右两边都写成 f′/g′ 却算错 ξ；把柯西定理当成“两个拉格朗日相除”（形式对，但条件不同）。</div>
+      </div>
+    </article>
+
+    <!-- 05 -->
+    <article class="point" id="p5">
+      <div class="point-h"><div class="num">05</div><h3>0/0 型：洛必达的主战场</h3><div class="star">★★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">第 2 章要花三行约分才能算的极限，这里一行搞定。但必须<b>每用一次都重新验型</b>，否则会算出“看起来合理”的错答案。</p>
+        <div class="tagrow"><span class="chip">§4.2 · p173–p177</span><span class="chip">计算题（必有）</span><span class="chip hot">用前必验型</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 代入，确认是 0/0；② 分子分母分别求导；③ 化简后再代入；④ 若还是 0/0，重复 ②③；⑤ 若求导后变复杂（越来越乱），说明该换方法（等价无穷小、泰勒、同除最高次）。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求下列极限：(1) lim<sub>x→0</sub> (e<sup>x</sup> − 1 − x)/x²；(2) lim<sub>x→0</sub> (x − sin x)/x³。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 代入得 0/0。洛必达一次：(e<sup>x</sup> − 1)/(2x)，仍是 0/0。</span>
+            <span class="step">② 再洛必达一次：e<sup>x</sup>/2 → 1/2。故原极限 = 1/2。</span>
+            <span class="step">③ (2) 代入得 0/0。洛必达：(1 − cos x)/(3x²)，仍 0/0；再洛必达：sin x/(6x) → 1/6。</span>
+            <span class="step res">④ 故原极限 = 1/6。（用等价无穷小验证：1 − cos x ~ x²/2，故 (x − sin x)/x³ 的一阶项相消后得 1/6 ✓）</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.2 基础题（P176）1；提高题 1–5（含多次洛必达与含参极限）。</p></div>
+        <div class="mistake"><b>易错：</b>不验型就求导（0/1 求导后乱套）；分子分母只对一个求导；连续用三次以上还不化简（通常说明该用等价替换）。</div>
+      </div>
+    </article>
+
+    <!-- 06 -->
+    <article class="point" id="p6">
+      <div class="point-h"><div class="num">06</div><h3>∞/∞ 型：注意“循环”与“抓大头”</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">∞/∞ 与 0/0 用法相同，但更容易出现“求导后没变简单”的循环。这时换“同除最高次幂”比硬用洛必达快。</p>
+        <div class="tagrow"><span class="chip">§4.2 · p177–p179</span><span class="chip">计算 / 填空</span><span class="chip">循环就换方法</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 验型（分子分母都 → ∞）；② 含 e<sup>x</sup>、ln x、幂函数的混合，洛必达很快见效（指数 &gt; 幂 &gt; 对数）；③ 纯幂函数之比直接“同除最高次幂”；④ 出现循环立刻停手换法。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求下列极限：(1) lim<sub>x→+∞</sub> x²/e<sup>x</sup>；(2) lim<sub>x→+∞</sub> ln x/x；(3) lim<sub>x→+∞</sub> x/√(x² + 1)。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) ∞/∞。洛必达：2x/e<sup>x</sup>，仍 ∞/∞；再洛必达：2/e<sup>x</sup> → 0。故极限 = 0。</span>
+            <span class="step">② (2) ∞/∞。洛必达：(1/x)/1 = 1/x → 0。故极限 = 0。</span>
+            <span class="step">③ (3) ∞/∞，但<b>洛必达会循环</b>（求导得 √(x²+1)/x，形式更复杂）。改用同除 x：x/√(x²+1) = 1/√(1 + 1/x²) → 1。</span>
+            <span class="step res">结论：指数增长最快，幂次之，对数最慢——这个“增长速度排序”直接给出前两题答案。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.2（P176）与§4.2 例题中的 ∞/∞ 题；记住排序：<b>x → +∞ 时 e<sup>x</sup> ≫ x<sup>n</sup> ≫ ln x</b>。</p></div>
+        <div class="mistake"><b>易错：</b>对 x/√(x²+1) 硬用洛必达，越算越乱；忘记 x → +∞ 与 x → −∞ 时 √(x²) = |x| 的符号差别。</div>
+      </div>
+    </article>
+
+    <!-- 07 -->
+    <article class="point" id="p7">
+      <div class="point-h"><div class="num">07</div><h3>0·∞ 与 ∞−∞ 型：先化归再洛必达</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">这两种不是“标准型”，必须先变形。<b>0·∞ 靠“搬一个因子到分母”，∞−∞ 靠“通分或有理化”</b>。</p>
+        <div class="tagrow"><span class="chip">§4.2 三 · p179–p180</span><span class="chip">计算</span><span class="chip">化归后别忘了验型</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>0·∞：把“容易求导的那个因子”写成 1/(它的倒数) 搬到分母，化成 0/0 或 ∞/∞。<br>∞−∞：分式差 → 通分；根式差 → 乘共轭有理化；有 e<sup>x</sup> 的 → 提公因子。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求下列极限：(1) lim<sub>x→0⁺</sub> x ln x；(2) lim<sub>x→0</sub> [1/x − 1/(e<sup>x</sup> − 1)]。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 属 0·∞。改写为 (ln x)/(1/x)，成为 ∞/∞。洛必达：(1/x)/(−1/x²) = −x → 0。</span>
+            <span class="step">② 故 lim x ln x = 0（虽然 ln x → −∞，但被 x 压住了）。</span>
+            <span class="step">③ (2) 属 ∞−∞。通分：[(e<sup>x</sup> − 1) − x]/[x(e<sup>x</sup> − 1)]，成为 0/0。</span>
+            <span class="step">④ 洛必达一次：(e<sup>x</sup> − 1)/[(e<sup>x</sup> − 1) + x e<sup>x</sup>]，仍 0/0。</span>
+            <span class="step res">⑤ 再洛必达：e<sup>x</sup>/[2e<sup>x</sup> + x e<sup>x</sup>] → 1/2（x → 0 时）。故原极限 = 1/2。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.2 提高题（P176）；根式差经典：lim<sub>x→+∞</sub>[√(x² + x) − x] = 1/2（有理化，与第 2 章同型）。</p></div>
+        <div class="mistake"><b>易错：</b>0·∞ 直接把 0 乘进去得 0（错，ln x 在捣乱）；通分后不重新验型就求导；分母求导时把乘积 (x(e<sup>x</sup>−1))′ 算错。</div>
+      </div>
+    </article>
+
+    <!-- 08 -->
+    <article class="point" id="p8">
+      <div class="point-h"><div class="num">08</div><h3>幂指型：1<sup>∞</sup>、0⁰、∞⁰ 一律取对数</h3><div class="star">★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">这三种型看着吓人，处理方法完全统一：<b>取对数，把指数拿下来，变成 0·∞</b>，再按上一张卡片的办法做。答案最后一定要写回 e 的幂。</p>
+        <div class="tagrow"><span class="chip">§4.2 三 · p179–p180</span><span class="chip">计算题</span><span class="chip hot">答案必是 e<sup>L</sup></span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 记 y = [u(x)]<sup>v(x)</sup>，两边取 ln：ln y = v·ln u；② 求 lim v ln u = L（0·∞ 型，用上卡片的办法）；③ 原极限 = e<sup>L</sup>。<br>1<sup>∞</sup> 型的快捷式：lim u<sup>v</sup> = e<sup>lim v(u−1)</sup>（因为 ln u ~ u − 1）。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求下列极限：(1) lim<sub>x→0</sub> (cos x)<sup>1/x²</sup>；(2) lim<sub>x→0⁺</sub> x<sup>x</sup>。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 属 1<sup>∞</sup>。取对数：ln y = (1/x²)ln cos x = ln cos x/x²（0/0）。</span>
+            <span class="step">② 洛必达：(−sin x/cos x)/(2x) = −tan x/(2x) → −1/2（因 tan x ~ x）。故 ln y → −1/2。</span>
+            <span class="step">③ 所以原极限 = e<sup>−1/2</sup> = 1/√e。</span>
+            <span class="step">④ (2) 属 0⁰。取对数：ln y = x ln x → 0（上一张卡片算过）。故原极限 = e⁰ = 1。</span>
+            <span class="step res">结论：幂指型三步——取对数、算指数极限、写回 e 的幂。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.2 提高题（P176）；经典：lim<sub>x→∞</sub>(1 + 1/x)<sup>x</sup> = e（第 2 章的重要极限，用洛必达也能验证）。</p></div>
+        <div class="mistake"><b>易错：</b>算出 ln y 的极限就直接当答案（忘写 e 的幂）；把 1<sup>∞</sup> 当成 1（1 的无穷次方不是 1，是未定式）；取对数时不写“y &gt; 0”。</div>
+      </div>
+    </article>
+
+    <!-- 09 -->
+    <article class="point" id="p9">
+      <div class="point-h"><div class="num">09</div><h3>洛必达的陷阱：什么时候不能用</h3><div class="star">★★</div></div>
+      <div class="point-body">
+        <p class="lead">判断题和“错解辨析”专门考这个。三句话记住：<b>不是未定式不能用；求导后不存在不等于原式不存在；循环就换法</b>。</p>
+        <div class="tagrow"><span class="chip">§4.2 · p173–p180</span><span class="chip">判断 / 选择</span><span class="chip hot">概念陷阱</span></div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">判断下列解法是否正确，并给出正确做法：<br>(1) lim<sub>x→0</sub> (x + 1)/x，用洛必达得 lim 1/1 = 1；<br>(2) lim<sub>x→∞</sub> (x + sin x)/x，用洛必达得 lim (1 + cos x)/1，因为该极限不存在，故原极限不存在。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) <b>错</b>。x → 0 时分子 → 1、分母 → 0，不是 0/0 型（是 1/0 型），洛必达不适用。正确做法：直接判为无穷大，lim (x+1)/x = ∞（左 −∞、右 +∞，故极限不存在）。</span>
+            <span class="step">② (2) <b>错</b>。原式是 ∞/∞ 型，洛必达条件之一是“lim f′/g′ 存在或为 ∞”，这里 lim(1 + cos x) 不存在，<b>法则失效</b>，得不出任何结论。</span>
+            <span class="step">③ 正确做法：拆开 (x + sin x)/x = 1 + sin x/x，而 |sin x| ≤ 1、1/x → 0，故 sin x/x → 0，原极限 = 1。</span>
+            <span class="step res">结论：洛必达是“充分条件”工具，失效时原极限仍可能存在，必须换方法。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.2（P176）中的错例辨析题；第 2 章练习2.2 也有同源的错解辨析，两处一起看效果最好。</p></div>
+        <div class="mistake"><b>易错：</b>把“1/0”当 0/0 用洛必达；看到“求导后极限不存在”就判“原极限不存在”；连续用洛必达却不检验中间步骤是否仍为未定式。</div>
+      </div>
+    </article>
+
+    <!-- 10 -->
+    <article class="point" id="p10">
+      <div class="point-h"><div class="num">10</div><h3>单调区间与用单调性证不等式</h3><div class="star">★★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">本章最高频的计算题型之一，也是证不等式最稳的方法（比拉格朗日更“无脑”）：<b>作差、求导、判号</b>。</p>
+        <div class="tagrow"><span class="chip">§4.3 一 · p181–p182</span><span class="chip">计算 / 证明</span><span class="chip hot">区间要写全</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>求单调区间：① 定义域；② f′(x) = 0 的根与 f′ 不存在的点；③ 用这些点分段，逐段判 f′ 符号；④ 写成区间（增区间、减区间分别列）。<br>证不等式：令 F(x) = f(x) − g(x)，证 F(x₀) ≥ 0 且 F′(x) &gt; 0（x &gt; x₀）。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">(1) 求 f(x) = x³ − 3x 的单调区间；(2) 证明：当 x &gt; 0 时，e<sup>x</sup> &gt; 1 + x。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 定义域 R。f′(x) = 3x² − 3 = 3(x − 1)(x + 1)，零点 x = ±1。</span>
+            <span class="step">② 分三段判号：x &lt; −1 时 f′ &gt; 0（增）；−1 &lt; x &lt; 1 时 f′ &lt; 0（减）；x &gt; 1 时 f′ &gt; 0（增）。</span>
+            <span class="step">③ (2) 令 F(x) = e<sup>x</sup> − 1 − x，则 F(0) = 0，F′(x) = e<sup>x</sup> − 1。</span>
+            <span class="step">④ 当 x &gt; 0 时 e<sup>x</sup> &gt; 1，故 F′(x) &gt; 0，F 在 [0, +∞) 上单调递增。</span>
+            <span class="step res">⑤ 于是 x &gt; 0 时 F(x) &gt; F(0) = 0，即 e<sup>x</sup> &gt; 1 + x。证毕。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.3 基础题（P191）；同类不等式：x &gt; 0 时 x − x²/2 &lt; ln(1+x) &lt; x（两次作差）。</p></div>
+        <div class="mistake"><b>易错：</b>单调区间写成“x &gt; 1 或 x &lt; −1”（要分开写成两个区间，不能用并集符号连成一个）；证不等式忘记验证起点值 F(x₀)；f′ 不存在的点漏掉（那也是分界点）。</div>
+      </div>
+    </article>
+
+    <!-- 11 -->
+    <article class="point" id="p11">
+      <div class="point-h"><div class="num">11</div><h3>求极值：两个充分条件选一个</h3><div class="star">★★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">必考计算题。选哪个判据看情况：<b>f′ 好分解符号就用第一判据，f″ 好算就用第二判据</b>。两个都能用，别两个都写（浪费时间还容易矛盾）。</p>
+        <div class="tagrow"><span class="chip">§4.3 二 · p183–p190</span><span class="chip">计算题</span><span class="chip hot">驻点 ≠ 极值点</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 求 f′，解 f′(x) = 0 得驻点（同时找 f′ 不存在的点）；② 第一判据：看每个驻点两侧 f′ 的符号是否变号、怎么变；③ 或第二判据：算 f″ 在该点的符号；④ 写出“在 x = … 处取极大/极小值 …”。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求 f(x) = x³ − 3x 的极值；再讨论 f(x) = x³ 在 x = 0 处是否取极值。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① f′(x) = 3x² − 3 = 3(x−1)(x+1)，驻点 x = −1、1。</span>
+            <span class="step">② 用第一判据：x = −1 左侧 f′ &gt; 0、右侧 f′ &lt; 0，故为极大值点，f(−1) = −1 + 3 = 2。</span>
+            <span class="step">③ x = 1 左侧 f′ &lt; 0、右侧 f′ &gt; 0，故为极小值点，f(1) = 1 − 3 = −2。</span>
+            <span class="step">④ 用第二判据复核：f″(x) = 6x，f″(−1) = −6 &lt; 0（极大）✓，f″(1) = 6 &gt; 0（极小）✓。</span>
+            <span class="step res">⑤ 对 x³：f′(0) = 0 但 f″(0) = 0，第二判据失效；看两侧 f′ = 3x² 都为正、不变号，故 x = 0 <b>不是</b>极值点（是拐点）。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.3（P191）极值题；经典变式：f(x) = x²e<sup>−x</sup>（驻点 0 与 2，极大 f(2) = 4e<sup>−2</sup>）。</p></div>
+        <div class="mistake"><b>易错：</b>把驻点直接当极值点；只写极值点的 x 不写极值；忘了找 f′ 不存在的点（如 |x| 在 0 处）；极大值、极小值写反。</div>
+      </div>
+    </article>
+
+    <!-- 12 -->
+    <article class="point" id="p12">
+      <div class="point-h"><div class="num">12</div><h3>闭区间最值：三步比较法</h3><div class="star">★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">最值不是极值：极值只看附近，最值要看整个闭区间，<b>端点必须算</b>。这是应用题最后一问的标准动作。</p>
+        <div class="tagrow"><span class="chip">§4.3 二 · p188–p190</span><span class="chip">计算 / 应用</span><span class="chip hot">漏端点 = 错</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 求 f′，找区间<b>内部</b>的驻点与不可导点；② 算这些点的函数值；③ 算两个端点的函数值；④ 比较大小，写明在哪个点取得。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求 f(x) = x³ − 3x 在 [−2, 2] 上的最大值与最小值。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① f′(x) = 3(x−1)(x+1)，区间内的驻点为 x = −1、1。</span>
+            <span class="step">② 函数值：f(−1) = 2，f(1) = −2。</span>
+            <span class="step">③ 端点值：f(−2) = −8 + 6 = −2，f(2) = 8 − 6 = 2。</span>
+            <span class="step res">④ 比较 {2, −2, −2, 2}：最大值 2（在 x = −1 与 x = 2 处取得），最小值 −2（在 x = 1 与 x = −2 处取得）。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.3（P191）最值题；应用题里若已确认“最值在区间内部且驻点唯一”，可省去端点比较，但要写一句说明。</p></div>
+        <div class="mistake"><b>易错：</b>只算驻点值不比较端点；把极大值当最大值；最值点有多个时只写一个。</div>
+      </div>
+    </article>
+
+    <!-- 13 -->
+    <article class="point" id="p13">
+      <div class="point-h"><div class="num">13</div><h3>凹凸区间与拐点</h3><div class="star">★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">判据只有一条：<b>f″ 的符号</b>。但拐点有两个条件：f″ = 0（或不存在）<b>且两侧变号</b>——只看 f″ = 0 就写拐点，是本章最常见的错。</p>
+        <div class="tagrow"><span class="chip">§4.4 · p191–p193</span><span class="chip">计算题</span><span class="chip hot">必须变号</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 求 f″；② 解 f″ = 0 及 f″ 不存在的点；③ 用这些点分区间，判 f″ 符号（正 → ∪，负 → ∩）；④ 只在符号改变的点处取拐点，并写出纵坐标。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求 f(x) = x e<sup>−x</sup> 的凹凸区间与拐点；并说明 y = x⁴ 在 x = 0 处是否有拐点。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① f′(x) = e<sup>−x</sup>(1 − x)；f″(x) = −e<sup>−x</sup>(1 − x) + e<sup>−x</sup>(−1) = e<sup>−x</sup>(x − 2)。</span>
+            <span class="step">② f″ = 0 得 x = 2（e<sup>−x</sup> 恒正，符号只看 x − 2）。</span>
+            <span class="step">③ x &lt; 2 时 f″ &lt; 0 → 曲线呈 ∩；x &gt; 2 时 f″ &gt; 0 → 曲线呈 ∪。</span>
+            <span class="step">④ 两侧变号，故 (2, 2e<sup>−2</sup>) 是拐点。</span>
+            <span class="step res">⑤ 对 y = x⁴：y″ = 12x²，在 x = 0 处为 0，但两侧都为正（不变号），故<b>不是</b>拐点（是极小值点）。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.4 基础题（P191–P193）1、2 + 提高题 2；可加练 f(x) = ln(1 + x²)（f″ = 2(1−x²)/(1+x²)²，拐点 x = ±1）。</p></div>
+        <div class="mistake"><b>易错：</b>只看 f″ = 0 就写拐点；拐点写成横坐标（应是点 (x₀, y₀)）；凹、凸的叫法与老师相反（用 ∪ / ∩ 描述最保险）。</div>
+      </div>
+    </article>
+
+    <!-- 14 -->
+    <article class="point" id="p14">
+      <div class="point-h"><div class="num">14</div><h3>渐近线：三套算法</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">三类各有一套动作，考填空居多。<b>垂直渐近线找分母零点，水平看 x → ∞ 的极限，斜的用 a、b 两个极限</b>。</p>
+        <div class="tagrow"><span class="chip">§4.5 一 · p194–p196</span><span class="chip">计算 / 填空</span><span class="chip">a 必须存在且 ≠ 0</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 垂直：找使分母为 0 的点 x₀，算 lim<sub>x→x₀</sub> f = ∞ → x = x₀；② 水平：算 lim<sub>x→±∞</sub> f = b → y = b；③ 斜：a = lim f(x)/x，b = lim [f(x) − ax]，两者都存在且 a ≠ 0 → y = ax + b。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求下列曲线的渐近线：(1) f(x) = (x² + 1)/x；(2) f(x) = 2x/(x − 1)。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 垂直：x → 0 时 f → ∞，故 x = 0 是垂直渐近线。</span>
+            <span class="step">② 水平：x → ∞ 时 f = x + 1/x → ∞，无水平渐近线。</span>
+            <span class="step">③ 斜：a = lim f(x)/x = lim (x² + 1)/x² = 1；b = lim [f(x) − x] = lim (1/x) = 0，故 y = x 是斜渐近线。</span>
+            <span class="step">④ (2) 垂直：x → 1 时 f → ∞，故 x = 1；水平：lim<sub>x→∞</sub> 2x/(x−1) = 2，故 y = 2。</span>
+            <span class="step res">⑤ (2) 有水平渐近线就不必再找同侧的斜渐近线（水平是斜的特殊情形）。答案：x = 1 与 y = 2。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.5 基础题（P196 一带）；注意 f(x) = (x²+1)/x 这种“假分式”先做多项式除法，斜渐近线一眼可见。</p></div>
+        <div class="mistake"><b>易错：</b>a = 0 还想写斜渐近线（此时是水平渐近线）；只找单侧（x → +∞ 与 −∞ 可能不同）；把“有垂直渐近线”与“定义域端点”混为一谈。</div>
+      </div>
+    </article>
+
+    <!-- 15 -->
+    <article class="point" id="p15">
+      <div class="point-h"><div class="num">15</div><h3>函数作图与方程根的个数</h3><div class="star">★★</div></div>
+      <div class="point-body">
+        <p class="lead">作图和“讨论方程根的个数”是同一件事的两种问法：都要用单调性、极值、渐近线把曲线的“骨架”定下来。</p>
+        <div class="tagrow"><span class="chip">§4.5 二、三 · p196–p198</span><span class="chip">综合 / 简答</span><span class="chip">五步法</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>作图五步：① 定义域、奇偶、周期；② f′ → 单调区间与极值；③ f″ → 凹凸与拐点；④ 三类渐近线；⑤ 关键点（与轴交点）→ 连线。<br>根的个数：① 令 F(x) = 0，用单调性定“最多几个”；② 端点（或特殊点）异号定“至少几个”；③ 合起来就是“恰好几个”，并指出根所在区间。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">讨论方程 x³ − 3x + 1 = 0 的实根个数，并指出各根所在区间。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 令 f(x) = x³ − 3x + 1，f′(x) = 3(x² − 1)，驻点 x = ±1。</span>
+            <span class="step">② f 在 (−∞,−1) 增、(−1,1) 减、(1,+∞) 增；极大值 f(−1) = 3 &gt; 0，极小值 f(1) = −1 &lt; 0。</span>
+            <span class="step">③ 又 f(−∞) → −∞、f(+∞) → +∞，故三个单调区间各有一个根。</span>
+            <span class="step">④ 定位：f(−2) = −1 &lt; 0，f(−1) = 3 &gt; 0 → 根在 (−2,−1)；f(0) = 1 &gt; 0，f(1) = −1 &lt; 0 → 根在 (0,1)；f(1) &lt; 0，f(2) = 3 &gt; 0 → 根在 (1,2)。</span>
+            <span class="step res">结论：三个实根，分别在 (−2,−1)、(0,1)、(1,2) 内。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.5（P196 一带）作图与根的讨论题；分离参数法经典：讨论 x³ − 3x = a 的根（看 y = x³ − 3x 与 y = a 的交点）。</p></div>
+        <div class="mistake"><b>易错：</b>只用零点定理说“有根”就结束（没证唯一性）；极值符号算错导致根数判错；区间端点取值时算错函数值。</div>
+      </div>
+    </article>
+
+    <!-- 16 -->
+    <article class="point" id="p16">
+      <div class="point-h"><div class="num">16</div><h3>利润最大与收益最大</h3><div class="star">★★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">期末应用题的绝对主角。两条结论要背：<b>利润最大 ⟺ MR = MC；收益最大 ⟺ MR = 0（等价于弹性 = 1）</b>。注意“收益最大”不等于“利润最大”。</p>
+        <div class="tagrow"><span class="chip">§4.6 · p199–p203</span><span class="chip">应用题（必考）</span><span class="chip hot">收益 ≠ 利润</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 由需求函数反解 p(q)；② R = p·q，L = R − C；③ 求 L′(q) = 0 得 q*，用 L″(q*) &lt; 0 或实际意义确认最大；④ 问价格就代回 p(q*)；⑤ 问最大利润就代入 L(q*)。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">某产品需求函数 p = 100 − 0.5q（p 为价格，元/件），总成本 C(q) = 1000 + 10q + 0.1q²（元）。求：(1) 利润最大时的产量与价格；(2) 最大利润；(3) 若企业只追求收益最大，产量应为多少？此时利润是多少？</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① R(q) = (100 − 0.5q)q = 100q − 0.5q²；L(q) = R − C = −0.6q² + 90q − 1000。</span>
+            <span class="step">② L′(q) = −1.2q + 90，令其为 0 得 q* = 75；L″(q) = −1.2 &lt; 0，故为最大值点。</span>
+            <span class="step">③ 对应价格 p* = 100 − 0.5 × 75 = 62.5（元）；最大利润 L(75) = −0.6 × 5625 + 6750 − 1000 = 2375（元）。</span>
+            <span class="step">④ 收益最大：R′(q) = 100 − q = 0 得 q = 100，此时 R = 100 × 100 − 0.5 × 10000 = 5000。</span>
+            <span class="step res">⑤ 但此时 L(100) = −6000 + 9000 − 1000 = 2000 &lt; 2375，说明“收益最大”时利润反而更少——这就是两个目标不同的证据。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.6 基础题（P203–P205）1–5 + 提高题 1–3；常见变式：加税后求最优价格（把 C 或 p 改动一个常数）。</p></div>
+        <div class="mistake"><b>易错：</b>用 p 当自变量却对 q 求导；忘记 L″ 检验（或写“由实际意义知为最大”）；收益最大误当利润最大；忘记把 q* 代回求价格。</div>
+      </div>
+    </article>
+
+    <!-- 17 -->
+    <article class="point" id="p17">
+      <div class="point-h"><div class="num">17</div><h3>平均成本最小、存货控制与经济寿命</h3><div class="star">★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">三个模型，一个套路：<b>写目标函数 → 求导 = 0 → 确认最小</b>。平均成本那一问有个漂亮的结论：最小值处 MC = AC。</p>
+        <div class="tagrow"><span class="chip">§4.6 · p203–p205</span><span class="chip">应用题</span><span class="chip hot">EOQ 公式要记</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 平均成本：AC = C(q)/q，AC′ = 0 求 q；② 存货：年总成本 T(Q) = 每次订货费 × 年订货次数 + 单位存储费 × 平均库存 = KD/Q + cQ/2，T′ = 0 得 Q* = √(2KD/c)；③ 经济寿命：年均成本 = 年折旧 + 年均维护费，求导 = 0。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">(1) 设 C(q) = 1000 + 10q + 0.1q²，求使平均成本最小的产量与该最小平均成本；<br>(2) 某商品年需求 D = 10000 件，每次订货费 K = 200 元，每件年存储费 c = 4 元，求最优订货批量。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) AC(q) = 1000/q + 10 + 0.1q（q &gt; 0）；AC′(q) = −1000/q² + 0.1。</span>
+            <span class="step">② 令 AC′ = 0：1000/q² = 0.1 → q² = 10000 → q = 100（取正根）。AC″ = 2000/q³ &gt; 0，故为最小值。</span>
+            <span class="step">③ AC(100) = 10 + 10 + 10 = 30（元/件）。<b>验证 MC = AC</b>：MC = 10 + 0.2 × 100 = 30 ✓，正好相等。</span>
+            <span class="step">④ (2) T(Q) = KD/Q + cQ/2 = 2 000 000/Q + 2Q；T′(Q) = −2 000 000/Q² + 2 = 0 → Q² = 1 000 000 → Q* = 1000（件）。</span>
+            <span class="step res">⑤ 验算：T(1000) = 2000 + 2000 = 4000（元），两项相等正是 EOQ 的特征（订货成本 = 存储成本）。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习4.6（P203–P205）与习题四中的最优化题；经济寿命模型：设备原值 P、第 t 年维护费递增，年均成本 = P/n + 平均维护费，求导 = 0。</p></div>
+        <div class="mistake"><b>易错：</b>AC 只除了可变成本；EOQ 公式里把“年需求”写成“月需求”；求出 Q* 后不检验二阶条件；把“订货次数”算成 D/Q 的倒数。</div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ================= 速查 ================= -->
+  <section id="cheat">
+    <div class="sec-head"><div class="idx">五</div><h2>考前速查页</h2></div>
+    <p class="sec-intro">进考场前 10 分钟只看这一页。</p>
+
+    <div class="kb">
+      <div class="kb-h"><span class="no">A</span><h3>三个中值定理（条件 + 结论）</h3></div>
+      <div class="eq left" style="text-align:left; line-height:2.2">
+        <span class="m"><b>罗尔</b>：[a,b] 连续、(a,b) 可导、f(a)=f(b) ⟹ ∃ξ, f′(ξ)=0</span><br>
+        <span class="m"><b>拉格朗日</b>：[a,b] 连续、(a,b) 可导 ⟹ ∃ξ, f(b)−f(a)=f′(ξ)(b−a)</span><br>
+        <span class="m"><b>柯西</b>：两者都连续可导、g′≠0 ⟹ ∃ξ, [f(b)−f(a)]/[g(b)−g(a)] = f′(ξ)/g′(ξ)</span>
+      </div>
+      <p style="font-size:13.5px; color:var(--ink3); margin:0">记忆链：罗尔 ⟹ 拉格朗日 ⟹ 柯西（在柯西中取 g(x) = x，就退化为拉格朗日；在拉格朗日中取 f(a) = f(b)，就退化为罗尔）。</p>
+    </div>
+
+    <div class="kb">
+      <div class="kb-h"><span class="no">B</span><h3>六个判据（一句话版）</h3></div>
+      <ul style="margin-bottom:0">
+        <li>f′ &gt; 0 → 增；f′ &lt; 0 → 减（单调）</li>
+        <li>f′ = 0 且两侧变号 → 极值（左正右负极大，左负右正极小）</li>
+        <li>f′ = 0 且 f″ &lt; 0 → 极大；f″ &gt; 0 → 极小（第二判据）</li>
+        <li>f″ &gt; 0 → 曲线 ∪；f″ &lt; 0 → 曲线 ∩（凹凸）</li>
+        <li>f″ 变号 → 拐点；f″ = 0 但不变号 → 不是拐点</li>
+        <li>闭区间最值 = 比较 {驻点, 不可导点, 端点} 的函数值</li>
+      </ul>
+    </div>
+
+    <div class="kb">
+      <div class="kb-h"><span class="no">C</span><h3>五个经济模型（目标函数 + 结论）</h3></div>
+      <ul style="margin-bottom:0">
+        <li>利润最大：L = R − C，L′ = 0 ⟺ <b>MR = MC</b></li>
+        <li>收益最大：R′ = 0 ⟺ <b>MR = 0</b> ⟺ 弹性 E<sub>d</sub> = 1</li>
+        <li>平均成本最小：AC′ = 0，最小值处 <b>MC = AC</b></li>
+        <li>存货 EOQ：<b>Q* = √(2KD/c)</b>，此时订货成本 = 存储成本</li>
+        <li>经济寿命：年均成本最小（折旧 + 维护）</li>
+      </ul>
+    </div>
+
+    <div class="kb">
+      <div class="kb-h"><span class="no">D</span><h3>十句“看到就想起”的话</h3></div>
+      <ul style="margin-bottom:0">
+        <li>看到 lim → 先代入验型，不是未定式别用洛必达</li>
+        <li>看到 0·∞ → 搬一个因子到分母</li>
+        <li>看到 ∞−∞ → 分式通分、根式有理化</li>
+        <li>看到 1<sup>∞</sup> → 取对数，答案写成 e<sup>L</sup></li>
+        <li>看到“证明存在 ξ” → 构造 F，验证 F 两端相等</li>
+        <li>看到“证明不等式” → 作差求导判号（最稳）</li>
+        <li>看到“极值” → f′ = 0，再判变号或算 f″</li>
+        <li>看到“闭区间最值” → 别忘了端点</li>
+        <li>看到“拐点” → 必须两侧变号</li>
+        <li>看到“成本/收益/利润” → 设一个变量、写目标函数、求导 = 0、确认最大</li>
+      </ul>
+    </div>
+
+    <div class="callout warn" style="margin-top:6px">
+      <div class="tag">本章十条高频错误（写在草稿纸最上面）</div>
+      <p>① 中值定理不写条件；② 解出 ξ 不检验区间；③ 对非未定式用洛必达；④ 求导后极限不存在就判原极限不存在；⑤ 幂指型算出 ln y 就交卷；⑥ 驻点当极值点；⑦ 最值漏端点；⑧ 拐点只看 f″ = 0；⑨ 单调区间用“或”连成一个；⑩ 应用题收益当利润、漏固定成本。</p>
+    </div>
+  </section>
+
+  <!-- ================= 对照教学计划 ================= -->
+  <section id="plan">
+    <div class="sec-head"><div class="idx">六</div><h2>对照教学计划：这一章要求你到什么程度</h2></div>
+    <p class="sec-intro">依据《2026—2027 学年度第一学期 微积分 I 教学进度计划表》（黄新阳，软件工程 002195-11 班，48 学时），第 4 章占 <b>12 学时</b>（第 13–15 周），期末闭卷必考，而且是<b>应用题的唯一集中区</b>（§4.6）。</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>计划要求</th><th>具体内容</th><th>本材料对应位置</th></tr></thead>
+        <tbody>
+          <tr><td>课堂内容</td><td>§4.1 微分中值定理（罗尔、拉格朗日、柯西）；§4.2 洛必达法则（0/0、∞/∞、其他型）；§4.3 单调性、极值与最值；§4.4 凹向与拐点；§4.5 渐近线与作图（含方程根的讨论）；§4.6 导数在经济分析中的应用（利润最优化等）</td><td>二、必备基础 01–10</td></tr>
+          <tr><td>布置作业</td><td>练习4.1（P169）1–6 + 提高 4–6；练习4.2（P176）1 + 提高 1–5；练习4.3（P191）；练习4.4（P191–P193）1、2 + 提高 2；练习4.5；练习4.6 1–5 + 提高 1–3；习题四 2–4、7–9、12–24、26–28</td><td>三、题型总结 17 类 + 各考点的“同型练习”</td></tr>
+          <tr><td>考核范围</td><td>期末闭卷（第 1–4 章 + 5.1–5.3）——本章是期末分值最高的一块</td><td>四、考点详解（考频标星）</td></tr>
+          <tr><td>不考内容</td><td>MATLAB 求极值与作图实验（p209–p214）</td><td>未纳入考点</td></tr>
+          <tr><td>达标标准</td><td>三类未定式能算对；单调、极值、最值、凹凸能写成完整过程；三类经济模型能独立建模并求解</td><td>考点 05、08、11、16（四张卡片必须能独立默写）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout ok" style="margin-bottom:0">
+      <div class="tag">12 学时怎么用（建议）</div>
+      <p>3 学时给中值定理（够用即可，重点是把三个条件的表述背熟）；3 学时给洛必达（练速度）；4 学时给单调/极值/最值/凹凸（这是分数主体）；2 学时给经济模型（背住五个目标函数）。<b>本章的最大风险是“会算但写不全”</b>，建议每道题都按“条件—求导—判号—结论”四段写。</p>
+    </div>
+  </section>
+
+  <div class="endnote">
+    <p><b>说明：</b>本报告按教材《经济管理应用数学基础——微积分（上）》（齐亚伟等，高等教育出版社 2022 年 9 月第 1 版）第 4 章 §4.1–§4.6 的章节顺序组织，定理表述、判据与解法步骤尽量贴近原书；例题为按教材题型自拟的同型题（数值重新设计并已逐题验算），教材原题位置以节号与作业页码标注。凹/凸的命名在不同教材中相反，本材料统一用 ∪ / ∩ 描述，考试按课堂说法书写即可。原书 p209–p214 的 MATLAB 实验部分考试不考，未纳入考点。</p>
+    <p>建议用法：先背速查页 B、C 两张表（判据与模型），再按“计算线”刷三类未定式各 5 题，最后专攻 §4.6 的三个模型。</p>
+  </div>
+</div>
+
+<a class="totop" href="#top" aria-label="回到顶部">↑</a>
+<script>
+(function () {
+  var t = document.querySelector('.totop');
+  if (!t) return;
+  function sync() {
+    if (window.pageYOffset > 600) { t.classList.add('show'); }
+    else { t.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', sync, { passive: true });
+  sync();
+})();
+</script>
+
+</body>
+</html>

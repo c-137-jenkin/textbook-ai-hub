@@ -1,0 +1,55 @@
+/* ============================================================
+   合订本专用样式（在 base.css 之后加载）
+   分章页不引用本文件；只有 docs/index.html 需要这些规则。
+   ============================================================ */
+
+/* ---------- 章分隔头 ---------- */
+.chhead{margin-top:88px;padding-top:28px;border-top:3px solid var(--ink)}
+.chrow{display:flex;gap:20px;align-items:flex-start}
+.chnum{font-family:var(--serif);font-weight:700;font-size:clamp(34px,6vw,52px);line-height:.92;
+  color:var(--accent);letter-spacing:-.04em;flex:0 0 auto;min-width:auto}
+.chkicker{font-size:11.5px;letter-spacing:.14em;font-weight:700;color:var(--ink3);line-height:1.6}
+.chtitle{font-size:clamp(23px,3.2vw,32px);line-height:1.22;font-weight:700;margin-top:6px}
+.chem{font-family:var(--serif);font-size:14.5px;color:var(--accent);margin-top:5px}
+.chsub{color:var(--ink2);font-size:14.5px;margin:16px 0 0;max-width:46em}
+.chstats{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.cstat{display:inline-flex;align-items:baseline;gap:6px;background:var(--panel);border:1px solid var(--line);
+  border-radius:999px;padding:5px 13px;font-size:11.5px;color:var(--ink3)}
+.cstat b{font-family:var(--serif);font-size:15px;color:var(--ink);font-weight:700}
+
+/* ---------- 章内目录标签 ---------- */
+.toclabel{font-size:11.5px;letter-spacing:.16em;font-weight:700;color:var(--ink3);margin:26px 0 8px}
+
+/* ---------- 主目录卡片 ---------- */
+.mtoc{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:6px}
+.mcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:15px 18px 12px}
+.mhead{display:flex;align-items:baseline;gap:9px;padding-bottom:9px;border-bottom:1px dashed var(--line2)}
+.mnum{font-family:var(--serif);font-weight:700;font-size:12px;color:#fff;background:var(--ink);
+  border-radius:6px;padding:2px 7px;line-height:1.5;flex:0 0 auto}
+.mt{font-family:var(--serif);font-size:16.5px;font-weight:700;color:var(--ink)}
+.mtag{margin-left:auto;font-size:11px;color:var(--ink3);flex:0 0 auto;white-space:nowrap}
+.mlinks{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 14px;padding-top:6px}
+.mlinks a{font-size:12.5px;color:var(--ink2);padding:5px 0;border-bottom:1px solid transparent}
+.mlinks a:hover{color:var(--accent)}
+
+/* ---------- 首屏按钮 ---------- */
+.hero-btns{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.btn{font-size:13px;padding:9px 17px;border-radius:999px;background:var(--accent);color:#fff;
+  font-weight:600;border:1px solid var(--accent);line-height:1.4}
+.btn:hover{opacity:.92;color:#fff}
+.btn.ghost{background:var(--panel);color:var(--ink2);border-color:var(--line)}
+.btn.ghost:hover{color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)}
+
+/* ---------- 顶部导航当前章高亮 ---------- */
+.topbar a.on{color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft);font-weight:600}
+
+@media (max-width:860px){
+  .mtoc{grid-template-columns:1fr}
+  .mlinks{grid-template-columns:1fr}
+  .chrow{gap:14px}
+  .chhead{margin-top:60px}
+}
+@media print{
+  .totop{display:none}
+  .chhead{break-before:page}
+}

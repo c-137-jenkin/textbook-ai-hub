@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html data-sp-mode="scroll" lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="《经济管理应用数学基础——微积分（上）》第 1–5 章重点知识详解：必备基础、题型总结、考点拆解与考前速查，按教学进度计划表的考核范围组织。">
+<title>第3章 导数与微分 · 重点知识详解</title>
+<link rel="stylesheet" href="assets/css/base.css">
+</head>
+<body>
+<nav class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#top">第3章 · 导数与微分</a>
+    <a href="#map">本章地图</a>
+    <a href="#base">必备基础</a>
+    <a href="#list">题型总结</a>
+    <a href="#points">考点详解</a>
+    <a href="#cheat">考前速查</a>
+    <a href="overview.html">全书地图</a>
+  <a href="index.html">合订本</a>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div>
+      <div class="kicker">微积分（上）· 第三章</div>
+      <h1>导数与微分<br><em>把“变化快慢”算成一个数</em></h1>
+      <p class="hero-sub">这一章是全书的引擎，也是技术密度最高的一章：概念只有两个（导数、微分），但计算量占到全书一半。它要把第 2 章的极限、“0/0 型”手法全部用上，产出的求导技术又要养活第 4、5 章。学不好这章，第 4 章连题都动不了手。</p>
+      <div class="hero-meta">
+        依据教材：齐亚伟等《经济管理应用数学基础——微积分（上）》，高等教育出版社，2022&nbsp;年&nbsp;9&nbsp;月第&nbsp;1&nbsp;版<br>
+        对应范围：§3.1–§3.6（原书 p101–p160，含 MATLAB 实验 p155–p160）　·　配套：全书思维地图、本章作业全解、教学进度与考核要求
+      </div>
+    </div>
+    <div class="statbox">
+      <div class="stat"><div class="n">6</div><div class="l">节内容</div></div>
+      <div class="stat"><div class="n">16</div><div class="l">考点拆解</div></div>
+      <div class="stat"><div class="n">16</div><div class="l">条基本导数公式</div></div>
+      <div class="stat"><div class="n">7</div><div class="l">种求导方法</div></div>
+    </div>
+  </header>
+
+  <!-- ================= 目录 ================= -->
+  <section id="toc" style="margin-top:44px">
+    <div class="toc">
+      <a href="#map">一、本章地图：七关递进<span>逻辑链</span></a>
+      <a href="#base">二、必备基础知识（10&nbsp;块）<span>看懂的入口</span></a>
+      <a href="#list">三、题型总结 · 例题怎么解<span>16&nbsp;考点</span></a>
+      <a href="#p1">考点&nbsp;01–03　定义·极限·连续<span>概念 20%</span></a>
+      <a href="#p4">考点&nbsp;04–06　切线·公式·链式<span>计算主力</span></a>
+      <a href="#p7">考点&nbsp;07–10　隐函数·对数·高阶<span>拉分项</span></a>
+      <a href="#p11">考点&nbsp;11–13　微分·近似·误差<span>必考小分</span></a>
+      <a href="#p14">考点&nbsp;14–16　边际与弹性<span>应用题核心</span></a>
+      <a href="#cheat">四、考前速查页<span>10&nbsp;分钟</span></a>
+      <a href="#plan">五、对照教学计划自检<span>学时·权重</span></a>
+    </div>
+  </section>
+
+  <!-- ================= 本章地图 ================= -->
+  <section id="map">
+    <div class="sec-head"><div class="idx">一</div><h2>本章地图：七关递进</h2></div>
+    <p class="sec-intro">第 2 章学会了“求极限”，本章立刻拿它算一个具体的极限：<b>增量比的极限</b>。这个极限就是导数。整章的逻辑是：先定义（§3.1）→ 再建公式库（§3.2）→ 再攻复合与隐式（§3.3）→ 再往上叠一层（§3.4）→ 换个角度讲“变化量”（§3.5）→ 最后翻译成经济语言（§3.6）。</p>
+
+    <div class="chain">
+      <div class="node"><div class="s">§3.1</div><div class="t">定义</div><div class="d">导数 = 增量比的极限；左/右导数；可导 ⇒ 连续</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="s">§3.2</div><div class="t">建库</div><div class="d">16 条基本公式；四则运算；反函数求导</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="s">§3.3</div><div class="t">攻坚</div><div class="d">链法则（复合）；隐函数；对数求导法</div></div>
+    </div>
+    <div class="chain" style="margin-top:10px">
+      <div class="node"><div class="s">§3.4</div><div class="t">加层</div><div class="d">高阶导数与高阶微分；隐函数二阶导</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="s">§3.5</div><div class="t">换角度</div><div class="d">微分 dy = f′(x)dx；近似计算与误差估计</div></div>
+      <div class="arrow">→</div>
+      <div class="node" style="background:var(--accent-soft); border-color:var(--accent-line)"><div class="s">§3.6</div><div class="t">用出去</div><div class="d">边际（绝对变化率）与弹性（相对变化率）</div></div>
+    </div>
+
+    <div class="callout plain">
+      <div class="tag">导数的三种身份（同一个数，三种读法）</div>
+      <p><b>① 瞬时变化率：</b>s′(t) 是 t 时刻的速度。<b>② 切线斜率：</b>曲线在 (x₀, f(x₀)) 处切线的斜率，直接给出切线、法线方程。<b>③ 边际：</b>经济学里“多生产一件，成本增加多少”就是 C′(q)。考试里同一个 f′(x₀)，题干换个说法，考的就是你能不能认出它是同一个东西。</p>
+    </div>
+    <div class="callout warn">
+      <div class="tag">本章唯一的真难点：不是概念，是“层数”</div>
+      <p>第 2 章的计算题靠变形，本章的计算题靠<b>结构</b>：复合函数有几层、隐函数里谁是 y(x)、幂指函数要不要取对数。算错的绝大多数不是公式记错，而是<b>少乘了一层</b>或<b>把 y 当常数</b>。所以本章的练习目标不是“会做”，是“一次做对”。</p>
+    </div>
+  </section>
+
+  <!-- ================= 必备基础知识 ================= -->
+  <section id="base">
+    <div class="sec-head"><div class="idx">二</div><h2>必备基础知识</h2></div>
+    <p class="sec-intro">这 10 块里，第 4 块（公式表）和第 6 块（链式）是必须“条件反射”的；其余是理解性内容，考判断与填空。建议先把第 4 块抄三遍，再往下读。</p>
+
+    <!-- KB1 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">01</span><h3>导数的定义：三种写法与左右导数</h3><span class="p">§3.1（p102–p110）</span></div>
+      <p>设 y = f(x) 在 x₀ 的某邻域内有定义，给自变量一个增量 Δx，函数相应有增量 Δy = f(x₀ + Δx) − f(x₀)。若极限</p>
+      <div class="eq">
+        lim<sub>Δx→0</sub> <span class="frac"><span class="fn">Δy</span><span class="fd">Δx</span></span> = lim<sub>Δx→0</sub> <span class="frac"><span class="fn">f(x₀ + Δx) − f(x₀)</span><span class="fd">Δx</span></span> = A
+        <span class="note">存在，则称 f 在 x₀ 处可导，A 就是 f 在 x₀ 处的导数，记 f′(x₀) 或 y′|<sub>x=x₀</sub></span>
+      </div>
+      <ul>
+        <li><b>三种等价写法</b>（考试都见）：<span class="m">f′(x₀) = lim<sub>Δx→0</sub> Δy/Δx = lim<sub>h→0</sub> [f(x₀+h) − f(x₀)]/h = lim<sub>x→x₀</sub> [f(x) − f(x₀)]/(x − x₀)</span>。</li>
+        <li><b>左导数</b> f′<sub>−</sub>(x₀)：Δx → 0⁻；<b>右导数</b> f′<sub>+</sub>(x₀)：Δx → 0⁺。<b>可导 ⇔ 左右导数都存在且相等。</b></li>
+        <li>若 f 在区间内每点可导，就得到<b>导函数</b> f′(x)，简称导数。</li>
+      </ul>
+      <div class="callout warn" style="margin-bottom:0">
+        <div class="tag">两个必须分清的记号</div>
+        <p><span class="m">f′(x₀)</span> 是一个<b>数</b>（点导数）；<span class="m">f′(x)</span> 是一个<b>函数</b>。所以 f′(x₀) ≠ [f(x₀)]′（后者恒为 0）。这条每年都有人错。</p>
+      </div>
+    </div>
+
+    <!-- KB2 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">02</span><h3>可导与连续：一条单向的桥</h3><span class="p">§3.1 四（p105–p108）　必考判断</span></div>
+      <div class="eq">
+        可导 ⟹ 连续　　　　连续 <b>⇏</b> 可导
+        <span class="note">反例：f(x) = |x| 在 x = 0 处连续（图像不断），但左导 −1、右导 1，不可导</span>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>命题</th><th>真假</th><th>依据 / 反例</th></tr></thead>
+          <tbody>
+            <tr><td>可导 ⇒ 连续</td><td><b>真</b></td><td>Δy = (Δy/Δx)·Δx → f′(x₀)·0 = 0</td></tr>
+            <tr><td>连续 ⇒ 可导</td><td><b>假</b></td><td class="m">|x| 在 0 处；x<sup>1/3</sup> 在 0 处（导数为无穷）</td></tr>
+            <tr><td>不连续 ⇒ 不可导</td><td><b>真</b></td><td>逆否命题</td></tr>
+            <tr><td>不可导 ⇒ 不连续</td><td><b>假</b></td><td class="m">|x| 处处连续，仅在 0 处不可导</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-bottom:0"><b>用法：</b>含参数的分段函数“在分段点可导”，必须写两步——先用<b>连续</b>列一个方程（左右极限相等 = 函数值），再用<b>左右导数相等</b>列第二个方程，两个方程解两个参数。少写一步就少一半分。</p>
+    </div>
+
+    <!-- KB3 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">03</span><h3>几何意义：切线、法线，一步写出方程</h3><span class="p">§3.1 五（p103–p110）</span></div>
+      <p>f′(x₀) 是曲线 y = f(x) 在点 (x₀, f(x₀)) 处<b>切线的斜率</b>。于是：</p>
+      <div class="eq">
+        切线：y − y₀ = f′(x₀)(x − x₀)　　　法线：y − y₀ = −<span class="frac"><span class="fn">1</span><span class="fd">f′(x₀)</span></span>(x − x₀)　（f′(x₀) ≠ 0）
+        <span class="note">若 f′(x₀) = 0，切线是水平线 y = y₀，法线是竖直线 x = x₀</span>
+      </div>
+      <div class="callout ok" style="margin-bottom:0">
+        <div class="tag">答题格式（三个空各 1 分）</div>
+        <p>① 写切点坐标 (x₀, f(x₀))；② 求 f′(x) 并代入得斜率 k；③ 套点斜式写方程，最后化成一般式。<b>三步缺一不可</b>，只写最终方程往往只给一半分。</p>
+      </div>
+    </div>
+
+    <!-- KB4 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">04</span><h3>16 条基本导数公式（背到条件反射）</h3><span class="p">§3.2 四（p111–p118）</span></div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>幂与指对</th><th>导数</th><th>三角</th><th>导数</th></tr></thead>
+          <tbody>
+            <tr><td class="m">C（常数）</td><td class="m">0</td><td class="m">sin x</td><td class="m">cos x</td></tr>
+            <tr><td class="m">x<sup>α</sup></td><td class="m">αx<sup>α−1</sup></td><td class="m">cos x</td><td class="m">−sin x</td></tr>
+            <tr><td class="m">a<sup>x</sup></td><td class="m">a<sup>x</sup> ln a</td><td class="m">tan x</td><td class="m">sec²x = 1/cos²x</td></tr>
+            <tr><td class="m">e<sup>x</sup></td><td class="m">e<sup>x</sup></td><td class="m">cot x</td><td class="m">−csc²x = −1/sin²x</td></tr>
+            <tr><td class="m">log<sub>a</sub>x</td><td class="m">1/(x ln a)</td><td class="m">sec x</td><td class="m">sec x·tan x</td></tr>
+            <tr><td class="m">ln x</td><td class="m">1/x</td><td class="m">csc x</td><td class="m">−csc x·cot x</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>反三角</th><th>导数</th><th>备注</th></tr></thead>
+          <tbody>
+            <tr><td class="m">arcsin x</td><td class="m">1/√(1 − x²)</td><td>定义域 |x| &lt; 1</td></tr>
+            <tr><td class="m">arccos x</td><td class="m">−1/√(1 − x²)</td><td>与 arcsin 差一个负号</td></tr>
+            <tr><td class="m">arctan x</td><td class="m">1/(1 + x²)</td><td>恒正，配合第 4 章求极值</td></tr>
+            <tr><td class="m">arccot x</td><td class="m">−1/(1 + x²)</td><td>与 arctan 差一个负号</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-bottom:0; font-size:13.5px; color:var(--ink3)">记忆技巧：三角的“正”函数（sin、tan、sec）导数不带负号，“余”函数（cos、cot、csc）导数必带负号；反三角里 arctan、arcsin 为正，对应 arccot、arccos 为负。</p>
+    </div>
+
+    <!-- KB5 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">05</span><h3>四则运算法则与反函数求导</h3><span class="p">§3.2 二、三（p112–p118）</span></div>
+      <div class="eq">
+        (u ± v)′ = u′ ± v′　　(u·v)′ = u′v + uv′　　<span style="white-space:nowrap">(<span class="frac"><span class="fn">u</span><span class="fd">v</span></span>)′ = <span class="frac"><span class="fn">u′v − uv′</span><span class="fd">v²</span></span></span>　(v ≠ 0)
+        <span class="note">推论：(Cu)′ = Cu′；(uvw)′ = u′vw + uv′w + uvw′（三项各求一次导）</span>
+      </div>
+      <p><b>反函数求导法则：</b>若 y = f(x) 与 x = f⁻¹(y) 互为反函数，且 f′(x) ≠ 0，则</p>
+      <div class="eq">
+        [f<sup>−1</sup>(y)]′ = <span class="frac"><span class="fn">1</span><span class="fd">f′(x)</span></span>　⟺　<span class="frac"><span class="fn">dx</span><span class="fd">dy</span></span> = <span class="frac"><span class="fn">1</span><span class="fd">dy/dx</span></span>
+        <span class="note">即“反函数的导数 = 原函数导数的倒数”，注意求完要把 x 换回 y 的表达式</span>
+      </div>
+      <div class="callout warn" style="margin-bottom:0">
+        <div class="tag">最常见的三个错</div>
+        <p>① (uv)′ 写成 u′v′；② (u/v)′ 写成 u′/v′；③ 商的法则分子顺序写反（是 u′v − uv′，不是 uv′ − u′v，差一个负号）。</p>
+      </div>
+    </div>
+
+    <!-- KB6 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">06</span><h3>链法则：本章的命门</h3><span class="p">§3.3 一（p120–p125）</span></div>
+      <p>设 y = f(u)，u = g(x) 且都可导，则复合函数 y = f[g(x)] 可导，且</p>
+      <div class="eq">
+        <span class="frac"><span class="fn">dy</span><span class="fd">dx</span></span> = <span class="frac"><span class="fn">dy</span><span class="fd">du</span></span> · <span class="frac"><span class="fn">du</span><span class="fd">dx</span></span> = f′(u)·g′(x)
+        <span class="note">口诀：由外向内，层层求导，层层相乘；每层都要把内层原样抄一遍</span>
+      </div>
+      <div class="callout plain" style="margin:0">
+        <div class="tag">层数示例（第 1 章拆层的直接复用）</div>
+        <p><span class="m">y = ln sin²x</span>：三层 → y = ln u，u = v²，v = sin x。<br>
+        y′ = (1/u)·(2v)·(cos x) = (1/sin²x)·(2 sin x)·cos x = <b>2cot x</b>。<br>
+        检验：ln sin²x = 2 ln|sin x|，求导得 2·(cos x/sin x) = 2cot x ✓。<b>会拆层，就会求导。</b></p>
+      </div>
+      <p style="margin-top:14px; margin-bottom:0"><b>多层链式的一般式：</b>若 y = f(u)，u = g(v)，v = h(x)，则 y′ = f′(u)·g′(v)·h′(x)。<b>几个中间变量就乘几个因子</b>——少乘一层是本章第一号错误。<br>
+      <b>注意：</b>链法则只对“复合”用；能先化简的（如 ln(x²)、e<sup>ln x</sup>）先化简再求导，比硬套链式快且不易错。</p>
+    </div>
+
+    <!-- KB7 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">07</span><h3>隐函数求导与对数求导法</h3><span class="p">§3.3 二、三（p126–p131）</span></div>
+      <p><b>隐函数求导（三步）：</b>设方程 F(x, y) = 0 确定 y = y(x)。① 方程<b>两边同时对 x 求导</b>，遇到 y 就当成 y(x)，用链法则多乘一个 y′；② 把所有含 y′ 的项移到一边；③ 解出 y′（结果里允许同时含 x 和 y，不必化成只含 x）。</p>
+      <p><b>对数求导法（适合幂指函数与多因子乘除）：</b>① 两边取 ln；② 用对数性质把乘除变加减、把指数拿下来；③ 两边求导；④ 乘回原函数 y。</p>
+      <div class="eq">
+        y = u(x)<sup>v(x)</sup>　⟹　<span class="frac"><span class="fn">y′</span><span class="fd">y</span></span> = v′ ln u + v·<span class="frac"><span class="fn">u′</span><span class="fd">u</span></span>　⟹　y′ = u<sup>v</sup>(v′ ln u + <span class="frac"><span class="fn">v u′</span><span class="fd">u</span></span>)
+        <span class="note">幂指函数的通用公式，记住它可以直接套；但考场上写过程更稳</span>
+      </div>
+      <div class="callout warn" style="margin-bottom:0">
+        <div class="tag">幂指函数不能用幂函数公式</div>
+        <p>x<sup>x</sup> 既不是幂函数（底在变）也不是指数函数（指数在变），所以 (x<sup>x</sup>)′ ≠ x·x<sup>x−1</sup>，也 ≠ x<sup>x</sup> ln x。正确答案是 x<sup>x</sup>(ln x + 1)。看到“底和指数都含 x”，条件反射取对数。</p>
+      </div>
+    </div>
+
+    <!-- KB8 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">08</span><h3>高阶导数：二阶及 n 阶</h3><span class="p">§3.4（p132–p137）</span></div>
+      <p>f′(x) 的导数叫二阶导数，记 f″(x) 或 d²y/dx²；一般地，n−1 阶导数的导数叫 n 阶导数，记 f<sup>(n)</sup>(x)。</p>
+      <ul>
+        <li><b>二阶导的意义</b>：变化率的变化率。s″(t) 是加速度；第 4 章用它判凹凸与极值。</li>
+        <li><b>常用 n 阶导</b>：<span class="m">(e<sup>x</sup>)<sup>(n)</sup> = e<sup>x</sup></span>；<span class="m">(sin x)<sup>(n)</sup> = sin(x + nπ/2)</span>；<span class="m">(x<sup>n</sup>)<sup>(n)</sup> = n!</span>；<span class="m">(ln x)<sup>(n)</sup> = (−1)<sup>n−1</sup>(n−1)!/x<sup>n</sup></span>。</li>
+        <li><b>莱布尼茨公式</b>（乘积的高阶导）：<span class="m">(uv)<sup>(n)</sup> = Σ C<sub>n</sub><sup>k</sup> u<sup>(k)</sup> v<sup>(n−k)</sup></span>，形式与二项式展开相同。课程里主要用 n = 2 的情形：(uv)″ = u″v + 2u′v′ + uv″。</li>
+        <li><b>隐函数的二阶导</b>：先把 y′ 解出来，再对 y′ 的表达式<b>再求一次导</b>（其中 y′ 又要求导，且结果中把 y′ 用第一次的表达式代回）。</li>
+      </ul>
+    </div>
+
+    <!-- KB9 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">09</span><h3>微分：把“变化量”线性化</h3><span class="p">§3.5（p138–p144）</span></div>
+      <p>若 Δy = f(x₀ + Δx) − f(x₀) 可写成 <b>Δy = A·Δx + o(Δx)</b>（A 与 Δx 无关），则称 f 在 x₀ 处可微，<b>A·Δx 叫微分</b>，记 dy = A dx。可以证明 <b>A = f′(x₀)</b>，于是</p>
+      <div class="eq">
+        dy = f′(x) dx　　Δy ≈ dy = f′(x₀)Δx
+        <span class="note">dy 是 Δy 的线性主部；差值 Δy − dy 是比 Δx 高阶的无穷小</span>
+      </div>
+      <ul>
+        <li><b>可微 ⇔ 可导</b>（一元函数里两者等价，这是与第 5 章多元最大的区别）。</li>
+        <li><b>形式不变性</b>：无论 x 是自变量还是中间变量，dy = f′(u) du 的形式都成立。这使微分的四则运算与导数完全平行：d(u ± v) = du ± dv，d(uv) = u dv + v du，d(u/v) = (v du − u dv)/v²。</li>
+        <li><b>近似计算</b>：f(x₀ + Δx) ≈ f(x₀) + f′(x₀)Δx（|Δx| 很小时）。这是本章最实用的一条，考试常以填空出现。</li>
+        <li><b>误差估计</b>：绝对误差 |dy| = |f′(x₀)|·|Δx|；相对误差 ≈ |dy/y| = |f′(x₀)/f(x₀)|·|Δx|。乘积型函数有个快捷结论：<b>相对误差等于各因子相对误差之和</b>。</li>
+      </ul>
+    </div>
+
+    <!-- KB10 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">10</span><h3>边际与弹性：导数的经济学翻译</h3><span class="p">§3.6（p147–p154）　应用题核心</span></div>
+      <p><b>边际（绝对变化率）：</b>f(x) 的边际函数就是 f′(x)，含义是“x 增加 1 个单位时 f 大约增加 f′(x) 个单位”。</p>
+      <div class="eq left" style="text-align:left">
+        边际成本 MC = C′(q)　　边际收益 MR = R′(q)　　边际利润 ML = L′(q) = MR − MC
+        <span class="note">利润最大的必要条件就是 MR = MC（第 4 章会正式用它）</span>
+      </div>
+      <p><b>弹性（相对变化率）：</b>函数 y = f(x) 在 x 处的弹性定义为</p>
+      <div class="eq">
+        <span class="m">E<sub>x</sub> = <span class="frac"><span class="fn">dy/y</span><span class="fd">dx/x</span></span> = <span class="frac"><span class="fn">x</span><span class="fd">y</span></span>·<span class="frac"><span class="fn">dy</span><span class="fd">dx</span></span> = <span class="frac"><span class="fn">x f′(x)</span><span class="fd">f(x)</span></span></span>
+        <span class="note">含义：x 增加 1%，y 大约变化 |E|%——注意是“百分比”，这是弹性与边际的唯一区别</span>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>需求弹性</th><th>定义与处理</th><th>经济含义</th></tr></thead>
+          <tbody>
+            <tr><td class="m">E<sub>d</sub> = −(p/q)·q′(p)</td><td>需求函数单调减，q′ &lt; 0，加负号使其为正，便于比较</td><td>价格涨 1%，需求降 E<sub>d</sub>%（取正值说）</td></tr>
+            <tr><td class="m">E<sub>d</sub> &gt; 1（弹性充足）</td><td>—</td><td>降价会使总收益<b>增加</b></td></tr>
+            <tr><td class="m">E<sub>d</sub> &lt; 1（缺乏弹性）</td><td>—</td><td>涨价会使总收益<b>增加</b>（必需品）</td></tr>
+            <tr><td class="m">E<sub>d</sub> = 1（单位弹性）</td><td>收益对价格的变化率为 0</td><td>收益达到最大</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout plain" style="margin-bottom:0">
+        <div class="tag">为什么 E &gt; 1 时降价增收（一句话推导）</div>
+        <p>R(p) = p·q(p)，求导得 R′ = q + p·q′ = q[1 − (p/q)(−q′)] = q(1 − E<sub>d</sub>)。所以 E<sub>d</sub> &gt; 1 时 R′ &lt; 0，即<b>价格降低、收益上升</b>。这个式子在第 4 章“最大收益”里还要用一次。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 题型总结 ================= -->
+  <section id="list">
+    <div class="sec-head"><div class="idx">三</div><h2>题型总结：例题是怎么解的</h2></div>
+    <p class="sec-intro">本章题型多但套路死。前半张表按“解法动作”归类——每一行的动作都能直接照做，不需要灵感；后半张表是考点与考频。<b>分数结构：求导计算（链式、隐函数、高阶）占一半以上，边际弹性应用题一道，概念判断一道。</b></p>
+
+    <div class="blk">
+      <div class="blk-t">题型总结 · 按解法动作归类（覆盖 §3.1–§3.6 全部例题类型）</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>序号</th><th>题型（长什么样）</th><th>教材位置</th><th>解法动作（照做即可）</th><th>对应考点</th></tr></thead>
+          <tbody>
+            <tr><td>01</td><td><b>用定义求导</b>（含分段点、绝对值）</td><td>§3.1（p102–p110）<br>练习3.1（P108–109）</td><td>① 写增量比 [f(x₀+Δx) − f(x₀)]/Δx；② 化简约去 Δx；③ 取极限；④ 分段点必须左右各算一次，相等才可导</td><td>01</td></tr>
+            <tr><td>02</td><td><b>用导数定义求极限</b>（凑形）</td><td>§3.2 五（p117–p118）</td><td>① 认括号里的差是 f 的增量；② 把分母配成与括号一致；③ 缺的系数乘在极限外面；④ 结果是 k·f′(x₀)</td><td>02</td></tr>
+            <tr><td>03</td><td><b>可导与连续（含求参数）</b></td><td>§3.1 四（p105–p108）</td><td>① 先用连续列方程（左右极限 = 函数值）；② 再用左右导数相等列方程；③ 联立解参数；④ 结论要写“故 a=…, b=…”</td><td>03</td></tr>
+            <tr><td>04</td><td><b>切线 / 法线方程</b></td><td>§3.1 五（p103–p110）</td><td>① 求切点纵坐标；② 求 f′(x) 并代 x₀ 得 k；③ 点斜式；④ 法线斜率取负倒数</td><td>04</td></tr>
+            <tr><td>05</td><td><b>基本公式与四则运算</b></td><td>§3.2 二、四（p111–p119）</td><td>① 先判结构（和、积、商）；② 套对应法则；③ 能化简的先化简；④ 结果整理成积的形式</td><td>05</td></tr>
+            <tr><td>06</td><td><b>复合函数（链式）</b></td><td>§3.3 一（p120–p125）</td><td>① 拆层（由外向内）；② 层层求导并相乘；③ 每层把内层原样抄一遍；④ 层数 = 因子数</td><td>06</td></tr>
+            <tr><td>07</td><td><b>隐函数求导</b></td><td>§3.3 二（p126–p129）</td><td>① 两边对 x 求导，y 当 y(x) 处理（多乘 y′）；② 移项；③ 解出 y′；④ 需要时代入点坐标求数值</td><td>07</td></tr>
+            <tr><td>08</td><td><b>对数求导 / 幂指函数</b></td><td>§3.3 三（p130–p131）</td><td>① 两边取 ln；② 拆对数（乘除变加减、指数拿下）；③ 两边求导；④ 乘回 y</td><td>08</td></tr>
+            <tr><td>09</td><td><b>高阶导数</b></td><td>§3.4（p132–p137）</td><td>① 一阶一阶往下求，每步化简；② 找规律写 n 阶；③ 乘积用莱布尼茨（n=2 时展开三项）</td><td>09</td></tr>
+            <tr><td>10</td><td><b>隐函数的二阶导</b></td><td>§3.4 三（p136–p137）</td><td>① 先求 y′；② 对 y′ 再求导（y′ 也要再求一次导）；③ 把 y′ 代回；④ 结果只含 x、y</td><td>10</td></tr>
+            <tr><td>11</td><td><b>求微分 dy</b></td><td>§3.5（p138–p144）</td><td>① 先求 y′；② dy = y′dx；③ 求某点的微分时代入 x₀ 与 dx 的值</td><td>11</td></tr>
+            <tr><td>12</td><td><b>近似计算</b></td><td>§3.5 二（p141–p143）</td><td>① 构造函数 f 与点 x₀（选好算的）；② Δx = 目标值 − x₀；③ 套 f(x₀+Δx) ≈ f(x₀) + f′(x₀)Δx；④ 说明误差是高阶无穷小</td><td>12</td></tr>
+            <tr><td>13</td><td><b>误差估计</b></td><td>§3.5 二（p143–p144）</td><td>① 写函数关系；② 求微分得绝对误差 |dy|；③ 相对误差 = |dy/y|；④ 结论写成“约…%，偏大/偏小”</td><td>13</td></tr>
+            <tr><td>14</td><td><b>边际函数</b></td><td>§3.6 一（p147–p150）</td><td>① 求 C′、R′、L′；② 代入具体产量；③ 用一句经济含义收尾（“多生产一件约增加…元”）</td><td>14</td></tr>
+            <tr><td>15</td><td><b>需求弹性</b></td><td>§3.6 二（p151–p154）</td><td>① 求 q′(p)；② E = −(p/q)q′；③ 代点求值；④ 按 E 与 1 的大小关系给出定价建议</td><td>15</td></tr>
+            <tr><td>16</td><td><b>弹性与收益综合</b></td><td>§3.6（p150–p154）</td><td>① 写 R(p) = p·q(p)；② 用 R′ = q(1 − E) 判增减；③ 令 E = 1 求收益最大点；④ 与第 4 章的最优化结果对照</td><td>16</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:13px; color:var(--ink3); margin:8px 0 0">读法：本章复习的关键不是“刷题量”，而是“认结构”——看到式子先问：几层？谁是自变量？要不要取对数？结构认对了，公式自然对。</p>
+    </div>
+
+    <div class="blk-t" style="margin-top:26px">考点清单 · 按考频排序</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>考点</th><th>常见题型</th><th>考频</th><th>对应节</th></tr></thead>
+        <tbody>
+          <tr><td>06</td><td>复合函数链式法则</td><td>计算题（必考，且量大）</td><td>★★★★★</td><td>§3.3</td></tr>
+          <tr><td>05</td><td>基本公式与四则运算</td><td>计算 / 填空</td><td>★★★★★</td><td>§3.2</td></tr>
+          <tr><td>07</td><td>隐函数求导</td><td>计算题</td><td>★★★★★</td><td>§3.3</td></tr>
+          <tr><td>15</td><td>需求弹性</td><td>应用题（几乎必考）</td><td>★★★★★</td><td>§3.6</td></tr>
+          <tr><td>14</td><td>边际函数</td><td>应用 / 填空</td><td>★★★★</td><td>§3.6</td></tr>
+          <tr><td>01</td><td>用定义求导（分段点）</td><td>计算 / 证明</td><td>★★★★</td><td>§3.1</td></tr>
+          <tr><td>03</td><td>可导与连续（求参数）</td><td>计算 / 判断</td><td>★★★★</td><td>§3.1</td></tr>
+          <tr><td>04</td><td>切线与法线方程</td><td>计算 / 填空</td><td>★★★★</td><td>§3.1</td></tr>
+          <tr><td>08</td><td>对数求导（幂指函数）</td><td>计算题</td><td>★★★</td><td>§3.3</td></tr>
+          <tr><td>09</td><td>高阶导数</td><td>计算 / 填空</td><td>★★★</td><td>§3.4</td></tr>
+          <tr><td>11</td><td>求微分 dy</td><td>填空</td><td>★★★</td><td>§3.5</td></tr>
+          <tr><td>12</td><td>微分近似计算</td><td>填空 / 计算</td><td>★★★</td><td>§3.5</td></tr>
+          <tr><td>02</td><td>用定义求极限（凑形）</td><td>填空</td><td>★★★</td><td>§3.2</td></tr>
+          <tr><td>16</td><td>弹性与收益的关系</td><td>应用 / 简答</td><td>★★★</td><td>§3.6</td></tr>
+          <tr><td>10</td><td>隐函数的二阶导</td><td>计算（提高）</td><td>★★</td><td>§3.4</td></tr>
+          <tr><td>13</td><td>误差估计</td><td>应用（小分）</td><td>★★</td><td>§3.5</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout plain">
+      <div class="tag">拿到一道求导题，先做三件事</div>
+      <p>本章的题几乎不需要“想”，只需要“认”。这三步决定 90% 的正确率。</p>
+    </div>
+    <div class="flow">
+      <div class="row"><div class="k">第一步：看结构</div><div class="v">和 / 积 / 商 → 用对应法则；嵌套 → 链式；<b>底和指数都含 x</b> → 对数求导；方程形式 → 隐函数</div></div>
+      <div class="row"><div class="k">第二步：数层数</div><div class="v">有几个中间变量，最后就应该有几个因子相乘（少一个必错）</div></div>
+      <div class="row"><div class="k">第三步：能化简先化简</div><div class="v">ln(x²)=2ln|x|、e<sup>ln x</sup>=x、√(x²)=|x|——化简后再求导，快且不容易错</div></div>
+      <div class="row"><div class="k">如果是分段点</div><div class="v">先判连续（左右极限 = 函数值），再用定义算左右导数，两者都成立才写“可导”</div></div>
+    </div>
+  </section>
+
+  <!-- ================= 考点详解 ================= -->
+  <section id="points">
+    <div class="sec-head"><div class="idx">四</div><h2>考点详解 · 例题与解答</h2></div>
+    <p class="sec-intro">16 个考点，每个配一道<b>按教材题型自拟的同型题</b>（数值重新设计并逐题验算），解答按教材的解法顺序走，另附该考点最容易扣分的地方与可以接着练的教材题位置。</p>
+
+    <!-- 01 -->
+    <article class="point" id="p1">
+      <div class="point-h"><div class="num">01</div><h3>用定义求导：分段点必须左右各算一次</h3><div class="star">★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">公式法只能用在“已经是初等函数”的地方。分段点、绝对值点、含“x ≠ 0 时另行定义”的点，<b>只能用定义</b>——这是评分标准里写死的一条。</p>
+        <div class="tagrow"><span class="chip">§3.1 · p102–p110</span><span class="chip">计算 / 证明</span><span class="chip hot">套公式 = 0 分</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 写出增量比 [f(x₀ + Δx) − f(x₀)]/Δx，<b>把 f(x₀) 的值先代进去</b>；② 化简，把 Δx 约掉；③ 取 Δx → 0；④ 分段点：分别算左导数与右导数，相等才可导并写出导数值。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">(1) 设 f(x) = |x|，讨论 f 在 x = 0 处的可导性；<br>(2) 设 f(x) = { x² sin(1/x), x ≠ 0；0, x = 0 }，求 f′(0)。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 右导数：f′<sub>+</sub>(0) = lim<sub>Δx→0⁺</sub> (|Δx| − 0)/Δx = lim Δx/Δx = 1。</span>
+            <span class="step">② 左导数：f′<sub>−</sub>(0) = lim<sub>Δx→0⁻</sub> (|Δx| − 0)/Δx = lim (−Δx)/Δx = −1。</span>
+            <span class="step">③ 左右导数存在但不相等，故 f 在 x = 0 处<b>不可导</b>（但连续）。</span>
+            <span class="step">④ (2) f′(0) = lim<sub>Δx→0</sub> [Δx² sin(1/Δx) − 0]/Δx = lim<sub>Δx→0</sub> Δx·sin(1/Δx)。</span>
+            <span class="step res">⑤ 因为 |sin(1/Δx)| ≤ 1 有界、Δx → 0，由“无穷小 × 有界 = 无穷小”得 f′(0) = 0。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习3.1 基础题（P108–109）第 2、5 题；提高题 1–3。练到“看到分段点就自动写左右导数”为止。</p></div>
+        <div class="mistake"><b>易错：</b>对 |x| 直接求导写成 1；分段点用公式法（例如对 x²sin(1/x) 求导后代入 0，那里根本无定义）；只算右导数就下结论。</div>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="point" id="p2">
+      <div class="point-h"><div class="num">02</div><h3>用导数定义求极限：凑形</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">这类题不给你 f(x) 的表达式，只给 f′(x₀)，让你算一个看似复杂的极限。动作只有一个：<b>把式子凑成“增量比 × 系数”</b>。</p>
+        <div class="tagrow"><span class="chip">§3.2 五 · p117–p118</span><span class="chip">填空</span><span class="chip">系数别算错</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 认出分子是“f 在 x₀ 附近两点的差”；② 把分母凑成与分子括号内增量相同的量；③ 缺什么补什么（乘除配平）；④ 极限 = 系数 × f′(x₀)。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设 f′(x₀) 存在，求 lim<sub>h→0</sub> [f(x₀ + 2h) − f(x₀ − h)]/h。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 拆成两个标准增量比：原式 = lim [f(x₀+2h) − f(x₀)]/h − lim [f(x₀−h) − f(x₀)]/h。</span>
+            <span class="step">② 第一项：分子增量是 2h，故配成 2·[f(x₀+2h) − f(x₀)]/(2h) → 2f′(x₀)。</span>
+            <span class="step">③ 第二项：分母写 h = −(−h)，故 lim [f(x₀−h) − f(x₀)]/h = −lim [f(x₀−h) − f(x₀)]/(−h) = −f′(x₀)。</span>
+            <span class="step res">④ 所以原式 = 2f′(x₀) − (−f′(x₀)) = 3f′(x₀)。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习3.2（P118–119）中“用导数定义求极限”一类；常见变式：lim<sub>h→0</sub>[f(x₀+h) − f(x₀−h)]/(2h) = f′(x₀)。</p></div>
+        <div class="mistake"><b>易错：</b>直接写 2f′(x₀)（漏掉第二项）；把 h → 0 与 Δx → 0 的符号搞混；不写“因 f′(x₀) 存在”这个前提。</div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="point" id="p3">
+      <div class="point-h"><div class="num">03</div><h3>可导与连续：求参数的两步走</h3><div class="star">★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">含参分段函数“在分段点可导”是标准计算题：<b>两个条件、两个方程、两个参数</b>。少写一个条件就少一半分。</p>
+        <div class="tagrow"><span class="chip">§3.1 四 · p105–p108</span><span class="chip">计算 / 判断</span><span class="chip hot">两条件缺一不可</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 连续条件：lim<sub>x→x₀⁻</sub> f = lim<sub>x→x₀⁺</sub> f = f(x₀) → 第一个方程；② 可导条件：用定义算 f′<sub>−</sub>(x₀) 与 f′<sub>+</sub>(x₀)，令其相等 → 第二个方程；③ 联立求解；④ 结论回写“当 a=…, b=… 时 f 在 x₀ 处可导”。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设 f(x) = { x², x ≤ 1；ax + b, x &gt; 1 }，确定 a、b 使 f 在 x = 1 处可导。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 连续性：左极限 f(1⁻) = 1² = 1；右极限 f(1⁺) = a + b；f(1) = 1。故 a + b = 1。</span>
+            <span class="step">② 左导数（用定义）：f′<sub>−</sub>(1) = lim<sub>Δx→0⁻</sub> [(1+Δx)² − 1]/Δx = lim (2Δx + Δx²)/Δx = 2。</span>
+            <span class="step">③ 右导数：f′<sub>+</sub>(1) = lim<sub>Δx→0⁺</sub> [a(1+Δx) + b − 1]/Δx。由 a + b = 1 知 a + b − 1 = 0，故 = lim aΔx/Δx = a。</span>
+            <span class="step res">④ 可导要求 2 = a，结合 a + b = 1 得 b = −1。故 a = 2，b = −1。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习3.1（P108–109）含参可导题；判断题常考“可导必连续，连续不一定可导”，可用 |x| 与 x<sup>1/3</sup> 两个反例。</p></div>
+        <div class="mistake"><b>易错：</b>只用连续条件解出 a、b（少一个方程，答案不唯一）；右导数直接对 ax+b 求导得 a 却不说明为什么能代（要先用连续性把常数项消掉）；把“可导”写成“连续”。</div>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="point" id="p4">
+      <div class="point-h"><div class="num">04</div><h3>切线与法线：三步写出方程</h3><div class="star">★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">送分题，但“只写最终方程”会被扣步骤分。三个动作要写全：切点、斜率、方程。</p>
+        <div class="tagrow"><span class="chip">§3.1 五 · p103–p110</span><span class="chip">计算 / 填空</span><span class="chip">法线是负倒数</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 求切点 (x₀, f(x₀))；② 求 f′(x)，代 x₀ 得斜率 k；③ 切线 y − y₀ = k(x − x₀)；④ 法线斜率 = −1/k，套同一点；⑤ 化成一般式。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求曲线 y = x³ − 2x 在点 (1, −1) 处的切线方程与法线方程。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 切点已给：(1, −1)（验算 f(1) = 1 − 2 = −1 ✓）。</span>
+            <span class="step">② y′ = 3x² − 2，故 k = y′(1) = 3 − 2 = 1。</span>
+            <span class="step">③ 切线：y − (−1) = 1·(x − 1)，即 y = x − 2。</span>
+            <span class="step res">④ 法线斜率 = −1/1 = −1：y + 1 = −(x − 1)，即 y = −x。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习3.1（P108–109）切线题；常考变式：求“过某点”的切线（该点可能不在曲线上，要先设切点），以及“切线平行于某直线”（令 k 等于已知斜率）。</p></div>
+        <div class="mistake"><b>易错：</b>把“过点”当“切点”（点在曲线上才是切点）；法线斜率写成 1/k；忘记 f′(x₀)=0 时法线是竖直线 x = x₀。</div>
+      </div>
+    </article>
+
+    <!-- 05 -->
+    <article class="point" id="p5">
+      <div class="point-h"><div class="num">05</div><h3>基本公式与四则运算</h3><div class="star">★★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">所有计算题的地基。练法很土：把 16 条公式抄到能默写，再把“积、商”两种结构练到不出错。</p>
+        <div class="tagrow"><span class="chip">§3.2 · p111–p119</span><span class="chip">计算 / 填空</span><span class="chip hot">(uv)′ ≠ u′v′</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 先看结构：是和、积、还是商；② 积用 u′v + uv′（两项），商用 (u′v − uv′)/v²；③ 三项以上乘积逐项求导各写一次；④ 结果尽量整理成“乘积 + 括号”的形式，便于后面求二阶导。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求下列函数的导数：(1) y = x²e<sup>x</sup>；(2) y = (x + 1)/(x − 1)；(3) y = x² ln x − 3<sup>x</sup>。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 积的法则：y′ = (x²)′e<sup>x</sup> + x²(e<sup>x</sup>)′ = 2xe<sup>x</sup> + x²e<sup>x</sup> = xe<sup>x</sup>(x + 2)。</span>
+            <span class="step">② (2) 商的法则：y′ = [(x+1)′(x−1) − (x+1)(x−1)′]/(x−1)² = [(x−1) − (x+1)]/(x−1)² = −2/(x−1)²。</span>
+            <span class="step res">③ (3) 逐项：y′ = (2x ln x + x²·(1/x)) − 3<sup>x</sup> ln 3 = 2x ln x + x − 3<sup>x</sup> ln 3。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习3.2 基础题（P118–119）1、5（5–16）；提高题 2、3。</p></div>
+        <div class="mistake"><b>易错：</b>(x²e<sup>x</sup>)′ 写成 2xe<sup>x</sup>（漏第二项）；商法则分子顺序写反；3<sup>x</sup> 求导漏 ln 3；忘记 ln x 的定义域 x &gt; 0。</div>
+      </div>
+    </article>
+
+    <!-- 06 -->
+    <article class="point" id="p6">
+      <div class="point-h"><div class="num">06</div><h3>链式法则：数层数，别漏乘</h3><div class="star">★★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">本章第一高频、第一失分点。判断对不对有个笨办法：<b>数一数有几个中间变量，答案里就该有几个因子</b>。</p>
+        <div class="tagrow"><span class="chip">§3.3 一 · p120–p125</span><span class="chip">计算题（必考）</span><span class="chip hot">漏乘内层导数</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 拆层，写出 y = f(u), u = g(v), v = h(x)；② 从外到内逐层求导；③ 每层求导后<b>把内层原样抄一遍</b>；④ 全部相乘；⑤ 结果用原变量表示并化简。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求下列函数的导数：(1) y = ln(sin²x)；(2) y = e<sup>√(x²+1)</sup>；(3) y = arctan(3x)。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 三层：y = ln u，u = v²，v = sin x。y′ = (1/u)·(2v)·(cos x) = (1/sin²x)·2 sin x·cos x = 2cos x/sin x = 2cot x。</span>
+            <span class="step">② (2) 三层：y = e<sup>u</sup>，u = √v，v = x² + 1。y′ = e<sup>u</sup>·(1/(2√v))·(2x) = e<sup>√(x²+1)</sup>·x/√(x² + 1)。</span>
+            <span class="step res">③ (3) 两层：y = arctan u，u = 3x。y′ = [1/(1 + u²)]·3 = 3/(1 + 9x²)。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习3.3 基础题（P129–130）2、3、4、5；提高题 2、4——提高题里会出现四层复合，用“数层数”自检。</p></div>
+        <div class="mistake"><b>易错：</b>ln(sin²x) 只写到 (1/sin²x)·2sin x·cos x 就停（其实这就是对的，但常有人写成 2/sin x）;最典型的是 e<sup>√(x²+1)</sup> 漏乘 x/√(x²+1)；arctan(3x) 漏乘 3。</div>
+      </div>
+    </article>
+
+    <!-- 07 -->
+    <article class="point" id="p7">
+      <div class="point-h"><div class="num">07</div><h3>隐函数求导：把 y 当 y(x)</h3><div class="star">★★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">核心只有一句话：<b>方程两边对 x 求导，遇到 y 就用链法则多乘一个 y′</b>。求完必须“解出 y′”，不能把它留在式子里。</p>
+        <div class="tagrow"><span class="chip">§3.3 二 · p126–p129</span><span class="chip">计算题</span><span class="chip hot">忘乘 y′</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 两边对 x 求导（y 视为 x 的函数）；② 含 y′ 的项归一侧；③ 提取 y′ 并解出；④ 需要某点的导数值时，先由原方程求出该点的 y，再代入。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">(1) 求由 x² + y² = 1 确定的隐函数的 y′；(2) 求由 e<sup>y</sup> + xy = 1 确定的 y′。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 两边对 x 求导：2x + 2y·y′ = 0，故 y′ = −x/y（y ≠ 0）。</span>
+            <span class="step">② (2) 两边对 x 求导：e<sup>y</sup>·y′ + (y + x·y′) = 0（注意 xy 是乘积，第二项是 x·y′）。</span>
+            <span class="step res">③ 整理：y′(e<sup>y</sup> + x) = −y，故 y′ = −y/(e<sup>y</sup> + x)。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习3.3（P129–130）隐函数题；常见变式：求曲线 x² + xy + y² = 3 在点 (1,1) 处的切线斜率（先求 y′ 再代点）。</p></div>
+        <div class="mistake"><b>易错：</b>对 y² 求导写成 2y（漏 y′）；把 xy 求导写成 y（漏 x·y′）；求出 y′ 的表达式后不去解出来。</div>
+      </div>
+    </article>
+
+    <!-- 08 -->
+    <article class="point" id="p8">
+      <div class="point-h"><div class="num">08</div><h3>对数求导法：幂指函数的唯一正路</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">看到“底和指数都含 x”，取对数；看到“一长串乘除、开方”，也取对数。这两种都是对数求导法的标准触发条件。</p>
+        <div class="tagrow"><span class="chip">§3.3 三 · p130–p131</span><span class="chip">计算题</span><span class="chip hot">幂指函数不能用幂函数公式</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 两边取 ln（真数要为正，题目保证）；② 用 ln 的性质拆开；③ 两边对 x 求导（左边得到 y′/y）；④ 两边乘 y，把 y 换回原式。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求下列函数的导数：(1) y = x<sup>x</sup>（x &gt; 0）；(2) y = (sin x)<sup>x</sup>（0 &lt; x &lt; π）。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 取对数：ln y = x ln x。两边求导：(1/y)y′ = ln x + x·(1/x) = ln x + 1。</span>
+            <span class="step">② 故 y′ = y(ln x + 1) = x<sup>x</sup>(ln x + 1)。</span>
+            <span class="step">③ (2) 取对数：ln y = x ln sin x。求导：(1/y)y′ = ln sin x + x·(cos x/sin x) = ln sin x + x cot x。</span>
+            <span class="step res">④ 故 y′ = (sin x)<sup>x</sup>(ln sin x + x cot x)。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习3.3（P129–130）对数求导题；也可练 y = x<sup>1/x</sup>、y = (1 + 1/x)<sup>x</sup>——后者与第 2 章的 e 相关，求导后可以看单调性。</p></div>
+        <div class="mistake"><b>易错：</b>x<sup>x</sup> 用幂函数公式得 x·x<sup>x−1</sup>；取对数后忘记左边是 y′/y 而不是 y′；ln sin x 求导漏 cos/sin。</div>
+      </div>
+    </article>
+
+    <!-- 09 -->
+    <article class="point" id="p9">
+      <div class="point-h"><div class="num">09</div><h3>高阶导数：一阶一阶往下求</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">没有捷径，就是“求完再求”。考法有两种：求某个二阶导的数值（代入即可），或求 n 阶导的通式（找规律）。</p>
+        <div class="tagrow"><span class="chip">§3.4 · p132–p137</span><span class="chip">计算 / 填空</span><span class="chip">每步先化简</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 一阶导化简（尽量写成乘积）；② 再求一次导，合并同类项；③ 求 n 阶时先算前三个，找规律再写通式；④ 乘积的高阶导用莱布尼茨公式（n=2 时是三项）。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">(1) 求 y = x e<sup>x</sup> 的二阶导数与 n 阶导数；(2) 求 y = sin x 的 n 阶导数。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) y′ = e<sup>x</sup> + x e<sup>x</sup> = (x + 1)e<sup>x</sup>；y″ = e<sup>x</sup> + (x + 1)e<sup>x</sup> = (x + 2)e<sup>x</sup>。</span>
+            <span class="step">② 规律：每求一次导，(x + k) 里的 k 加 1，故 y<sup>(n)</sup> = (x + n)e<sup>x</sup>。</span>
+            <span class="step res">③ (2) y′ = cos x = sin(x + π/2)，y″ = −sin x = sin(x + π)，归纳得 y<sup>(n)</sup> = sin(x + nπ/2)。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习3.4 基础题（P135–136）1（3–8）、4、5；提高题 1–5（含莱布尼茨公式与 n 阶导归纳）。</p></div>
+        <div class="mistake"><b>易错：</b>求二阶导时忘了对 (x+1) 也要求导；sin 的 n 阶导符号规律记错（用 nπ/2 而不是 (−1)<sup>n</sup> 硬记）；不化简就往下求，越算越乱。</div>
+      </div>
+    </article>
+
+    <!-- 10 -->
+    <article class="point" id="p10">
+      <div class="point-h"><div class="num">10</div><h3>隐函数的二阶导数</h3><div class="star">★★</div></div>
+      <div class="point-body">
+        <p class="lead">比一阶多一步：<b>对 y′ 的表达式再求一次导，其中 y′ 又要再求一次导</b>，最后把一阶的结果代回去。</p>
+        <div class="tagrow"><span class="chip">§3.4 三 · p136–p137</span><span class="chip">计算（提高）</span><span class="chip">记得代回 y′</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 先求 y′（写成含 x、y 的式子）；② 对 y′ 两边再对 x 求导，遇到 y 或 y′ 都要乘相应的导数；③ 把 ①的 y′ 代回；④ 用原方程化简（往往能化成很干净的形式）。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设 x² + y² = 1，求 y″。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 一阶：2x + 2yy′ = 0 → y′ = −x/y。</span>
+            <span class="step">② 对 y′ = −x/y 求导（商的法则，y 是 x 的函数）：y″ = −[1·y − x·y′]/y² = −(y − x y′)/y²。</span>
+            <span class="step">③ 代入 y′ = −x/y：y″ = −(y + x²/y)/y² = −(y² + x²)/y³。</span>
+            <span class="step res">④ 由原方程 x² + y² = 1，得 y″ = −1/y³。形式极干净——这就是“用原方程化简”的价值。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习3.4 提高题（P136）中含隐函数二阶导的题目；可加练 x² + xy + y² = 1 的 y″。</p></div>
+        <div class="mistake"><b>易错：</b>对 −x/y 求导时把 y 当常数；代回 y′ 时漏项；忘了最后可以用原方程化简（导致答案很丑，还可能算错）。</div>
+      </div>
+    </article>
+
+    <!-- 11 -->
+    <article class="point" id="p11">
+      <div class="point-h"><div class="num">11</div><h3>求微分：dy = y′dx</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">微分 = 导数 × dx，所以会求导就会求微分。填空题常问“当 x 从 x₀ 变到 x₀ + Δx 时，dy = ?”，只要把 x₀ 与 dx = Δx 代进去。</p>
+        <div class="tagrow"><span class="chip">§3.5 · p138–p144</span><span class="chip">填空</span><span class="chip">dy 与 Δy 不同</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 求 y′；② 写出 dy = y′dx；③ 若给具体点，代入 x₀ 与 dx 的值；④ 注意 dy 是线性近似，Δy 是真实增量，两者差一个 o(dx)。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">(1) 求 y = x² ln x 的微分 dy；(2) 求 y = x² 在 x = 1、Δx = 0.01 时的 dy 与 Δy，并比较。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) y′ = 2x ln x + x²·(1/x) = 2x ln x + x，故 dy = (2x ln x + x)dx。</span>
+            <span class="step">② (2) y′ = 2x，在 x = 1 处 y′ = 2，故 dy = 2 × 0.01 = 0.02。</span>
+            <span class="step">③ 真实增量：Δy = (1.01)² − 1² = 1.0201 − 1 = 0.0201。</span>
+            <span class="step res">④ 二者相差 0.0001，是 (Δx)² 量级的高阶无穷小，所以 |Δx| 很小时 dy ≈ Δy。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习3.5 基础题（P144）5–8；提高题 1、3。注意“求微分”和“求导数”在答题格式上的区别：微分的结果必须带 dx。</p></div>
+        <div class="mistake"><b>易错：</b>dy 的结果漏写 dx；把 dy 与 Δy 当成相等；求某点的微分时忘记乘 dx。</div>
+      </div>
+    </article>
+
+    <!-- 12 -->
+    <article class="point" id="p12">
+      <div class="point-h"><div class="num">12</div><h3>微分在近似计算中的应用</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">本章最实用的一条公式，填空题常客。关键在“选对函数和 x₀”：<b>x₀ 要选好算的，Δx 要小</b>。</p>
+        <div class="tagrow"><span class="chip">§3.5 二 · p141–p143</span><span class="chip">填空 / 计算</span><span class="chip">x₀ 选得巧，算得快</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 设 f(x) 使目标值是 f(x₀ + Δx)；② 选 x₀ 为“靠近且函数值好算”的点；③ 求 f′(x₀)；④ 代 f(x₀ + Δx) ≈ f(x₀) + f′(x₀)Δx。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">用微分近似计算：(1) √1.02；(2) ln 1.01；(3) e<sup>0.02</sup>。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 取 f(x) = √x，x₀ = 1，Δx = 0.02。f′(x) = 1/(2√x)，f′(1) = 1/2。故 √1.02 ≈ 1 + (1/2)(0.02) = 1.01。</span>
+            <span class="step">② (2) 取 f(x) = ln x，x₀ = 1，Δx = 0.01。f′(1) = 1，故 ln 1.01 ≈ 0 + 1×0.01 = 0.01。</span>
+            <span class="step res">③ (3) 取 f(x) = e<sup>x</sup>，x₀ = 0，Δx = 0.02。f′(0) = 1，故 e<sup>0.02</sup> ≈ 1 + 0.02 = 1.02。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习3.5（P144）近似计算题；可加练 <sup>3</sup>√8.02（取 x₀ = 8，f′ = 1/(3x<sup>2/3</sup>) = 1/12，结果 2.00167）。</p></div>
+        <div class="mistake"><b>易错：</b>x₀ 选成 0 却用 √x（无定义）；Δx 符号搞错（1.02 = 1 + 0.02，不是 −0.02）；把近似值当精确值（题目要的是“≈”）。</div>
+      </div>
+    </article>
+
+    <!-- 13 -->
+    <article class="point" id="p13">
+      <div class="point-h"><div class="num">13</div><h3>误差估计：绝对误差与相对误差</h3><div class="star">★★</div></div>
+      <div class="point-body">
+        <p class="lead">跟近似计算同一套工具，只是问法换成“测量误差会带来多大影响”。两个概念要分清：<b>绝对误差看 |dy|，相对误差看 |dy/y|</b>。</p>
+        <div class="tagrow"><span class="chip">§3.5 二 · p143–p144</span><span class="chip">应用（小分）</span><span class="chip">相对误差用百分比</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 写出函数关系 y = f(x)；② 求 dy = f′(x)dx，取 |dy| 为绝对误差；③ 相对误差 = |dy|/|y|；④ 结论写明“约…%”以及偏大还是偏小。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">测得球半径 r = 10 cm，测量误差不超过 0.05 cm。用微分估计球体积 V 的绝对误差与相对误差。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① V = (4/3)πr³，dV = 4πr²dr。</span>
+            <span class="step">② 代入 r = 10、dr = 0.05：|dV| ≈ 4π × 100 × 0.05 = 20π ≈ 62.8（cm³）。</span>
+            <span class="step">③ 相对误差 = |dV|/V = (4πr²dr)/((4/3)πr³) = 3dr/r = 3 × 0.05/10 = 0.015。</span>
+            <span class="step res">④ 即绝对误差约 62.8 cm³，相对误差约 1.5%。结论符合“体积的相对误差是半径相对误差的 3 倍”这个规律（因 V ∝ r³）。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习3.5（P144）误差题；可加练：正方形边长测得 5 cm、误差 0.01 cm，求面积的绝对误差与相对误差（答案 0.1 cm²、0.4%）。</p></div>
+        <div class="mistake"><b>易错：</b>把绝对误差写成相对误差（忘除 V）；乘积型函数忘了“相对误差相加”的规律；不留有效数字，把 62.8 写成 62.831853…。</div>
+      </div>
+    </article>
+
+    <!-- 14 -->
+    <article class="point" id="p14">
+      <div class="point-h"><div class="num">14</div><h3>边际函数：多生产一件要花多少</h3><div class="star">★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">边际就是导数，只是换了个经济学名字。考法固定：求 C′、R′、L′，代入产量，再说一句经济含义。</p>
+        <div class="tagrow"><span class="chip">§3.6 一 · p147–p150</span><span class="chip">应用 / 填空</span><span class="chip">答案要带单位</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 求导得边际函数；② 代入具体 q；③ 用“在 q = … 时，再增产 1 件，成本约增加 … 元”收尾；④ 若问“边际利润为零”，那是第 4 章最优产量的信号。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设总成本 C(q) = 1000 + 10q + 0.1q²（元），(1) 求边际成本函数；(2) 求 q = 100 时的边际成本并解释；(3) 若需求函数为 q = 50 − p，求 q = 20 时的边际收益。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) MC = C′(q) = 10 + 0.2q（元/件）。</span>
+            <span class="step">② (2) MC(100) = 10 + 20 = 30。含义：产量为 100 件时，再增产 1 件，总成本约增加 30 元。</span>
+            <span class="step">③ (3) 由 q = 50 − p 得 p = 50 − q，故 R(q) = 50q − q²，MR = R′(q) = 50 − 2q。</span>
+            <span class="step res">④ MR(20) = 50 − 40 = 10（元/件）：产量 20 件时，再多卖 1 件，收益约增加 10 元。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>§3.6 例题与习题三中的边际题；注意“边际”永远是“对产量 q”求导，若题目给的是 p 的函数，要先换元成 q。</p></div>
+        <div class="mistake"><b>易错：</b>对 p 求导却当成边际成本；忘记写单位；把边际成本当成平均成本（AC = C/q，MC = C′，两者只在 AC 最小处相等——第 4 章会考）。</div>
+      </div>
+    </article>
+
+    <!-- 15 -->
+    <article class="point" id="p15">
+      <div class="point-h"><div class="num">15</div><h3>需求弹性：涨 1% 会掉几成</h3><div class="star">★★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">经济应用题的头号考点。最容易错的是符号：<b>公式里带负号，答案报正值</b>，然后用它和 1 比大小来给定价建议。</p>
+        <div class="tagrow"><span class="chip">§3.6 二 · p151–p154</span><span class="chip">应用题（几乎必考）</span><span class="chip hot">符号与解释</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 由需求函数求 q′(p)；② E<sub>d</sub> = −(p/q)·q′(p)；③ 代入给定点求值；④ 解释：“价格涨 1%，需求约下降 E<sub>d</sub>%”；⑤ 判 E<sub>d</sub> 与 1 的关系给出涨价/降价建议。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设需求函数 q = 1000 − 2p。(1) 求需求弹性函数 E<sub>d</sub>(p)；(2) 求 p = 100 与 p = 300 时的需求弹性并解释；(3) 分别给出定价建议。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① q′ = −2，故 E<sub>d</sub>(p) = −(p/q)·(−2) = 2p/(1000 − 2p)。</span>
+            <span class="step">② p = 100 时 q = 800，E<sub>d</sub> = 200/800 = 0.25 &lt; 1：<b>缺乏弹性</b>。价格涨 1%，需求只降约 0.25%。此时涨价能增加收益。</span>
+            <span class="step">③ p = 300 时 q = 400，E<sub>d</sub> = 600/400 = 1.5 &gt; 1：<b>富有弹性</b>。价格涨 1%，需求降约 1.5%。此时降价才能增加收益。</span>
+            <span class="step res">④ 结论：在 p &lt; 250 区间宜提价，在 p &gt; 250 区间宜降价，p = 250 时 E<sub>d</sub> = 1、收益最大（与第 4 章 R′(p) = 0 的结论一致）。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>§3.6 需求弹性例题、习题三中的弹性题；变式：给出 E<sub>d</sub> = 2 且某价格下的需求量，反求需求函数的参数。</p></div>
+        <div class="mistake"><b>易错：</b>公式漏负号导致 E 为负还拿去和 1 比；把“价格涨 1%”说成“价格涨 1 元”；弹性与边际混淆（弹性是百分比，边际是绝对量）。</div>
+      </div>
+    </article>
+
+    <!-- 16 -->
+    <article class="point" id="p16">
+      <div class="point-h"><div class="num">16</div><h3>弹性与收益：什么时候该降价</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">这是弹性最重要的应用，也是简答题常客。结论可以背，但推导只有一行，写出来更稳。</p>
+        <div class="tagrow"><span class="chip">§3.6 · p150–p154</span><span class="chip">应用 / 简答</span><span class="chip">R′ = q(1 − E)</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 写 R(p) = p·q(p)；② 求 R′(p) = q + p q′ = q(1 − E<sub>d</sub>)；③ 由 1 − E<sub>d</sub> 的符号判 R 的增减；④ 令 E<sub>d</sub> = 1 得收益最大点；⑤ 与经济含义对照。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设需求函数 q = 1000 − 2p。求使总收益最大的价格，并用弹性解释为什么在 p = 100 时应当提价。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① R(p) = p(1000 − 2p) = 1000p − 2p²。</span>
+            <span class="step">② R′(p) = 1000 − 4p，令其为 0 得 p = 250，此时 q = 500，R = 125000（元）。</span>
+            <span class="step">③ 用弹性验证：E<sub>d</sub> = 2p/(1000 − 2p)，令 E<sub>d</sub> = 1 得 2p = 1000 − 2p，即 p = 250 ✓（两种方法同解）。</span>
+            <span class="step res">④ p = 100 时 E<sub>d</sub> = 0.25 &lt; 1，R′(100) = 1000 − 400 &gt; 0，说明提价能增加收益；直到 p = 250（E<sub>d</sub> = 1）收益最大，再提价反而减少。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>习题三中的收益与弹性综合题；这类题的答案结构固定：“价格…时收益最大，因为此时 E<sub>d</sub> = 1”。</p></div>
+        <div class="mistake"><b>易错：</b>直接说“涨价总增收”（只在缺乏弹性时成立）；把 E<sub>d</sub> = 1 时的价格当成利润最大价格（收益最大 ≠ 利润最大，后者要减成本，见第 4 章）；漏写 R′(p) 的推导过程。</div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ================= 速查 ================= -->
+  <section id="cheat">
+    <div class="sec-head"><div class="idx">五</div><h2>考前速查页</h2></div>
+    <p class="sec-intro">进考场前 10 分钟只看这一页。</p>
+
+    <div class="kb">
+      <div class="kb-h"><span class="no">A</span><h3>16 条基本导数公式（默写一遍）</h3></div>
+      <div class="eq left" style="text-align:left; line-height:2.1">
+        <span class="m">(C)′ = 0　　(x<sup>α</sup>)′ = αx<sup>α−1</sup>　　(a<sup>x</sup>)′ = a<sup>x</sup> ln a　　(e<sup>x</sup>)′ = e<sup>x</sup></span><br>
+        <span class="m">(log<sub>a</sub>x)′ = 1/(x ln a)　　(ln x)′ = 1/x</span><br>
+        <span class="m">(sin x)′ = cos x　　(cos x)′ = −sin x　　(tan x)′ = 1/cos²x　　(cot x)′ = −1/sin²x</span><br>
+        <span class="m">(sec x)′ = sec x tan x　　(csc x)′ = −csc x cot x</span><br>
+        <span class="m">(arcsin x)′ = 1/√(1−x²)　　(arccos x)′ = −1/√(1−x²)</span><br>
+        <span class="m">(arctan x)′ = 1/(1+x²)　　(arccot x)′ = −1/(1+x²)</span>
+      </div>
+      <p style="font-size:13.5px; color:var(--ink3); margin:0">“余”类函数（cos、cot、csc、arccos、arccot）导数都带负号，这是唯一的记忆线索。</p>
+    </div>
+
+    <div class="kb">
+      <div class="kb-h"><span class="no">B</span><h3>四把“结构钥匙”</h3></div>
+      <ul style="margin-bottom:0">
+        <li><b>嵌套</b>（有括号套括号）→ 链式：由外向内，层数 = 因子数</li>
+        <li><b>底和指数都含 x</b>（x<sup>x</sup>、(sin x)<sup>x</sup>）→ 两边取 ln 再求导</li>
+        <li><b>方程形式</b>（x² + y² = 1）→ 两边对 x 求导，y 当 y(x)，多乘 y′</li>
+        <li><b>分段点 / 绝对值点</b>→ 只能用定义，左右各算一次</li>
+      </ul>
+    </div>
+
+    <div class="kb">
+      <div class="kb-h"><span class="no">C</span><h3>五个必背结论</h3></div>
+      <ul style="margin-bottom:0">
+        <li>可导 ⇒ 连续；连续 ⇏ 可导（|x| 在 0 处）</li>
+        <li>可微 ⇔ 可导（一元）；dy = f′(x)dx，Δy ≈ dy</li>
+        <li>f(x₀+Δx) ≈ f(x₀) + f′(x₀)Δx（|Δx| 小）</li>
+        <li>边际 = 导数：MC = C′，MR = R′，ML = MR − MC</li>
+        <li>E<sub>d</sub> = −(p/q)q′(p)；R′(p) = q(1 − E<sub>d</sub>)；E<sub>d</sub> = 1 时收益最大</li>
+      </ul>
+    </div>
+
+    <div class="kb">
+      <div class="kb-h"><span class="no">D</span><h3>十句“看到就想起”的话</h3></div>
+      <ul style="margin-bottom:0">
+        <li>看到“用定义求” → 写增量比，先代 f(x₀)</li>
+        <li>看到分段点 → 连续一个方程，左右导数一个方程</li>
+        <li>看到“切线” → 切点、斜率、点斜式，三步写全</li>
+        <li>看到 ln(sin²x) → 先拆三层，或先化成 2ln|sin x|</li>
+        <li>看到 e<sup>√(…)</sup> → 别漏乘根号那层的导数</li>
+        <li>看到 x<sup>x</sup> → 取对数，答案带 (ln x + 1)</li>
+        <li>看到“求微分” → 结果一定要带 dx</li>
+        <li>看到“近似计算” → 选好算的 x₀，Δx 取小</li>
+        <li>看到“边际” → 对 q 求导，带单位说含义</li>
+        <li>看到“弹性” → 百分比，和 1 比大小给建议</li>
+      </ul>
+    </div>
+
+    <div class="callout warn" style="margin-top:6px">
+      <div class="tag">本章十条高频错误（写在草稿纸最上面）</div>
+      <p>① 分段点套公式求导；② 链式漏乘内层；③ (uv)′ 写成 u′v′；④ 商法则分子顺序写反；⑤ 隐函数求导忘乘 y′，或求出后不解出 y′；⑥ x<sup>x</sup> 用幂函数公式；⑦ 二阶导忘记对常数项求导；⑧ dy 漏写 dx；⑨ 把 Δy 当成 dy；⑩ 弹性漏负号、拿负数和 1 比。</p>
+    </div>
+  </section>
+
+  <!-- ================= 对照教学计划 ================= -->
+  <section id="plan">
+    <div class="sec-head"><div class="idx">六</div><h2>对照教学计划：这一章要求你到什么程度</h2></div>
+    <p class="sec-intro">依据《2026—2027 学年度第一学期 微积分 I 教学进度计划表》（黄新阳，软件工程 002195-11 班，48 学时），第 3 章占 <b>16 学时</b>（第 19 周起，横跨第 10–12 周），是全书课时最多的一章；<b>第二次平时小测就考这一章</b>，期末它又是第 4 章的前置。</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>计划要求</th><th>具体内容</th><th>本材料对应位置</th></tr></thead>
+        <tbody>
+          <tr><td>课堂内容</td><td>§3.1 导数概念（引例、定义、左右导数、可导与连续、几何意义）；§3.2 求导公式与法则（导函数、四则、反函数、基本公式、用定义求极限）；§3.3 链法则与隐函数（复合、隐函数、对数求导）；§3.4 高阶导数与高阶微分；§3.5 微分（定义、近似计算、公式与法则）；§3.6 边际与弹性</td><td>二、必备基础 01–10</td></tr>
+          <tr><td>布置作业</td><td>练习3.1（P108–109）2、5 + 提高 1–3；练习3.2（P118–119）1、5(5–16) + 提高 2、3；练习3.3（P129–130）2、3、4、5 + 提高 2、4；练习3.4（P135–136）1(3–8)、4、5 + 提高 1–5；练习3.5（P144）5–8 + 提高 1、3；习题三 4(6–8、11–27)、5、6、9–12、14</td><td>三、题型总结 16 类 + 各考点的“同型练习”</td></tr>
+          <tr><td>考核范围</td><td>第二次平时小测（只考第 3 章）；期末闭卷（第 1–4 章 + 5.1–5.3）</td><td>四、考点详解（考频标星）</td></tr>
+          <tr><td>不考内容</td><td>MATLAB 求导实验（p155–p160）；参数方程的求导只作了解</td><td>未纳入考点</td></tr>
+          <tr><td>达标标准</td><td>三层复合能一次算对；隐函数与幂指函数能独立完成；会求切线方程；会算边际与弹性并解释</td><td>考点 06、07、08、15（四张卡片必须能独立默写）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout ok" style="margin-bottom:0">
+      <div class="tag">16 学时怎么用（建议）</div>
+      <p>6 学时给公式 + 四则 + 链式（这是全部计算的根）；4 学时给隐函数与对数求导；2 学时给高阶导；2 学时给微分与近似；2 学时给边际弹性。<b>本章的唯一目标是“准确率”</b>：同样的题做三遍全对，比做三十道不同的题有用得多。</p>
+    </div>
+  </section>
+
+  <div class="endnote">
+    <p><b>说明：</b>本报告按教材《经济管理应用数学基础——微积分（上）》（齐亚伟等，高等教育出版社 2022 年 9 月第 1 版）第 3 章 §3.1–§3.6 的章节顺序组织，定义、公式与解法步骤尽量贴近原书；例题为按教材题型自拟的同型题（数值重新设计并已逐题验算），教材原题位置以节号与作业页码标注。原书 p155–p160 的 MATLAB 实验部分考试不考，未纳入考点。</p>
+    <p>建议用法：先把 16 条公式默写到全对，再按“结构钥匙”做 4 类计算各 3 题，最后过一遍速查页与十条错误清单。</p>
+  </div>
+</div>
+
+<a class="totop" href="#top" aria-label="回到顶部">↑</a>
+<script>
+(function () {
+  var t = document.querySelector('.totop');
+  if (!t) return;
+  function sync() {
+    if (window.pageYOffset > 600) { t.classList.add('show'); }
+    else { t.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', sync, { passive: true });
+  sync();
+})();
+</script>
+
+</body>
+</html>

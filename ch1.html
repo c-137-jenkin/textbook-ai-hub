@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html data-sp-mode="scroll" lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="《经济管理应用数学基础——微积分（上）》第 1–5 章重点知识详解：必备基础、题型总结、考点拆解与考前速查，按教学进度计划表的考核范围组织。">
+<title>第1章 函数 · 重点知识详解</title>
+<link rel="stylesheet" href="assets/css/base.css">
+</head>
+<body>
+<nav class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#top">第1章 · 函数</a>
+    <a href="#map">本章地图</a>
+    <a href="#base">必备基础</a>
+    <a href="#list">题型总结</a>
+    <a href="#points">考点详解</a>
+    <a href="#cheat">考前速查</a>
+    <a href="overview.html">全书地图</a>
+  <a href="index.html">合订本</a>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div>
+      <div class="kicker">微积分（上）· 第一章</div>
+      <h1>函数<br><em>把经济问题翻译成公式</em></h1>
+      <p class="hero-sub">本章不讲新数学，它做的是“建模准备”：把定义域、复合、分段、经济函数这四样备齐，后面四章才有研究对象。全章只有 4 学时，考试却年年从这里取应用题——所以重点不是难，是<b>不能错</b>。这份材料分两块：先打通必备基础，再逐个拆考点，每个考点配一道典型题和完整解答。</p>
+      <div class="hero-meta">
+        依据教材：齐亚伟等《经济管理应用数学基础——微积分（上）》，高等教育出版社，2022&nbsp;年&nbsp;9&nbsp;月第&nbsp;1&nbsp;版<br>
+        对应范围：§1.1–§1.2（原书 p1–p31，含 MATLAB 实验 p25–p31）　·　配套：全书思维地图、本章作业全解、教学进度与考核要求
+      </div>
+    </div>
+    <div class="statbox">
+      <div class="stat"><div class="n">2</div><div class="l">节内容</div></div>
+      <div class="stat"><div class="n">14</div><div class="l">考点拆解</div></div>
+      <div class="stat"><div class="n">6</div><div class="l">类定义域约束</div></div>
+      <div class="stat"><div class="n">7</div><div class="l">个经济函数</div></div>
+    </div>
+  </header>
+
+  <!-- ================= 目录 ================= -->
+  <section id="toc" style="margin-top:44px">
+    <div class="toc">
+      <a href="#map">一、本章地图：两层递进<span>逻辑链</span></a>
+      <a href="#base">二、必备基础知识（8&nbsp;块）<span>看懂的入口</span></a>
+      <a href="#list">三、题型总结 · 例题怎么解<span>14&nbsp;考点</span></a>
+      <a href="#p1">考点&nbsp;01–03　定义域与函数概念<span>填空主力</span></a>
+      <a href="#p4">考点&nbsp;04–06　四性与有界<span>判断主力</span></a>
+      <a href="#p7">考点&nbsp;07–09　单调·反函数·复合<span>链式法则前置</span></a>
+      <a href="#p10">考点&nbsp;10–12　复合定义域与均衡<span>应用题源</span></a>
+      <a href="#p13">考点&nbsp;13–14　平均成本与阶梯定价<span>建模出口</span></a>
+      <a href="#cheat">四、考前速查页<span>10&nbsp;分钟</span></a>
+      <a href="#plan">五、对照教学计划自检<span>学时·权重</span></a>
+    </div>
+  </section>
+
+  <!-- ================= 本章地图 ================= -->
+  <section id="map">
+    <div class="sec-head"><div class="idx">一</div><h2>本章地图：两层递进，一个出口</h2></div>
+    <p class="sec-intro">第 1 章表面上有两个小节，实际上是<b>“先造工具，再用工具”</b>：§1.1 把“函数”这个概念打磨清楚（怎么表示、有什么性质、怎么拆怎么合），§1.2 立刻拿它去写七个经济函数。前者是语言，后者是对象，后面四章全程在这两者之间来回。</p>
+
+    <div class="chain">
+      <div class="node"><div class="s">§1.1 之一</div><div class="t">语言：区间与邻域</div><div class="d">用区间和 |x−x₀|&lt;δ 写清“靠近某点”——第 2 章极限的语法基础</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="s">§1.1 之二</div><div class="t">对象：函数的两要素</div><div class="d">定义域 + 对应法则；值域是结果不是要素。判断“同不同”只看这两条</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="s">§1.1 之三</div><div class="t">性质：四性</div><div class="d">有界性、单调性、奇偶性、周期性——每一个都在后面被用到一次</div></div>
+    </div>
+    <div class="chain" style="margin-top:10px">
+      <div class="node"><div class="s">§1.1 之四</div><div class="t">造函数：反函数</div><div class="d">把 y=f(x) 反解成 x=f⁻¹(y)，图像关于 y=x 对称</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="s">§1.1 之五</div><div class="t">造函数：复合</div><div class="d">拆层与合成；内层值域要落进外层定义域——第 3 章链式法则的唯一前提</div></div>
+      <div class="arrow">→</div>
+      <div class="node" style="background:var(--accent-soft); border-color:var(--accent-line)"><div class="s">§1.2</div><div class="t">用出去：七个经济函数</div><div class="d">需求 / 供给 / 均衡 / 成本 / 收益 / 利润 / 库存——全书应用题的材料库</div></div>
+    </div>
+
+    <div class="callout plain">
+      <div class="tag">为什么这章只给 4 学时，却仍然不能跳</div>
+      <p>老师给了 4 学时，不是因为不重要，而是因为它是<b>工具章</b>：本章产出的每一件东西，都会在后面的某一道题里被直接调用。定义域 → 第 2 章求极限第一步、第 3 章求导第一步；分段函数 → 第 2 章左右极限的唯一来源；复合拆层 → 第 3 章链式法则的全部；经济函数 → 第 3 章的边际弹性、第 4 章的最优化、第 5 章的约束最优化。一句话：<b>本章出错，后面四章全部连锁出错，而且错在起点，很难倒查。</b></p>
+    </div>
+    <div class="callout warn">
+      <div class="tag">本章真正的难点：不是算，是“写对”</div>
+      <p>全章几乎没有复杂计算，扣分全部集中在三件“写”的事上：① 定义域写成“使式子有意义”而不是解不等式；② 复合函数拆层时内外层搞反；③ 利润函数漏固定成本、把收益当利润。这三件事都是<b>格式分</b>，练两遍就能拿稳，但很多人到期末都没改过来。</p>
+    </div>
+  </section>
+
+  <!-- ================= 必备基础知识 ================= -->
+  <section id="base">
+    <div class="sec-head"><div class="idx">二</div><h2>必备基础知识</h2></div>
+    <p class="sec-intro">这 8 块是读后面所有内容的“字典”。概念判断题、填空题全靠它们；其中第 6 块（复合）和第 8 块（经济函数）是后面章节的硬依赖，必须一次弄对。</p>
+
+    <!-- KB1 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">01</span><h3>区间与邻域：极限的“语法”前置</h3><span class="p">§1.1 一（p2–p3）</span></div>
+      <p>区间是把一段实数写成一个整体记号；邻域是“以某点为中心的一小段”。后者是描述“局部性质”的专用语言，第 2 章的极限定义全程用它。</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>名称</th><th>记号</th><th>不等式写法</th><th>用途</th></tr></thead>
+          <tbody>
+            <tr><td>开区间</td><td class="m">(a, b)</td><td class="m">{x | a &lt; x &lt; b}</td><td>不含端点</td></tr>
+            <tr><td>闭区间</td><td class="m">[a, b]</td><td class="m">{x | a ≤ x ≤ b}</td><td>含端点；闭区间连续函数三大性质的前提</td></tr>
+            <tr><td>半开半闭</td><td class="m">[a, b)、(a, b]</td><td class="m">一端含、一端不含</td><td>定义域常出现</td></tr>
+            <tr><td>无限区间</td><td class="m">(a, +∞)、(−∞, b]</td><td class="m">{x | x &gt; a}</td><td>反比例、指数函数的值域</td></tr>
+            <tr><td><b>δ 邻域</b></td><td class="m">U(x₀, δ)</td><td class="m">|x − x₀| &lt; δ，即 (x₀−δ, x₀+δ)</td><td>“x 靠近 x₀”</td></tr>
+            <tr><td><b>去心 δ 邻域</b></td><td class="m">U°(x₀, δ)</td><td class="m">0 &lt; |x − x₀| &lt; δ</td><td>极限专用：<b>不管 x₀ 这一点本身</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout ok" style="margin-bottom:0">
+        <div class="tag">三个必须脱口而出的绝对值变形</div>
+        <p><span class="m">|x| &lt; a ⇔ −a &lt; x &lt; a</span>；<span class="m">|x| &gt; a ⇔ x &gt; a 或 x &lt; −a</span>；<span class="m">|x − x₀| &lt; δ ⇔ x₀ − δ &lt; x &lt; x₀ + δ</span>。后面证 ε-δ、解含绝对值的不等式，全靠这三条。</p>
+      </div>
+    </div>
+
+    <!-- KB2 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">02</span><h3>函数的两要素与定义域的六类约束</h3><span class="p">§1.1 二（p3–p9）　填空必考</span></div>
+      <p><b>函数的定义：</b>设 x 在非空数集 D 内任取一值，按某一法则都有唯一确定的 y 与之对应，则称 y 是 x 的函数，记 y = f(x)，x ∈ D。其中 <b>D 叫定义域</b>，x 叫自变量，y 叫因变量。</p>
+      <p><b>两要素：定义域 D + 对应法则 f。</b>值域 W = {y | y = f(x), x ∈ D} 是由前两者<b>算出来的结果</b>，不是要素。所以判断两个函数是否为同一个函数，只看两要素，不看字母（f(x)=x² 与 g(t)=t² 是同一个函数）。</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>#</th><th>约束来源</th><th>条件</th><th>典型例子</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>分式</td><td>分母 ≠ 0</td><td class="m">1/(x−2)：x ≠ 2</td></tr>
+            <tr><td>2</td><td>偶次根式</td><td>被开方式 ≥ 0</td><td class="m">√(4−x²)：−2 ≤ x ≤ 2</td></tr>
+            <tr><td>3</td><td>对数</td><td>真数 &gt; 0（底数 &gt; 0 且 ≠ 1）</td><td class="m">ln(x−1)：x &gt; 1</td></tr>
+            <tr><td>4</td><td>反正弦 / 反余弦</td><td>整体落在 [−1, 1]</td><td class="m">arcsin((x−1)/3)：−2 ≤ x ≤ 4</td></tr>
+            <tr><td>5</td><td>正切 / 余切</td><td class="m">tan x：x ≠ π/2 + kπ；cot x：x ≠ kπ</td><td class="m">tan(2x)：x ≠ π/4 + kπ/2</td></tr>
+            <tr><td>6</td><td><b>实际意义</b></td><td>产量、价格、数量必须非负（或取整）</td><td>q ≥ 0 且 q 为整数；0 ≤ p ≤ 50</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warn" style="margin-bottom:0">
+        <div class="tag">第 7 类：分段函数</div>
+        <p>分段函数的定义域是<b>各段定义域取并集</b>，且分段点归属哪一段要看等号写在哪一边。求定义域时不要漏掉任何一段，也不要把“分段点有定义”误当成“整段都合法”。</p>
+      </div>
+    </div>
+
+    <!-- KB3 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">03</span><h3>函数的四性：有界、单调、奇偶、周期</h3><span class="p">§1.1 三（p8–p12）　判断/填空高频</span></div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>性质</th><th>定义</th><th>判定动作</th><th>后面在哪用</th></tr></thead>
+          <tbody>
+            <tr><td><b>有界性</b></td><td>存在 M &gt; 0，使对一切 x ∈ D 有 |f(x)| ≤ M</td><td>找一个具体的 M；常用 |sin x| ≤ 1、|cos x| ≤ 1、|arctan x| &lt; π/2</td><td>第 2 章“无穷小 × 有界 = 无穷小”；闭区间最值定理</td></tr>
+            <tr><td><b>单调性</b></td><td>任取 x₁ &lt; x₂，若 f(x₁) &lt; f(x₂) 则单调增（反之减）</td><td>定义法作差 f(x₂) − f(x₁) 判符号</td><td>第 4 章改用 f′ 符号判；反函数存在的充分条件</td></tr>
+            <tr><td><b>奇偶性</b></td><td>定义域对称，且 f(−x) = −f(x) 为奇，f(−x) = f(x) 为偶</td><td>先看定义域是否对称，再算 f(−x)</td><td>图形对称、积分简化（下册）；判断题</td></tr>
+            <tr><td><b>周期性</b></td><td>存在 T &gt; 0，使 f(x+T) = f(x) 恒成立，最小的 T 叫最小正周期</td><td>化到 sin/cos 的标准形式看系数</td><td>第 3 章周期函数求导后周期不变</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warn" style="margin-bottom:0">
+        <div class="tag">最爱考的两个坑</div>
+        <p>① <b>奇偶性先查定义域</b>：f(x) = x²，x ∈ [−1, 2] 既不是奇也不是偶——定义域不对称，结论直接作废。② <b>有界 ≠ 有极限</b>：sin(1/x) 在 x → 0 时有界（|·| ≤ 1）但极限不存在；反过来 x·sin x 无界。这两句在第 2 章会再考一次。</p>
+      </div>
+    </div>
+
+    <!-- KB4 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">04</span><h3>反函数：定义、求法、图像关系</h3><span class="p">§1.1 四（p12）</span></div>
+      <p>设 y = f(x) 的定义域为 D、值域为 W。若对 W 中每个 y，都能由 y = f(x) 唯一确定一个 x ∈ D，则得到一个新函数 x = f⁻¹(y)，称为 f 的<b>反函数</b>。习惯上用 x 表示自变量，于是记作 y = f⁻¹(x)。</p>
+      <ul>
+        <li><b>定义域与值域互换</b>：f⁻¹ 的定义域 = f 的值域，f⁻¹ 的值域 = f 的定义域。</li>
+        <li><b>图像关于直线 y = x 对称</b>（因为点 (a, b) 在 f 上 ⇔ 点 (b, a) 在 f⁻¹ 上）。</li>
+        <li><b>求法三步</b>：① 由 y = f(x) 解出 x（用 y 表示）；② 交换 x、y 的字母；③ 写出反函数的定义域（= 原函数的值域，这一步最容易忘）。</li>
+        <li><b>存在条件</b>：f 在 D 上<b>严格单调</b> ⟹ 反函数存在（充分不必要）。</li>
+        <li>f⁻¹(f(x)) = x，f(f⁻¹(x)) = x——这两个式子是验算反函数对不对的最快办法。</li>
+      </ul>
+    </div>
+
+    <!-- KB5 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">05</span><h3>五类基本初等函数与初等函数</h3><span class="p">§1.1 五（p13–p17）　要能默画</span></div>
+      <p><b>五类基本初等函数：</b>幂函数 x<sup>α</sup>、指数函数 a<sup>x</sup>（a &gt; 0, a ≠ 1）、对数函数 log<sub>a</sub>x、三角函数（sin, cos, tan, cot, sec, csc）、反三角函数（arcsin, arccos, arctan, arccot）。由它们经<b>有限次四则运算与复合</b>得到、且能用一个式子表示的函数，叫<b>初等函数</b>。</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>函数</th><th>定义域</th><th>值域</th><th>必记形状 / 性质</th></tr></thead>
+          <tbody>
+            <tr><td class="m">x<sup>2</sup>、x<sup>3</sup>、√x、1/x</td><td>看指数</td><td>看指数</td><td>偶数次幂偶函数；√x 只取 x ≥ 0 一支；1/x 在 0 两侧异号</td></tr>
+            <tr><td class="m">e<sup>x</sup></td><td class="m">R</td><td class="m">(0, +∞)</td><td>单调增，恒过 (0,1)，x → −∞ 时贴 x 轴（水平渐近线 y = 0）</td></tr>
+            <tr><td class="m">ln x</td><td class="m">(0, +∞)</td><td class="m">R</td><td>单调增，恒过 (1,0)，x → 0⁺ 时 → −∞（垂直渐近线 x = 0）</td></tr>
+            <tr><td class="m">sin x / cos x</td><td class="m">R</td><td class="m">[−1, 1]</td><td>周期 2π，有界——这两个性质在第 2 章反复救命</td></tr>
+            <tr><td class="m">tan x</td><td class="m">x ≠ π/2 + kπ</td><td class="m">R</td><td>周期 π，有垂直渐近线</td></tr>
+            <tr><td class="m">arctan x</td><td class="m">R</td><td class="m">(−π/2, π/2)</td><td>单调增且有界；x → ±∞ 时两条水平渐近线 y = ±π/2</td></tr>
+            <tr><td class="m">arcsin x</td><td class="m">[−1, 1]</td><td class="m">[−π/2, π/2]</td><td>与 sin x 在 [−π/2, π/2] 上互为反函数</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-bottom:0">另外两个常用的“非基本但常见”函数：<b>双曲类</b>在本课程中不考；<b>取整函数</b> [x]（不超过 x 的最大整数）只在分段、间断点题里出现，注意它在每个整数点都跳跃。</p>
+    </div>
+
+    <!-- KB6 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">06</span><h3>复合函数：拆层与合成（第 3 章的命门）</h3><span class="p">§1.1 四、六（p12、p16）</span></div>
+      <p>设 y = f(u)，u = g(x)，当 g 的值域与 f 的定义域有交集时，得到复合函数 y = f[g(x)]。<b>复合的条件：内层值域 ∩ 外层定义域 ≠ ∅</b>（写定义域时要写成不等式组去解交集，不能只写“内层有意义”）。</p>
+      <div class="eq">
+        y = sin²(3x + 1)　⟹　y = u²，u = sin v，v = 3x + 1　（三层，由外向内）
+      </div>
+      <div class="callout plain" style="margin:0">
+        <div class="tag">拆层口诀：从最外层往里剥，每剥一层问一句“谁是谁的函数”</div>
+        <p>看到 y = e<sup>√(x²+1)</sup>：最外层是 e 的多少次方 → y = e<sup>u</sup>；接着 u 是根号 → u = √v；再往里 v = x² + 1。三层拆完。<b>第 3 章链式法则就是把这条链倒过来乘一遍</b>：y′ = e<sup>u</sup> · (1/(2√v)) · 2x。拆得对，求导就不会漏；拆错了，后面全错。</p>
+      </div>
+      <p style="margin-top:14px; margin-bottom:0"><b>合成顺序不可交换：</b>f(x) = ln x，g(x) = √(1−x)。f[g(x)] = ln√(1−x)（定义域 x &lt; 1），g[f(x)] = √(1−ln x)（定义域 0 &lt; x ≤ e）。两个函数完全不同——这就是为什么拆层时“内外层搞反”是致命错误。</p>
+    </div>
+
+    <!-- KB7 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">07</span><h3>分段函数：分段点与三个常见类型</h3><span class="p">§1.1 六（p16–p19）</span></div>
+      <p>在定义域的不同部分用不同式子表示的函数叫分段函数。它<b>仍是一个函数</b>（一个定义域、一个对应法则，只是法则分段表述），不是“几个函数”。</p>
+      <ul>
+        <li><b>绝对值型</b>：|x| = { x, x ≥ 0；−x, x &lt; 0 }。凡含 |□| 的式子都要先拆成分段，再谈极限、求导。</li>
+        <li><b>取整型</b>：[x] 在每个整数点跳跃 1，是第 2 章“跳跃间断点”的标准例子。</li>
+        <li><b>经济型</b>：阶梯定价、累进税率、分段运费——这是期末应用题最常见的包装。</li>
+      </ul>
+      <div class="callout ok" style="margin-bottom:0">
+        <div class="tag">分段函数必须做的两件事</div>
+        <p>① 求定义域：各段取并集，检查分段点归属；② 分段点两侧分别写出表达式（这是第 2 章求左右极限、第 3 章求左右导数的<b>唯一依据</b>）。补一句常考判断：<b>能用一个式子写出来的分段函数仍是初等函数</b>（如 |x| = √(x²)），但不能用一个式子写出的（如取整函数）不是初等函数。</p>
+      </div>
+    </div>
+
+    <!-- KB8 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">08</span><h3>七个经济函数：把业务描述写成公式</h3><span class="p">§1.2（p20–p24）　应用题的唯一来源</span></div>
+      <p>这一节是全课程经济应用的“材料库”。七个函数的关系是固定的，考法也固定：<b>给出文字 → 写出函数 → 求均衡点或盈亏平衡点 → 第 4 章再求最优</b>。</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>函数</th><th>记号</th><th>典型形式</th><th>性质 / 备注</th></tr></thead>
+          <tbody>
+            <tr><td>需求函数</td><td class="m">q = D(p)</td><td class="m">q = 50 − p（线性）</td><td>价格上升需求下降（单调减）；反解得 p = D⁻¹(q)，叫<b>反需求函数</b>，写收益时要用它</td></tr>
+            <tr><td>供给函数</td><td class="m">q = S(p)</td><td class="m">q = −10 + 2p（p ≥ 5）</td><td>价格上升供给增加（单调增）</td></tr>
+            <tr><td>市场均衡</td><td class="m">D(p) = S(p)</td><td class="m">50 − p = −10 + 2p</td><td>解出的 p 叫<b>均衡价格</b>，对应 q 叫均衡数量</td></tr>
+            <tr><td>成本函数</td><td class="m">C(q)</td><td class="m">C = C<sub>固</sub> + C<sub>变</sub>(q)</td><td>固定成本与产量无关；C(0) = 固定成本</td></tr>
+            <tr><td>平均成本</td><td class="m">AC = C(q)/q</td><td class="m">1000/q + 10 + 0.1q</td><td>先降后升（U 形），第 4 章求它的最小值</td></tr>
+            <tr><td>收益函数</td><td class="m">R(q) = p·q</td><td class="m">R = q(50 − q)</td><td><b>p 必须用反需求函数代入</b>，不能当成常数</td></tr>
+            <tr><td>利润函数</td><td class="m">L(q) = R(q) − C(q)</td><td class="m">L = −q² + 40q − 300</td><td>盈亏平衡点：L(q) = 0；漏固定成本 = 整题作废</td></tr>
+            <tr><td>库存函数</td><td class="m">Q(t)</td><td class="m">Q = a − bt</td><td>平均库存 ≈ Q/2；第 4 章存货模型要用</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout plain" style="margin-bottom:0">
+        <div class="tag">一句话记牢</div>
+        <p><b>收益用价格乘数量，价格要从需求函数反解出来；利润 = 收益 − 成本，成本里必须含固定成本。</b>这两句是期末应用题的头两分，也是丢分最多的地方。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 题型总结 ================= -->
+  <section id="list">
+    <div class="sec-head"><div class="idx">三</div><h2>题型总结：例题是怎么解的</h2></div>
+    <p class="sec-intro">这一节回答两个问题：<b>本章的题一共几类</b>、<b>哪几类是必考的</b>。前半张表按题型归档，每一行的“解法动作”都是标准步骤（照做即可，不需要技巧）；后半张表是考点与考频，按重要程度排序，也就是建议的复习顺序。<b>分数结构：定义域与函数值（填空）养家，四性判断拉分，经济建模拿应用题。</b></p>
+
+    <div class="blk">
+      <div class="blk-t">题型总结 · 按解法动作归类（覆盖 §1.1–§1.2 全部例题类型）</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>序号</th><th>题型（长什么样）</th><th>教材位置</th><th>解法动作（照做即可）</th><th>对应考点</th></tr></thead>
+          <tbody>
+            <tr><td>01</td><td><b>求定义域</b></td><td>§1.1 二（p3–p9）<br>练习1.1（P17–18）</td><td>① 逐项列出约束（分母≠0、根号≥0、真数&gt;0、反三角∈[−1,1]）；② 解不等式组；③ 取交集写成区间；④ 有实际意义的再加非负限制</td><td>01</td></tr>
+            <tr><td>02</td><td><b>判断两个函数是否相同</b></td><td>§1.1 二（p5–p8）</td><td>① 先比定义域，不同直接判“不同”；② 定义域相同再化简比法则；③ 只看两要素，与字母无关</td><td>02</td></tr>
+            <tr><td>03</td><td><b>求函数值 / f[f(x)]</b></td><td>§1.1 二（p6–p8）</td><td>① 把 x 的位置整体替换成括号里的对象；② 复合时先算内层再代入外层；③ 最后写定义域（x ≠ 使分母为 0 的点）</td><td>03</td></tr>
+            <tr><td>04</td><td><b>判断奇偶性</b></td><td>§1.1 三（p8–p12）</td><td>① 定义域是否关于原点对称（不对称 → 既不奇也不偶）；② 算 f(−x) 并与 f(x)、−f(x) 比较；③ 结论写“奇 / 偶 / 非奇非偶”</td><td>04</td></tr>
+            <tr><td>05</td><td><b>求周期</b></td><td>§1.1 三（p8–p12）</td><td>① 化成 sin(ωx+φ)、cos(ωx+φ) 的标准形；② 周期 T = 2π/|ω|（tan 用 π/|ω|）；③ 多函数相加取各周期的最小公倍数</td><td>05</td></tr>
+            <tr><td>06</td><td><b>判断有界性</b></td><td>§1.1 三（p8–p12）</td><td>① 找具体上界 M（|sin|、|cos| ≤ 1；|arctan| &lt; π/2）；② 或证“存在 x 使 |f(x)| 任意大”来否证；③ 注意区间范围：1/x 在 [1,2] 有界、在 (0,1) 无界</td><td>06</td></tr>
+            <tr><td>07</td><td><b>证明单调性</b></td><td>§1.1 三（p8–p12）</td><td>① 任取 x₁ &lt; x₂；② 作差 f(x₂) − f(x₁) 并因式分解；③ 判每因子的符号；④ 得结论（第 4 章起可改用导数）</td><td>07</td></tr>
+            <tr><td>08</td><td><b>求反函数</b></td><td>§1.1 四（p12）</td><td>① 由 y = f(x) 解出 x；② 交换字母；③ <b>补写反函数的定义域（= 原值域）</b>；④ 用 f(f⁻¹(x)) = x 验算</td><td>08</td></tr>
+            <tr><td>09</td><td><b>拆复合 / 判断能否复合</b></td><td>§1.1 六（p16–p19）</td><td>① 从最外层剥起，写 y = f(u), u = g(v), v = h(x)；② 判断复合要看内层值域与外层定义域有无交集；③ 合成顺序不可交换</td><td>09</td></tr>
+            <tr><td>10</td><td><b>已知 f 的定义域求 f[g(x)] 的定义域</b></td><td>§1.1 二、六（p6–p19）</td><td>① 把 g(x) 塞进 f 的定义域不等式 a ≤ g(x) ≤ b；② 解出 x；③ 有多个复合项时取<b>交集</b></td><td>10</td></tr>
+            <tr><td>11</td><td><b>需求/供给/市场均衡</b></td><td>§1.2（p20–p23）<br>练习1.2（P23–24）</td><td>① 设价格为 p，写出 D(p)、S(p)；② 令 D(p) = S(p) 解 p；③ 代回求均衡数量；④ 检验 p、q ≥ 0</td><td>11</td></tr>
+            <tr><td>12</td><td><b>成本/收益/利润与盈亏平衡</b></td><td>§1.2（p21–p24）</td><td>① 写 C(q)（含固定成本）；② 由需求函数反解 p，写 R = p·q；③ L = R − C；④ 令 L = 0 解盈亏平衡点</td><td>12</td></tr>
+            <tr><td>13</td><td><b>平均成本 / 库存函数</b></td><td>§1.2（p22–p24）</td><td>① AC = C(q)/q，逐项除；② 库存 Q(t) 按“初始 − 消耗速率 × 时间”写；③ 平均库存取 Q/2</td><td>13</td></tr>
+            <tr><td>14</td><td><b>分段函数建模（阶梯价）</b></td><td>§1.1 六、§1.2（p16–p24）</td><td>① 找分段点（数量阈值）；② 每段单独写表达式，注意第二段要加上“前面那部分的钱”；③ 检查分段点两侧是否接得上（第 2 章要接着考）</td><td>14</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:13px; color:var(--ink3); margin:8px 0 0">读法：先看“题型”认脸，再照“解法动作”动手，最后一列是下面详讲的考点编号。本章没有需要“灵感”的题，全是固定动作。</p>
+    </div>
+
+    <div class="blk-t" style="margin-top:26px">考点清单 · 按考频排序</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>考点</th><th>常见题型</th><th>考频</th><th>对应节</th></tr></thead>
+        <tbody>
+          <tr><td>01</td><td>求定义域（六类约束）</td><td>填空 / 计算第一问</td><td>★★★★★</td><td>§1.1</td></tr>
+          <tr><td>12</td><td>成本、收益、利润与盈亏平衡</td><td>应用题（必有一道）</td><td>★★★★★</td><td>§1.2</td></tr>
+          <tr><td>11</td><td>需求、供给与市场均衡</td><td>应用 / 填空</td><td>★★★★</td><td>§1.2</td></tr>
+          <tr><td>04</td><td>奇偶性判断</td><td>判断 / 填空</td><td>★★★★</td><td>§1.1</td></tr>
+          <tr><td>03</td><td>函数值与 f[f(x)]</td><td>填空</td><td>★★★★</td><td>§1.1</td></tr>
+          <tr><td>09</td><td>复合函数拆层</td><td>填空 / 为第 3 章铺垫</td><td>★★★★</td><td>§1.1</td></tr>
+          <tr><td>08</td><td>求反函数</td><td>计算 / 填空</td><td>★★★</td><td>§1.1</td></tr>
+          <tr><td>10</td><td>复合函数定义域（含参）</td><td>填空 / 提高题</td><td>★★★</td><td>§1.1</td></tr>
+          <tr><td>02</td><td>判断两个函数相同</td><td>判断 / 选择</td><td>★★★</td><td>§1.1</td></tr>
+          <tr><td>06</td><td>有界性判断</td><td>判断</td><td>★★★</td><td>§1.1</td></tr>
+          <tr><td>14</td><td>分段函数建模</td><td>应用题（阶梯价）</td><td>★★★</td><td>§1.1/§1.2</td></tr>
+          <tr><td>05</td><td>周期性</td><td>填空</td><td>★★</td><td>§1.1</td></tr>
+          <tr><td>07</td><td>单调性（定义法证明）</td><td>证明</td><td>★★</td><td>§1.1</td></tr>
+          <tr><td>13</td><td>平均成本 / 库存函数</td><td>应用（为第 4 章铺垫）</td><td>★★</td><td>§1.2</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout plain">
+      <div class="tag">拿到题先干什么：四步固定流程</div>
+      <p>本章的题只有四种开头，认出来就不会卡。下面这张表建议直接背下来。</p>
+    </div>
+    <div class="flow">
+      <div class="row"><div class="k">看到“求定义域”</div><div class="v">列约束 → 解不等式组 → 取交集 → 写成区间（有实际意义补非负）</div></div>
+      <div class="row"><div class="k">看到“f(某式)”</div><div class="v">整体替换：把 f(x) 里的每个 x 换成那个式子，别只换一次</div></div>
+      <div class="row"><div class="k">看到“判断性质”</div><div class="v">奇偶先查定义域是否对称 → 再算 f(−x)；有界就找 M；周期先化标准形</div></div>
+      <div class="row"><div class="k">看到“成本/收益/利润”</div><div class="v">先写 C(q) → 反解 p 写 R = pq → L = R − C → 令 L = 0 求平衡点</div></div>
+    </div>
+  </section>
+
+  <!-- ================= 考点详解 ================= -->
+  <section id="points">
+    <div class="sec-head"><div class="idx">四</div><h2>考点详解 · 例题与解答</h2></div>
+    <p class="sec-intro">14 个考点，每个配一道<b>按教材题型自拟的同型题</b>（数值重新设计，解法步骤严格照教材顺序），另附该考点最容易扣分的地方，以及可以接着练的教材题位置。建议先自己写，再对答案。</p>
+
+    <!-- 01 -->
+    <article class="point" id="p1">
+      <div class="point-h"><div class="num">01</div><h3>求定义域：六类约束一次列全</h3><div class="star">★★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">这是本章唯一一个“必须全对”的考点，因为它同时是第 2 章求极限、第 3 章求导的第一步。方法没有技巧：<b>式子有几处“不能取”，就列几个不等式</b>，最后取交集。</p>
+        <div class="tagrow"><span class="chip">§1.1 二 · p3–p9</span><span class="chip">填空 / 计算第一问</span><span class="chip hot">漏一条 = 0 分</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 逐项扫描：分母、偶次根号、对数真数、反三角括号、正切点；② 每项写一个不等式；③ 解不等式组；④ 用区间写出结果；⑤ 若变量有实际含义，补上非负 / 整数限制。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求下列函数的定义域：(1) f(x) = √(4 − x²) + ln(x − 1)；(2) g(x) = arcsin((x − 1)/3) + 1/√(x − 2)。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答（按教材顺序）</div>
+          <div class="sol">
+            <span class="step">① (1) 有两处约束：根号要求 4 − x² ≥ 0，即 x² ≤ 4，得 −2 ≤ x ≤ 2；对数要求 x − 1 &gt; 0，得 x &gt; 1。</span>
+            <span class="step">② 取交集：(−2 ≤ x ≤ 2) ∩ (x &gt; 1) = 1 &lt; x ≤ 2，即定义域为 (1, 2]。</span>
+            <span class="step">③ (2) 反三角要求 −1 ≤ (x − 1)/3 ≤ 1，乘以 3 得 −3 ≤ x − 1 ≤ 3，即 −2 ≤ x ≤ 4。</span>
+            <span class="step">④ 分母 √(x − 2) 在分母上，要求 x − 2 &gt; 0（注意是 &gt; 不是 ≥，因为分母不能为 0），得 x &gt; 2。</span>
+            <span class="step res">⑤ 取交集：(−2 ≤ x ≤ 4) ∩ (x &gt; 2) = 2 &lt; x ≤ 4，即定义域为 (2, 4]。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习1.1 基础题（P17–18）第 3、4 题；习题一第 2、3 题——都是多约束混合型，练到“扫一遍就能列全”为止。</p></div>
+        <div class="mistake"><b>易错：</b>① 分母里的根号写成 ≥ 0（应该是 &gt; 0）；② 取交集错写成交集为空还硬凑；③ 忘写区间形式，只写不等式；④ 有实际背景时（产量、价格）不加非负限制。</div>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="point" id="p2">
+      <div class="point-h"><div class="num">02</div><h3>判断两个函数是否相同：只比两要素</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">判断题的常客。判据只有一条：<b>定义域相同 + 化简后对应法则相同 = 同一个函数</b>。字母叫什么、式子长得像不像，都不算数。</p>
+        <div class="tagrow"><span class="chip">§1.1 二 · p5–p8</span><span class="chip">判断 / 选择</span><span class="chip hot">先比定义域</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 分别求两个函数的定义域；② 不同 → 立刻判“不同”（到此结束）；③ 相同 → 把两个式子化简到最简形式比较；④ 结论写清依据（“定义域不同”或“法则不同”）。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">判断下列各组函数是否为同一个函数，并说明理由：<br>(1) f(x) = x，g(x) = √(x²)；(2) f(x) = ln x²，g(x) = 2 ln x；(3) f(x) = 1，g(x) = sin²x + cos²x。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 两者定义域都是 R，但 g(x) = √(x²) = |x|，与 f(x) = x 在 x &lt; 0 时不相等，<b>法则不同</b>，故不是同一函数。</span>
+            <span class="step">② (2) f 的定义域是 x ≠ 0（任何非零数平方都为正），g 的定义域是 x &gt; 0，<b>定义域不同</b>，故不是同一函数。</span>
+            <span class="step">③ (3) 两者定义域都是 R，且 sin²x + cos²x ≡ 1，<b>法则也相同</b>，故是同一函数。</span>
+            <span class="step res">结论：判断顺序固定——先定义域，后法则；只要有一项不同，就是不同函数。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习1.1 基础题（P17–18）中“判断函数是否相同”一类的题目；也可自查 f(x)=lg x² 与 g(x)=2lg x、f(x)=2<sup>x</sup> 与 g(x)=(1/2)<sup>−x</sup>（后者<b>是</b>同一个函数）。</p></div>
+        <div class="mistake"><b>易错：</b>只看式子长得像就判“相同”；把 √(x²) 直接写成 x（应为 |x|）；忘了 lg x² 的定义域是 x ≠ 0。</div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="point" id="p3">
+      <div class="point-h"><div class="num">03</div><h3>函数值与 f[f(x)]：整体替换</h3><div class="star">★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">题面很简单，错得很稳定。核心只有四个字：<b>整体替换</b>——f(x) 里每一个 x 都要换成那个式子，而不是只换第一个。</p>
+        <div class="tagrow"><span class="chip">§1.1 二 · p6–p8</span><span class="chip">填空</span><span class="chip hot">只换一次 = 错</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 把 f(x) 的表达式抄一遍，每个 x 加括号；② 在括号里填新的自变量；③ 复合 f[f(x)] 先算内层 f(x)，再把它当整体代进外层；④ 最后化简并补上定义域限制。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设 f(x) = 1/(1 − x)，求 f(2)、f(x + 1)、f[f(x)]，并写出 f[f(x)] 的定义域。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① f(2) = 1/(1 − 2) = −1。</span>
+            <span class="step">② f(x + 1) = 1/[1 − (x + 1)] = 1/(−x) = −1/x（x ≠ 0）。</span>
+            <span class="step">③ f[f(x)] = 1/[1 − f(x)] = 1/[1 − 1/(1 − x)]，分子分母同乘 (1 − x)：= 1 ÷ [(1 − x − 1)/(1 − x)] = (1 − x)/(−x) = (x − 1)/x。</span>
+            <span class="step">④ 定义域有两个限制：内层要求 x ≠ 1；外层要求 f(x) ≠ 1，即 1/(1 − x) ≠ 1 → x ≠ 0。</span>
+            <span class="step res">故 f[f(x)] = (x − 1)/x，定义域为 x ≠ 0 且 x ≠ 1。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习1.1 基础题（P17–18）中 f(f(x))、f(x+1) 一类；习题一第 10 题（已知 f(x+1) 求 f(x)，用换元 t = x + 1）。</p></div>
+        <div class="mistake"><b>易错：</b>f(x+1) 直接把 x 换成 x 后面再加 1（写成 1/(1−x)+1）；f[f(x)] 忘了第二层分母不能为 0，漏掉 x ≠ 0。</div>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="point" id="p4">
+      <div class="point-h"><div class="num">04</div><h3>奇偶性判断：先看定义域</h3><div class="star">★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">判据只有两步，但顺序错了就全错：<b>先查定义域是否关于原点对称</b>，对称才有资格谈奇偶；然后算 f(−x) 与 f(x) 比。</p>
+        <div class="tagrow"><span class="chip">§1.1 三 · p8–p12</span><span class="chip">判断 / 填空</span><span class="chip hot">定义域不对称直接判死</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 求定义域，检查是否对称（如 [−2,2]、(−1,1) 对称；[−1,2]、(−∞,1) 不对称）；② 若不对称 → “非奇非偶”，结束；③ 若对称，计算 f(−x) 并化简；④ 与 f(x) 相等为偶，与 −f(x) 相等为奇，都不等为非奇非偶。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">判断下列函数的奇偶性：(1) f(x) = ln((1 + x)/(1 − x))；(2) f(x) = x² + cos x；(3) f(x) = x²，x ∈ [−1, 2]。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 定义域：需 (1 + x)/(1 − x) &gt; 0，解得 −1 &lt; x &lt; 1，关于原点对称。计算 f(−x) = ln((1 − x)/(1 + x)) = ln[((1 + x)/(1 − x))<sup>−1</sup>] = −ln((1 + x)/(1 − x)) = −f(x)。故为<b>奇函数</b>。</span>
+            <span class="step">② (2) 定义域 R 对称；f(−x) = (−x)² + cos(−x) = x² + cos x = f(x)。故为<b>偶函数</b>。</span>
+            <span class="step">③ (3) 定义域 [−1, 2]，因为 −2 ∉ [−1,2]，不关于原点对称，故<b>非奇非偶</b>（不必再算 f(−x)）。</span>
+            <span class="step res">结论：奇偶性 = 定义域对称 + f(−x) 关系，两条缺一不可。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习1.1 基础题（P17–18）第 6、7 题；另可练 f(x) = ln(x + √(1 + x²))（奇函数，用分子有理化），这道是提高题常客。</p></div>
+        <div class="mistake"><b>易错：</b>不查定义域直接算 f(−x) 下结论；把 ln((1−x)/(1+x)) 化简错（应为 −f(x)）；认为“奇函数一定过原点”（定义域不含 0 时不过，如 1/x）。</div>
+      </div>
+    </article>
+
+    <!-- 05 -->
+    <article class="point" id="p5">
+      <div class="point-h"><div class="num">05</div><h3>周期性：化标准形再读 T</h3><div class="star">★★</div></div>
+      <div class="point-body">
+        <p class="lead">只考一件事：把式子化成 sin(ωx + φ) 或 cos(ωx + φ) 的标准形式，然后套 T = 2π/|ω|。多个三角项相加时取公共周期（最小公倍数）。</p>
+        <div class="tagrow"><span class="chip">§1.1 三 · p8–p12</span><span class="chip">填空</span><span class="chip">注意｜ω｜的绝对值</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 用倍角 / 降幂公式化到一次三角形式；② 读出 ω；③ T = 2π/|ω|（tan、cot 用 π/|ω|）；④ 若为多项之和，分别求周期再取最小公倍数。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求下列函数的最小正周期：(1) f(x) = sin²x；(2) f(x) = sin 2x + cos 3x。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 用降幂公式：sin²x = (1 − cos 2x)/2，其中 cos 2x 的周期为 2π/2 = π，常数项不影响周期，故 T = π。</span>
+            <span class="step">② (2) sin 2x 的周期 T₁ = 2π/2 = π；cos 3x 的周期 T₂ = 2π/3。公共周期需同时是 π 和 2π/3 的整数倍，最小的是 2π。</span>
+            <span class="step res">故 (1) T = π；(2) T = 2π。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习1.1（P17–18）周期题；可加练 f(x) = |sin x|（周期 π，因为加了绝对值后负半周翻上来）。</p></div>
+        <div class="mistake"><b>易错：</b>sin²x 直接写 2π（忘了降幂后 ω 变成 2）；多函数相加直接取第一个的周期；tan 也用 2π/|ω|（应为 π/|ω|）。</div>
+      </div>
+    </article>
+
+    <!-- 06 -->
+    <article class="point" id="p6">
+      <div class="point-h"><div class="num">06</div><h3>有界性：找得到 M 才算数</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">“有界”不是感觉，是<b>能写出一个具体的 M</b>。第 2 章会用它来处理 sin(1/x)、cos n 这类“乱晃但不超范围”的量，所以这里必须练到能报出上界。</p>
+        <div class="tagrow"><span class="chip">§1.1 三 · p8–p12</span><span class="chip">判断 / 选择</span><span class="chip hot">有界 ≠ 有极限</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 若式子里有 sin、cos，直接用 1 作上界；有 arctan、arccos，用 π/2、π 作上界；② 分母恒正且离 0 有距离时，可放大分母求上界；③ 要否证有界，就构造一列 x 使 |f(x)| → +∞。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">判断下列函数在指定区间上是否有界：(1) f(x) = x/(1 + x²)，x ∈ R；(2) f(x) = x sin x，x ∈ R；(3) f(x) = 1/x，x ∈ (0, 1)。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 由 (1 − |x|)² ≥ 0 得 1 + x² ≥ 2|x|，故 |f(x)| = |x|/(1 + x²) ≤ 1/2，取 M = 1/2 即可，<b>有界</b>。</span>
+            <span class="step">② (2) 取 x = 2kπ + π/2，则 |f(x)| = |x| → +∞，所以不存在这样的 M，<b>无界</b>（注意它并非无穷大：在 x = kπ 处函数值为 0）。</span>
+            <span class="step">③ (3) 取 x = 1/n ∈ (0,1)，f(x) = n → +∞，故在 (0,1) 上<b>无界</b>；但同一个函数在 [1, 2] 上就有界（|1/x| ≤ 1）。</span>
+            <span class="step res">结论：有界性依赖区间；“无界”与“趋于无穷大”不是一回事。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习1.1（P17–18）有界性判断题；配合 f(x) = sin(1/x) 一起练：它在 x → 0 时<b>有界但极限不存在</b>——这是第 2 章的核心伏笔。</p></div>
+        <div class="mistake"><b>易错：</b>把“图像看起来压得住”当证明；把无界写成“极限为 ∞”（x sin x 无界但没有极限）；忘记有界性只在指定区间上说。</div>
+      </div>
+    </article>
+
+    <!-- 07 -->
+    <article class="point" id="p7">
+      <div class="point-h"><div class="num">07</div><h3>单调性：定义法作差（第 4 章的前身）</h3><div class="star">★★</div></div>
+      <div class="point-body">
+        <p class="lead">本章只能用定义证（还没学导数）。这套“取两点 → 作差 → 分解 → 判号”的四步，第 4 章会升级成“求导判符号”，但思路完全一样，先在这里把格式练熟。</p>
+        <div class="tagrow"><span class="chip">§1.1 三 · p8–p12</span><span class="chip">证明题</span><span class="chip">格式分很重</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 设 x₁、x₂ 是区间内任意两点且 x₁ &lt; x₂；② 作差 f(x₂) − f(x₁)；③ 因式分解出 (x₂ − x₁) 的因子；④ 判断其余因子在区间内的符号；⑤ 得结论并写“任取”。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">证明 f(x) = x/(1 + x) 在 (−1, +∞) 上单调递增。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 任取 −1 &lt; x₁ &lt; x₂，则 1 + x₁ &gt; 0，1 + x₂ &gt; 0。</span>
+            <span class="step">② 作差：f(x₂) − f(x₁) = x₂/(1 + x₂) − x₁/(1 + x₁) = [x₂(1 + x₁) − x₁(1 + x₂)]/[(1 + x₁)(1 + x₂)]。</span>
+            <span class="step">③ 分子化简：x₂ + x₁x₂ − x₁ − x₁x₂ = x₂ − x₁ &gt; 0。</span>
+            <span class="step">④ 分母 (1 + x₁)(1 + x₂) &gt; 0，故 f(x₂) − f(x₁) &gt; 0，即 f(x₂) &gt; f(x₁)。</span>
+            <span class="step res">结论：f(x) 在 (−1, +∞) 上单调递增。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习1.1（P17–18）单调性证明题；可加练 f(x) = x + 1/x 在 (0, 1) 上递减、在 (1, +∞) 上递增（分段讨论，为第 4 章铺垫）。</p></div>
+        <div class="mistake"><b>易错：</b>不写“任取 x₁ &lt; x₂”就直接代两个数（举例不算证明）；作差后不因式分解，无法判号；忽略分母必须为正这个前提。</div>
+      </div>
+    </article>
+
+    <!-- 08 -->
+    <article class="point" id="p8">
+      <div class="point-h"><div class="num">08</div><h3>求反函数：别忘了写定义域</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">三步走，第三步最容易丢分。反函数的定义域是<b>原函数的值域</b>，不写这一句，答案不完整。</p>
+        <div class="tagrow"><span class="chip">§1.1 四 · p12</span><span class="chip">计算 / 填空</span><span class="chip hot">漏定义域扣分</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 解：由 y = f(x) 把 x 解出来；② 换：交换字母 x、y；③ 定：写出新函数的定义域（= 原函数值域）；④ 验：用 f(f⁻¹(x)) = x 检查一遍。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求 y = 2<sup>x</sup>/(1 + 2<sup>x</sup>) 的反函数，并写出其定义域。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 先去分母：y(1 + 2<sup>x</sup>) = 2<sup>x</sup>，整理得 y = 2<sup>x</sup>(1 − y)，即 2<sup>x</sup> = y/(1 − y)。</span>
+            <span class="step">② 两边取对数：x = log₂[y/(1 − y)]。</span>
+            <span class="step">③ 交换字母得反函数 y = log₂[x/(1 − x)]。</span>
+            <span class="step">④ 定义域：原函数中 2<sup>x</sup> &gt; 0，故 y = 2<sup>x</sup>/(1 + 2<sup>x</sup>) ∈ (0, 1)（分子小于分母，且恒正），所以反函数的定义域为 0 &lt; x &lt; 1。</span>
+            <span class="step res">答案：y = log₂[x/(1 − x)]，0 &lt; x &lt; 1。验算：代入 x = 1/2 得 y = log₂1 = 0，而原函数 f(0) = 1/2，正确。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习1.1（P17–18）反函数题；可加练 y = e<sup>x</sup> − 1（反函数 y = ln(x + 1)，x &gt; −1），注意值域是 (−1, +∞)。</p></div>
+        <div class="mistake"><b>易错：</b>不写反函数定义域；交换字母后又把 x 解一遍（多此一举，还容易错）；忘记 f 必须严格单调才有反函数。</div>
+      </div>
+    </article>
+
+    <!-- 09 -->
+    <article class="point" id="p9">
+      <div class="point-h"><div class="num">09</div><h3>复合函数的拆层与合成</h3><div class="star">★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">这一题本身只有 2 分，但它决定了第 3 章链式法则能不能算对。拆层的唯一标准：<b>从最外层往里剥，剥到自变量为止</b>，每一层都是五类基本初等函数之一。</p>
+        <div class="tagrow"><span class="chip">§1.1 六 · p16–p19</span><span class="chip">填空</span><span class="chip hot">第 3 章的前置技能</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>拆：① 找最外层运算（幂、指、对、三角、反三角）；② 把它里面的整体记作 u；③ 对 u 继续剥，直到剥出 x；④ 写成 y = f(u), u = g(v), v = h(x)。<br>合：把内层整体塞进外层；顺序不可交换，定义域要取交集。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">(1) 把 y = sin²(3x + 1) 拆成基本初等函数的复合链；<br>(2) 设 f(x) = ln x，g(x) = √(1 − x)，求 f[g(x)] 与 g[f(x)] 并写出定义域。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 最外层是平方：y = u²，u = sin v，v = 3x + 1。三层，由外向内。</span>
+            <span class="step">② (2) f[g(x)] = ln√(1 − x)。定义域要求 1 − x &gt; 0，即 x &lt; 1。</span>
+            <span class="step">③ g[f(x)] = √(1 − ln x)。定义域要求 x &gt; 0 且 1 − ln x ≥ 0，即 0 &lt; x ≤ e。</span>
+            <span class="step res">结论：两个复合函数完全不同（定义域、表达式都不一样），合成顺序不可交换。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习1.1 基础题（P17–18）复合题；提高题里“已知 f[g(x)] 求 f(x)”也属这一类（用换元 u = g(x) 反解）。</p></div>
+        <div class="mistake"><b>易错：</b>把 y = sin²(3x+1) 拆成 y = u², u = sin(3x+1) 就停（漏一层）；f[g(x)] 与 g[f(x)] 混写；只写“内层有意义”而不写交集。</div>
+      </div>
+    </article>
+
+    <!-- 10 -->
+    <article class="point" id="p10">
+      <div class="point-h"><div class="num">10</div><h3>复合函数的定义域（含参数）</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">是“已知 f 的定义域，求 f[g(x)] 的定义域”，不是求 f 的定义域。动作只有一句：<b>把 g(x) 关进 f 的定义域里</b>，再解出 x。</p>
+        <div class="tagrow"><span class="chip">§1.1 二、六 · p6–p19</span><span class="chip">填空 / 提高题</span><span class="chip hot">别解反了</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 设 f 的定义域为 [a, b]；② 令 a ≤ g(x) ≤ b；③ 解这个不等式得 x 的范围；④ 若有多项复合（如 f(x−1) + f(2x)），各自解完取<b>交集</b>。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设 f(x) 的定义域为 [0, 2]，求 F(x) = f(x − 1) + f(2x) 的定义域。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 对 f(x − 1)：需 0 ≤ x − 1 ≤ 2，解得 1 ≤ x ≤ 3。</span>
+            <span class="step">② 对 f(2x)：需 0 ≤ 2x ≤ 2，解得 0 ≤ x ≤ 1。</span>
+            <span class="step">③ 取交集：[1, 3] ∩ [0, 1] = {1}。</span>
+            <span class="step res">故 F(x) 的定义域为 {x | x = 1}（只有一个点）。若把第二项换成 f(x/2)，交集就是 [1, 3]∩[0,4] = [1,3]。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习1.1 提高题（P18）里的含参定义域题；经典变式：f(x) 定义域 [0,1]，求 f(x + a) + f(x − a)（a &gt; 0）的定义域，答案需分 a ≤ 1/2 与 a &gt; 1/2 讨论。</p></div>
+        <div class="mistake"><b>易错：</b>去求 f 的定义域（题目已给）；只算一项就交卷；交集算成并集（“同时有意义”必须取交集）。</div>
+      </div>
+    </article>
+
+    <!-- 11 -->
+    <article class="point" id="p11">
+      <div class="point-h"><div class="num">11</div><h3>需求、供给与市场均衡</h3><div class="star">★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">经济应用题的入口。只有一句话：<b>均衡就是需求量等于供给量</b>。写对两个函数，解一个方程，题就完了。</p>
+        <div class="tagrow"><span class="chip">§1.2 · p20–p23</span><span class="chip">应用 / 填空</span><span class="chip hot">答案要检验非负</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 设价格为 p（元/件），数量为 q；② 按“价格升、需求降”写 D(p)，按“价格升、供给增”写 S(p)；③ 令 D(p) = S(p) 解出均衡价格 p*；④ 代回求均衡数量 q*；⑤ 检验 p*、q* ≥ 0（若为负，说明该市场在该价格区间不存在均衡）。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">某商品的需求函数为 q = 50 − p，供给函数为 q = −10 + 2p（单位：件、元）。求市场均衡价格与均衡数量；并问：当价格被限定为 15 元时，市场处于什么状态？</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 均衡条件：50 − p = −10 + 2p。</span>
+            <span class="step">② 移项得 60 = 3p，故均衡价格 p* = 20（元）。</span>
+            <span class="step">③ 代回需求函数：q* = 50 − 20 = 30（件）。（用供给函数验算：−10 + 40 = 30 ✓）</span>
+            <span class="step">④ 当 p = 15 时：需求 50 − 15 = 35 件，供给 −10 + 30 = 20 件，<b>需求大于供给</b>，出现短缺 15 件，价格有上涨压力。</span>
+            <span class="step res">答案：p* = 20 元，q* = 30 件；限价 15 元时供不应求，缺口 15 件。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习1.2 基础题（P23–24）第 3、4 题；提高题第 1 题（含税情形：把税 t 加进供给价格，再求新均衡——这就是“税负分摊”的原型）。</p></div>
+        <div class="mistake"><b>易错：</b>把 p 当成自变量却写成 q = f(q)；解完不检验非负（供给函数 q = −10 + 2p 在 p &lt; 5 时为负，说明该段无意义）；分不清“需求变化”和“需求量变化”。</div>
+      </div>
+    </article>
+
+    <!-- 12 -->
+    <article class="point" id="p12">
+      <div class="point-h"><div class="num">12</div><h3>成本、收益、利润与盈亏平衡</h3><div class="star">★★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">期末应用题的头号来源，也是全章最容易“一步错、步步错”的地方。三个函数的顺序不能乱：<b>先成本，再由反需求函数写收益，最后相减得利润</b>。</p>
+        <div class="tagrow"><span class="chip">§1.2 · p21–p24</span><span class="chip">应用题（必考）</span><span class="chip hot">漏固定成本 = 全错</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 写成本 C(q) = 固定成本 + 可变成本；② 由需求函数 q = D(p) 反解出 p = D⁻¹(q)；③ 收益 R(q) = p·q（把反解出的 p 代进去）；④ 利润 L(q) = R(q) − C(q)；⑤ 盈亏平衡：解 L(q) = 0，取有实际意义的根（q ≥ 0）。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">某产品需求函数为 q = 50 − p，总成本函数为 C(q) = 10q + 300（元）。求：(1) 收益函数与利润函数；(2) 盈亏平衡时的产量；(3) 使利润最大的产量与最大利润（本章先建模型，第 4 章用导数求解）。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 先反解需求函数：由 q = 50 − p 得 p = 50 − q（0 ≤ q ≤ 50）。</span>
+            <span class="step">② 收益函数：R(q) = p·q = (50 − q)q = 50q − q²。</span>
+            <span class="step">③ 利润函数：L(q) = R(q) − C(q) = (50q − q²) − (10q + 300) = −q² + 40q − 300。</span>
+            <span class="step">④ 盈亏平衡：令 −q² + 40q − 300 = 0，即 q² − 40q + 300 = 0，因式分解 (q − 10)(q − 30) = 0，得 q = 10 或 q = 30。即产量在 10 到 30 件之间才盈利。</span>
+            <span class="step res">⑤ 配方：L(q) = −(q − 20)² + 100，故 q = 20 时利润最大，L(20) = 100 元（第 4 章用 L′(q) = 0 会得到同一个答案）。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习1.2 基础题（P23–24）第 5、6 题；习题一第 6、9 题。练的时候只写模型，不必算最优——最优留给第 4 章。</p></div>
+        <div class="mistake"><b>易错：</b>把收益当利润（漏减成本）；成本漏掉固定成本 300；用 p 当自变量却对 q 求最优；盈亏平衡只取一个根（二次方程通常有两个，都要写清区间含义）。</div>
+      </div>
+    </article>
+
+    <!-- 13 -->
+    <article class="point" id="p13">
+      <div class="point-h"><div class="num">13</div><h3>平均成本与库存函数</h3><div class="star">★★</div></div>
+      <div class="point-body">
+        <p class="lead">平均成本是第 4 章“平均成本最小”模型的原材料，库存函数是第 4 章“最优订货批量”的原型。本章只要求写对式子，不要求求最优。</p>
+        <div class="tagrow"><span class="chip">§1.2 · p22–p24</span><span class="chip">应用 / 填空</span><span class="chip">为第 4 章铺垫</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 平均成本 AC(q) = C(q)/q，把每一项都除以 q；② 库存量按“初始库存 − 消耗速率 × 时间”写，注意只在库存为正时有意义；③ 平均库存取 Q/2（均匀消耗的假设）。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">(1) 设总成本 C(q) = 1000 + 10q + 0.1q²（元），求平均成本函数 AC(q)；<br>(2) 某仓库月初有货 1200 件，每天均匀售出 40 件，求库存量 Q 与时间 t（天）的函数关系及定义域、平均库存。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) AC(q) = C(q)/q = 1000/q + 10 + 0.1q（q &gt; 0）。这是典型的“先降后升”形状：q 很小时 1000/q 很大，q 很大时 0.1q 很大。</span>
+            <span class="step">② (2) 每天售出 40 件，t 天后售出 40t 件，故 Q(t) = 1200 − 40t。</span>
+            <span class="step">③ 定义域：库存不能为负，1200 − 40t ≥ 0，即 0 ≤ t ≤ 30（天）。</span>
+            <span class="step res">④ 均匀消耗下平均库存 = Q(0)/2 = 600 件（也可理解为 0 到 30 天内 Q(t) 的平均值）。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习1.2（P23–24）平均成本、库存类题目；第 4 章 §4.6 会把 (1) 拿来求最小值（答案 q = 100，AC = 30 元/件）。</p></div>
+        <div class="mistake"><b>易错：</b>AC 只除了可变成本那一项；库存函数不写定义域（t 上限由库存耗尽决定）；把“平均库存”当成“期末库存”。</div>
+      </div>
+    </article>
+
+    <!-- 14 -->
+    <article class="point" id="p14">
+      <div class="point-h"><div class="num">14</div><h3>分段函数建模：阶梯价格</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">“超过部分打折”“累进税率”“分段运费”都是同一道题。命门在第二段：<b>必须把前面那一段的钱加上</b>，而不是简单用新单价乘总量。</p>
+        <div class="tagrow"><span class="chip">§1.1 六 / §1.2 · p16–p24</span><span class="chip">应用题</span><span class="chip hot">第二段漏加前段金额</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 找分段点（数量阈值）；② 第一段：单价 × 数量；③ 第二段：<b>阈值内的钱 + 新单价 ×（总量 − 阈值）</b>；④ 写出完整的定义域；⑤ 检查分段点两侧是否接得上（这是第 2 章连续性的伏笔）。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">某商品定价：一次购买不超过 100 件时，每件 20 元；超过 100 件的部分，每件 15 元。求总费用 T(q) 作为购买量 q 的函数，并求 q = 150 时的总费用；判断 T(q) 在 q = 100 处是否衔接。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 当 0 ≤ q ≤ 100 时，T(q) = 20q。</span>
+            <span class="step">② 当 q &gt; 100 时，前 100 件付 20 × 100 = 2000 元，超出部分 (q − 100) 件按 15 元，故 T(q) = 2000 + 15(q − 100) = 15q + 500。</span>
+            <span class="step">③ 即 T(q) = { 20q, 0 ≤ q ≤ 100；15q + 500, q &gt; 100 }。</span>
+            <span class="step">④ q = 150：T = 15 × 150 + 500 = 2750（元）。验算：2000 + 15 × 50 = 2750 ✓。</span>
+            <span class="step res">⑤ 衔接检查：左段在 q = 100 处取 2000，右段在 q → 100⁺ 时 15 × 100 + 500 = 2000，两侧相等，说明在 q = 100 处“接得上”（第 2 章会称之为该点连续）。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习1.2 提高题（P24）第 2 题（税负分摊）、§1.1 分段函数例；类似变式：累进税率下“收入 → 应纳税额”的函数。</p></div>
+        <div class="mistake"><b>易错：</b>第二段写成 15q（漏掉前 100 件的 2000 元）；分段点写重或写空（≤ 与 &lt; 只管一边）；不做衔接检查——这一步在第 2 章要单独考 2 分。</div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ================= 速查 ================= -->
+  <section id="cheat">
+    <div class="sec-head"><div class="idx">五</div><h2>考前速查页</h2></div>
+    <p class="sec-intro">进考场前 10 分钟只看这一页。</p>
+
+    <div class="kb">
+      <div class="kb-h"><span class="no">A</span><h3>定义域六类约束（扫一遍就能列全）</h3></div>
+      <div class="eq left" style="text-align:left; line-height:2.1">
+        <span class="m">① 分母 ≠ 0　② 偶次根号内 ≥ 0　③ 对数真数 &gt; 0（底 &gt; 0 且 ≠ 1）</span><br>
+        <span class="m">④ 反三角括号 ∈ [−1, 1]　⑤ tan x：x ≠ π/2 + kπ；cot x：x ≠ kπ　⑥ 实际意义：q ≥ 0、p ≥ 0</span>
+      </div>
+      <p style="font-size:13.5px; color:var(--ink3); margin:0">分段函数：各段取<b>并集</b>；多个复合项：取<b>交集</b>。这两个字别写反。</p>
+    </div>
+
+    <div class="kb">
+      <div class="kb-h"><span class="no">B</span><h3>七个经济函数的一句话定义</h3></div>
+      <ul style="margin-bottom:0">
+        <li>需求 q = D(p)：价格升、需求降；反解得 p = D⁻¹(q)</li>
+        <li>供给 q = S(p)：价格升、供给增</li>
+        <li>均衡：D(p) = S(p) → 均衡价格 p*，代回得 q*</li>
+        <li>成本 C(q) = 固定成本 + 可变成本，C(0) = 固定成本</li>
+        <li>平均成本 AC = C(q)/q（U 形，第 4 章求最小）</li>
+        <li>收益 R(q) = p·q（<b>p 必须用反需求函数代入</b>）</li>
+        <li>利润 L(q) = R(q) − C(q)；盈亏平衡 L(q) = 0</li>
+      </ul>
+    </div>
+
+    <div class="kb">
+      <div class="kb-h"><span class="no">C</span><h3>十句“看到就想起”的话</h3></div>
+      <ul style="margin-bottom:0">
+        <li>看到“求定义域” → 列约束、解不等式组、取交集、写区间</li>
+        <li>看到 f(某式) → 整体替换，每个 x 都换</li>
+        <li>看到“是否同一函数” → 先比定义域，再比化简后的法则</li>
+        <li>看到“奇偶” → 先查定义域对称，再算 f(−x)</li>
+        <li>看到 sin²x → 先降幂，周期是 π 不是 2π</li>
+        <li>看到“有界” → 报出一个具体的 M</li>
+        <li>看到“求反函数” → 解 x、换字母、<b>写定义域</b></li>
+        <li>看到复合 → 从最外层往里剥，剥到 x</li>
+        <li>看到“已知 f 定义域求 f[g(x)]” → 把 g(x) 关进 [a,b]</li>
+        <li>看到“成本/收益/利润” → C → 反解 p → R = pq → L = R − C</li>
+      </ul>
+    </div>
+
+    <div class="callout warn" style="margin-top:6px">
+      <div class="tag">本章十条高频错误（写在草稿纸最上面）</div>
+      <p>① 定义域只写“使式子有意义”不算完；② 分母里的根号写成 ≥ 0；③ 判断同函数只看式子长相；④ 奇偶不查定义域；⑤ 把 √(x²) 写成 x；⑥ f[f(x)] 漏掉内层限制；⑦ 反函数不写定义域；⑧ 复合拆层少剥一层；⑨ 收益用常数价格乘数量（忘了 p 是 q 的函数）；⑩ 利润漏固定成本。</p>
+    </div>
+  </section>
+
+  <!-- ================= 对照教学计划 ================= -->
+  <section id="plan">
+    <div class="sec-head"><div class="idx">六</div><h2>对照教学计划：这一章要求你到什么程度</h2></div>
+    <p class="sec-intro">依据《2026—2027 学年度第一学期 微积分 I 教学进度计划表》（黄新阳，软件工程 002195-11 班，48 学时），第 1 章安排在第 6 周、4 学时，是全书<b>课时最少</b>的一章；但它是第一次小测的范围之一，也是期末应用题的建模入口。</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>计划要求</th><th>具体内容</th><th>本材料对应位置</th></tr></thead>
+        <tbody>
+          <tr><td>课堂内容</td><td>§1.1 一～六（区间与邻域、函数概念、几何特性、反函数、初等函数、分段函数）；§1.2 一～七（需求、供给、市场均衡、成本、收益、利润、库存）</td><td>二、必备基础 01–08</td></tr>
+          <tr><td>布置作业</td><td>练习1.1（P17–18）3、4、6、7、8、9 + 提高 2、3、4；练习1.2（P23–24）3、4、5、6 + 提高 1、2；习题一 2–8、10–13</td><td>三、题型总结 14 类 + 各考点的“同型练习”</td></tr>
+          <tr><td>考核范围</td><td>第一次小测（第 1、2 章）；期末闭卷（第 1–4 章 + 5.1–5.3）</td><td>四、考点详解（考频标星）</td></tr>
+          <tr><td>不考内容</td><td>MATLAB 实验（p25–p31）——作业一道未留，考试不考</td><td>已从考点中剔除，仅在本页说明</td></tr>
+          <tr><td>达标标准</td><td>定义域题全对；能从文字写出 C、R、L 三个函数；能求均衡价格与盈亏平衡点</td><td>考点 01、11、12（三张卡片必须能独立默写）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout ok" style="margin-bottom:0">
+      <div class="tag">4 学时怎么用（建议）</div>
+      <p>2 学时给定义域 + 复合拆层（这两件事后面天天用）；1 学时给经济函数（期末考试的直接来源）；剩 1 学时给四性与反函数（判断题）。<b>不要在本章做难题</b>——本章没有难题，时间应该花在“写规范”上。</p>
+    </div>
+  </section>
+
+  <div class="endnote">
+    <p><b>说明：</b>本报告按教材《经济管理应用数学基础——微积分（上）》（齐亚伟等，高等教育出版社 2022 年 9 月第 1 版）第 1 章 §1.1–§1.2 的章节顺序组织，定义、术语与解法步骤尽量贴近原书；例题为按教材题型自拟的同型题（数值重新设计并已逐题验算），教材原题位置以节号与作业页码标注。原书 p25–p31 的 MATLAB 实验部分考试不考，未纳入考点。</p>
+    <p>建议用法：先读“必备基础知识”两遍，再用“考点清单”定位薄弱项，然后只做对应考点的例题；考前过一遍速查页。</p>
+  </div>
+</div>
+
+<a class="totop" href="#top" aria-label="回到顶部">↑</a>
+<script>
+(function () {
+  var t = document.querySelector('.totop');
+  if (!t) return;
+  function sync() {
+    if (window.pageYOffset > 600) { t.classList.add('show'); }
+    else { t.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', sync, { passive: true });
+  sync();
+})();
+</script>
+
+</body>
+</html>

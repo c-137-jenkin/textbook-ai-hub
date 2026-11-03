@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html data-sp-mode="scroll" lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="《经济管理应用数学基础——微积分（上）》第 1–5 章重点知识详解：必备基础、题型总结、考点拆解与考前速查，按教学进度计划表的考核范围组织。">
+<title>第5章 多元函数微分学 · 重点知识详解</title>
+<link rel="stylesheet" href="assets/css/base.css">
+</head>
+<body>
+<nav class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#top">第5章 · 多元函数微分学</a>
+    <a href="#map">本章地图</a>
+    <a href="#base">必备基础</a>
+    <a href="#list">题型总结</a>
+    <a href="#points">考点详解</a>
+    <a href="#cheat">考前速查</a>
+    <a href="overview.html">全书地图</a>
+  <a href="index.html">合订本</a>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div>
+      <div class="kicker">微积分（上）· 第五章</div>
+      <h1>多元函数微分学<br><em>从一条线，升维到一个面</em></h1>
+      <p class="hero-sub">这一章不是新学问，是前四章的“升维重演”：一元叫导数，这里叫偏导数；一元叫微分，这里叫全微分。真正的难点只有一个——<b>多了自变量之后，“趋近”不再只有左右两条路，也不再“偏导存在就连续”</b>。本材料按教学计划区分两块：§5.1–§5.3 是期末必考，§5.4 之后为拓展（体系完整，但计划未列）。</p>
+      <div class="hero-meta">
+        依据教材：齐亚伟等《经济管理应用数学基础——微积分（上）》，高等教育出版社，2022&nbsp;年&nbsp;9&nbsp;月第&nbsp;1&nbsp;版<br>
+        对应范围：§5.1–§5.3（考核）＋ §5.4–§5.8（拓展）（原书 p215–p277）　·　配套：全书思维地图、教学进度与考核要求
+      </div>
+    </div>
+    <div class="statbox">
+      <div class="stat"><div class="n">3</div><div class="l">节考核内容</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">必考考点</div></div>
+      <div class="stat"><div class="n">5</div><div class="l">拓展考点</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">个新概念（偏导/全微分）</div></div>
+    </div>
+  </header>
+
+  <!-- ================= 目录 ================= -->
+  <section id="toc" style="margin-top:44px">
+    <div class="toc">
+      <a href="#map">一、本章地图：升维重演<span>逻辑链</span></a>
+      <a href="#base">二、必备基础知识（9&nbsp;块）<span>看懂的入口</span></a>
+      <a href="#list">三、题型总结 · 例题怎么解<span>15&nbsp;考点</span></a>
+      <a href="#p1">考点&nbsp;01–03　区域·极限·连续<span>必考</span></a>
+      <a href="#p4">考点&nbsp;04–06　偏导数与高阶偏导<span>计算主力</span></a>
+      <a href="#p7">考点&nbsp;07–10　全微分与三关系<span>必考 · 易错</span></a>
+      <a href="#p11">考点&nbsp;11–12　复合与隐函数<span>拓展</span></a>
+      <a href="#p13">考点&nbsp;13–15　极值·拉格朗日·经济<span>拓展</span></a>
+      <a href="#cheat">四、考前速查页<span>10&nbsp;分钟</span></a>
+      <a href="#plan">五、对照教学计划自检<span>考核范围</span></a>
+    </div>
+  </section>
+
+  <!-- ================= 本章地图 ================= -->
+  <section id="map">
+    <div class="sec-head"><div class="idx">一</div><h2>本章地图：一次升维重演</h2></div>
+    <p class="sec-intro">现实里的量很少只依赖一个变量：产量取决于劳动和资本，需求取决于自身价格、替代品价格和收入。所以必须研究 z = f(x, y)。一升维，三件事立刻变难：几何对象从平面曲线变成空间曲面；“趋近”从两条路变成无数条路；“可微”不再等价于“偏导存在”。</p>
+
+    <div class="chain">
+      <div class="node"><div class="s">§5.1</div><div class="t">先搭舞台</div><div class="d">平面区域、空间解析几何简介；二元函数的定义域与图形</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="s">§5.1 三</div><div class="t">极限与连续</div><div class="d">路径任意性：所有路径都趋同一值，极限才存在</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="s">§5.2</div><div class="t">偏导数</div><div class="d">固定其他变量，对一个变量求导；几何意义是截面曲线的切线斜率</div></div>
+    </div>
+    <div class="chain" style="margin-top:10px">
+      <div class="node"><div class="s">§5.3</div><div class="t">全微分</div><div class="d">Δz = AΔx + BΔy + o(ρ)；dz = z<sub>x</sub>dx + z<sub>y</sub>dy</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="s">§5.3 末</div><div class="t">三者关系</div><div class="d">偏导连续 ⇒ 可微 ⇒ 连续且偏导存在；逆命题全不成立</div></div>
+      <div class="arrow">→</div>
+      <div class="node" style="background:var(--accent-soft); border-color:var(--accent-line)"><div class="s">§5.4+</div><div class="t">拓展（不考）</div><div class="d">复合、隐函数、极值、拉格朗日、经济应用——体系完整，计划未列</div></div>
+    </div>
+
+    <div class="callout warn">
+      <div class="tag">先说清考核范围（很重要，别白花时间）</div>
+      <p>按教学进度计划表，第 5 章只安排 <b>4 学时</b>（第 16–17 周），内容为 <b>§5.1 多元函数基本概念、§5.2 偏导数、§5.3 全微分</b>；期末闭卷的考试范围写的是“第五章节 5.1、5.2、5.3”。所以：<b>考点 01–10 是必考范围，考点 11–15（复合、隐函数、极值、拉格朗日、经济应用）是拓展</b>——本材料仍然写全，是为了让你理解整章的逻辑，但复习时间应该按 8 : 2 分配。</p>
+    </div>
+    <div class="callout plain">
+      <div class="tag">本章与前面四章的逐条对应</div>
+      <p>邻域 U(x₀,δ) → 平面邻域 U(P₀,δ)；定义域是区间 → 定义域是平面区域；一元极限与连续 → 二元极限与连续；导数 → 偏导数；微分 dy = f′(x)dx → 全微分 dz = z<sub>x</sub>dx + z<sub>y</sub>dy；链式法则 → 树状链式；极值“驻点 + 二阶判据” → “偏导 = 0 + 二阶判别式 + 拉格朗日”。<b>一句话：本章是前四章的逐条复制，只加了三个补丁——路径任意性、可微 ≠ 偏导存在、条件极值。</b></p>
+    </div>
+  </section>
+
+  <!-- ================= 必备基础知识 ================= -->
+  <section id="base">
+    <div class="sec-head"><div class="idx">二</div><h2>必备基础知识</h2></div>
+    <p class="sec-intro">前 8 块是考核范围（§5.1–§5.3），第 9 块是拓展。真正需要“理解”的只有两处：<b>路径任意性</b>（第 4 块）和<b>三者关系</b>（第 8 块），其余都是计算。</p>
+
+    <!-- KB1 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">01</span><h3>平面区域与邻域：二元世界的“语法”</h3><span class="p">§5.1 一（p216–p219）</span></div>
+      <p>一元函数的定义域是数轴上的区间；二元函数的定义域是<b>平面上的点集</b>（区域），要能画出来。</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>概念</th><th>定义</th><th>怎么判断</th></tr></thead>
+          <tbody>
+            <tr><td><b>邻域</b> U(P₀, δ)</td><td>到 P₀(x₀,y₀) 的距离小于 δ 的所有点：√[(x−x₀)² + (y−y₀)²] &lt; δ</td><td>平面上的开圆盘（不含圆周）</td></tr>
+            <tr><td><b>内点</b></td><td>存在一个邻域完全落在点集内</td><td>“周围一圈都在里面”</td></tr>
+            <tr><td><b>边界点</b></td><td>任一邻域内既有属于点集的点，也有不属于的</td><td>圆周上的点就是圆盘的边界点</td></tr>
+            <tr><td><b>开集</b></td><td>所有点都是内点（不含边界）</td><td>x² + y² &lt; 1</td></tr>
+            <tr><td><b>闭区域</b></td><td>开区域加上它的全部边界</td><td>x² + y² ≤ 1</td></tr>
+            <tr><td><b>有界区域</b></td><td>能被某个以原点为心的大圆盘包含</td><td>整平面、第一象限都无界</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-bottom:0"><b>与一元的唯一差别：</b>一元的“去心邻域”只有左右两个方向，二元的是<b>整个圆周方向都可以靠近</b>——这就是下一块“路径任意性”的来源。</p>
+    </div>
+
+    <!-- KB2 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">02</span><h3>空间解析几何简介：认得出四种曲面</h3><span class="p">§5.1 二（p219–p222）</span></div>
+      <p>多元函数的图像是空间曲面，所以先要能看懂方程长什么样。考试不考作图，但会考“这个方程表示什么曲面”。</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>方程</th><th>名称</th><th>形状特征</th></tr></thead>
+          <tbody>
+            <tr><td class="m">Ax + By + Cz + D = 0</td><td>平面</td><td>一次方程永远是平面</td></tr>
+            <tr><td class="m">(x−x₀)² + (y−y₀)² + (z−z₀)² = R²</td><td>球面</td><td>到定点距离为常数</td></tr>
+            <tr><td class="m">x² + y² = R²</td><td>圆柱面</td><td>方程缺 z：母线与 z 轴平行</td></tr>
+            <tr><td class="m">z = x² + y²</td><td>旋转抛物面</td><td>开口向上的“碗”，最低点在原点</td></tr>
+            <tr><td class="m">z = x² − y²</td><td>双曲抛物面（马鞍面）</td><td>一个方向 ∪、另一个方向 ∩，原点处是鞍点</td></tr>
+            <tr><td class="m">x²/a² + y²/b² + z²/c² = 1</td><td>椭球面</td><td>三个方向都被“夹住”</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-bottom:0"><b>两点距离公式</b>（后面证极限要用）：|P₁P₂| = √[(x₂−x₁)² + (y₂−y₁)² + (z₂−z₁)²]。平面上则去掉 z 项，记 ρ = √[(Δx)² + (Δy)²]——<b>全微分定义里的 ρ 就是这个</b>。</p>
+    </div>
+
+    <!-- KB3 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">03</span><h3>二元函数：定义域要画图</h3><span class="p">§5.1 二（p223–p228）</span></div>
+      <p>设 D 是平面上的一个点集，若对 D 中每一点 (x, y)，按某法则都有唯一确定的 z 与之对应，则称 z 是 x、y 的<b>二元函数</b>，记 z = f(x, y)，(x, y) ∈ D。D 是定义域，图形是空间中的一张曲面。</p>
+      <ul>
+        <li><b>求定义域 = 解不等式组 + 画区域</b>。六类约束与第 1 章完全相同（分母 ≠ 0、偶次根号 ≥ 0、对数真数 &gt; 0、反三角 ∈ [−1,1]），只是每个约束在平面上画的是一条曲线的一侧。</li>
+        <li><b>常见区域要会画</b>：圆盘 x² + y² ≤ 1、上半平面 y &gt; 0、直线 y = x 的一侧、由 y = x² 与 y = 1 围成的区域。</li>
+        <li><b>二元函数的“截面”理解法</b>：固定 y = y₀，得到一元函数 z = f(x, y₀)，它是曲面被平面 y = y₀ 切出来的曲线——<b>这就是偏导数的几何来源</b>。</li>
+      </ul>
+    </div>
+
+    <!-- KB4 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">04</span><h3>二元极限与连续：路径任意性</h3><span class="p">§5.1 三（p225–p228）　本章第一难点</span></div>
+      <p><b>极限：</b>若点 P(x, y) 以<b>任意方式</b>趋于 P₀(x₀, y₀) 时，f(x, y) 都趋于同一个常数 A，则称 A 为极限，记 lim<sub>(x,y)→(x₀,y₀)</sub> f(x, y) = A。</p>
+      <div class="callout warn" style="margin:0">
+        <div class="tag">为什么二元极限比一元难</div>
+        <p>一元里 x → x₀ 只有左右两条路，左右极限相等就够了。二元里 P 可以从<b>无穷多条路径</b>靠近 P₀：直线、抛物线、螺旋线……<b>只要找到两条路径给出不同的值，极限就不存在</b>；但要证明存在，必须证明“所有路径”都趋同一值（通常用夹逼或极坐标放缩）。</p>
+      </div>
+      <p style="margin-top:14px"><b>连续：</b>lim<sub>(x,y)→(x₀,y₀)</sub> f(x, y) = f(x₀, y₀) 时称 f 在该点连续。与一元一样：初等函数在其定义区域内连续；分段函数在分段线上要单独验证。</p>
+      <p style="margin-bottom:0"><b>闭区域上连续函数的性质</b>（与一元平行，最值定理是第 5 章极值存在的保证）：最值定理、介值定理、零点定理都成立。</p>
+    </div>
+
+    <!-- KB5 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">05</span><h3>偏导数：把别的变量当常数</h3><span class="p">§5.2 一、二（p229–p236）　考核重点</span></div>
+      <p><b>定义：</b>把 y 固定为 y₀，只让 x 变，若极限存在，则称之为 f 对 x 的偏导数：</p>
+      <div class="eq">
+        z<sub>x</sub> = <span class="frac"><span class="fn">∂z</span><span class="fd">∂x</span></span> = lim<sub>Δx→0</sub> <span class="frac"><span class="fn">f(x₀ + Δx, y₀) − f(x₀, y₀)</span><span class="fd">Δx</span></span>　；　z<sub>y</sub> = lim<sub>Δy→0</sub> <span class="frac"><span class="fn">f(x₀, y₀ + Δy) − f(x₀, y₀)</span><span class="fd">Δy</span></span>
+        <span class="note">记号：z<sub>x</sub>、f<sub>x</sub>、∂z/∂x、∂f/∂x 都是同一个东西</span>
+      </div>
+      <ul>
+        <li><b>几何意义</b>：z<sub>x</sub>(x₀,y₀) 是曲面被平面 y = y₀ 切出的曲线在该点处<b>切线的斜率</b>（对 x 方向）；z<sub>y</sub> 同理是对 y 方向。</li>
+        <li><b>计算方法：求 z<sub>x</sub> 时把 y 当常数，求 z<sub>y</sub> 时把 x 当常数</b>，然后用一元的全部求导公式。这是本章最容易上手的部分，也是失分最多的地方（总有人对 y 用乘积法则）。</li>
+        <li><b>关键区别</b>：偏导存在 <b>不</b> 蕴含连续（一元是可导 ⇒ 连续，二元不成立！）。反例见考点 05。</li>
+      </ul>
+    </div>
+
+    <!-- KB6 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">06</span><h3>高阶偏导数与混合偏导</h3><span class="p">§5.2 三（p234–p236）</span></div>
+      <p>偏导数仍是 x、y 的函数，可以再求偏导，得四个二阶偏导：</p>
+      <div class="eq">
+        z<sub>xx</sub> = <span class="frac"><span class="fn">∂²z</span><span class="fd">∂x²</span></span>，　z<sub>yy</sub> = <span class="frac"><span class="fn">∂²z</span><span class="fd">∂y²</span></span>，　z<sub>xy</sub> = <span class="frac"><span class="fn">∂²z</span><span class="fd">∂x∂y</span></span>（先 x 后 y），　z<sub>yx</sub> = <span class="frac"><span class="fn">∂²z</span><span class="fd">∂y∂x</span></span>（先 y 后 x）
+        <span class="note">定理：若 z<sub>xy</sub> 与 z<sub>yx</sub> 都连续，则二者相等（本章所有题都满足，可放心交换顺序）</span>
+      </div>
+      <p style="margin-bottom:0"><b>计算顺序建议：</b>先求简单的那个顺序。比如 z = x²y + e<sup>xy</sup>，先对 y 求再对 x 求，中间式更短。<b>注意记号</b>：∂²z/∂x∂y 在多数教材里表示“先对 x、后对 y”，也有教材相反——考试按老师写法，算完用“混合偏导相等”自检即可。</p>
+    </div>
+
+    <!-- KB7 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">07</span><h3>全微分：Δz 的线性主部</h3><span class="p">§5.3（p237–p243）　考核重点</span></div>
+      <p>给 x、y 各一个增量 Δx、Δy，函数的<b>全增量</b>为 Δz = f(x₀+Δx, y₀+Δy) − f(x₀, y₀)。若 Δz 能写成</p>
+      <div class="eq">
+        Δz = A·Δx + B·Δy + o(ρ)，　ρ = √[(Δx)² + (Δy)²]
+        <span class="note">A、B 与 Δx、Δy 无关，o(ρ) 是比 ρ 高阶的无穷小 —— 此时称 f 在 (x₀,y₀) 可微</span>
+      </div>
+      <p>可以证明 <b>A = z<sub>x</sub>、B = z<sub>y</sub></b>，于是全微分</p>
+      <div class="eq">
+        dz = z<sub>x</sub> dx + z<sub>y</sub> dy　　（与一元的 dy = f′(x)dx 完全同构）
+        <span class="note">近似计算：f(x₀+Δx, y₀+Δy) ≈ f(x₀,y₀) + z<sub>x</sub>Δx + z<sub>y</sub>Δy</span>
+      </div>
+      <ul>
+        <li><b>必要条件</b>：可微 ⟹ 偏导存在（且 A、B 就是偏导）。所以“偏导不存在”直接判不可微。</li>
+        <li><b>充分条件</b>：<b>偏导数连续 ⟹ 可微</b>。做题时若两个偏导都是初等函数（在区域内连续），就可以直接说“故可微”，不必用定义验证。</li>
+        <li><b>判不可微的实操</b>：算出 z<sub>x</sub>、z<sub>y</sub> 后，检验 [Δz − (z<sub>x</sub>Δx + z<sub>y</sub>Δy)]/ρ 是否 → 0；不趋于 0 就不可微。</li>
+      </ul>
+    </div>
+
+    <!-- KB8 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">08</span><h3>三者关系：一张图记住全部命题</h3><span class="p">§5.2–§5.3 综合　必考判断</span></div>
+      <div class="eq">
+        偏导数连续 ⟹ 可微 ⟹ ｛ 连续，偏导数存在 ｝
+        <span class="note">箭头都不可逆：可微 ⇏ 偏导连续；连续 ⇏ 偏导存在；偏导存在 ⇏ 连续</span>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>命题</th><th>真假</th><th>反例 / 依据</th></tr></thead>
+          <tbody>
+            <tr><td>可微 ⇒ 连续</td><td><b>真</b></td><td>Δz = AΔx + BΔy + o(ρ) → 0</td></tr>
+            <tr><td>可微 ⇒ 偏导存在</td><td><b>真</b></td><td>取 Δy = 0 即得 A = z<sub>x</sub></td></tr>
+            <tr><td>偏导连续 ⇒ 可微</td><td><b>真</b></td><td>本章的充分条件定理</td></tr>
+            <tr><td>偏导存在 ⇒ 连续</td><td><b>假</b></td><td class="m">f = xy/(x²+y²)（原点补 0）：两个偏导都为 0，但沿 y = x 极限为 1/2 ≠ 0</td></tr>
+            <tr><td>连续 ⇒ 偏导存在</td><td><b>假</b></td><td class="m">f = √(x²+y²) 在原点连续，但偏导不存在</td></tr>
+            <tr><td>可微 ⇒ 偏导连续</td><td><b>假</b></td><td>存在可微但偏导不连续的例子（了解即可）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warn" style="margin-bottom:0">
+        <div class="tag">这一块是本章的“判断题富矿”</div>
+        <p>一元里“可导 ⇔ 可微”“可导 ⇒ 连续”用得太顺手，到二元全部失效。记住这张表，判断题的 4–6 分就稳了。<b>考场上最快的判断法</b>：先想“偏导存在”这个条件有多弱——它只保证沿两个坐标轴方向的变化率存在，别的方向一概不管，所以当然推不出连续。</p>
+      </div>
+    </div>
+
+    <!-- KB9 -->
+    <div class="kb">
+      <div class="kb-h"><span class="no">09</span><h3>拓展：§5.4 之后的四条延伸（考核不要求）</h3><span class="p">§5.4–§5.8（p244–p269）</span></div>
+      <p>教学计划只安排到 §5.3，下面四块属于“教材有、计划未列”。它们是把前四章的套路再升维一次，理解结构即可，不必花大量时间刷题。</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>内容</th><th>一元对应</th><th>升维后的新东西</th></tr></thead>
+          <tbody>
+            <tr><td>复合函数求导（§5.4）</td><td>链式法则</td><td>变量关系变成“树”，一个中间变量可能同时依赖多个变量，要画树、按路径相加</td></tr>
+            <tr><td>隐函数求导（§5.5）</td><td>两边对 x 求导</td><td>可用公式：∂z/∂x = −F<sub>x</sub>/F<sub>z</sub>，∂z/∂y = −F<sub>y</sub>/F<sub>z</sub>（负号别丢）</td></tr>
+            <tr><td>极值（§5.6）</td><td>驻点 + 二阶判据</td><td>解 z<sub>x</sub> = z<sub>y</sub> = 0 得驻点，再用 Δ = AC − B² 判别（A = z<sub>xx</sub>，B = z<sub>xy</sub>，C = z<sub>yy</sub>）</td></tr>
+            <tr><td>条件极值（§5.7）</td><td>无对应</td><td>拉格朗日乘数法：L = f + λφ，解 L<sub>x</sub> = L<sub>y</sub> = L<sub>λ</sub> = 0</td></tr>
+            <tr><td>经济应用（§5.8）</td><td>边际与弹性</td><td>偏边际 ∂Q/∂p₁、偏弹性；约束下的成本最小 / 产量最大 / 利润最大</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-bottom:0; font-size:13.5px; color:var(--ink3)">下面考点 11–15 会各给一道典型题，够应付“老师顺口提一句”的场合；如果你的目标是期末，10 分钟看完即可，不必深究。</p>
+    </div>
+  </section>
+
+  <!-- ================= 题型总结 ================= -->
+  <section id="list">
+    <div class="sec-head"><div class="idx">三</div><h2>题型总结：例题是怎么解的</h2></div>
+    <p class="sec-intro">本章考核范围内的题型其实很少（5 类），但每一类都容易踩“一元习惯”的坑。前半张表按解法动作归类，<b>灰底（★前无标星）的是拓展题</b>；后半张表是考点与考频。<b>分数结构：偏导计算 + 全微分（约 70%）、概念判断（约 20%）、极限与连续（约 10%）。</b></p>
+
+    <div class="blk">
+      <div class="blk-t">题型总结 · 按解法动作归类（覆盖 §5.1–§5.8 全部例题类型）</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>序号</th><th>题型（长什么样）</th><th>教材位置</th><th>解法动作（照做即可）</th><th>对应考点</th></tr></thead>
+          <tbody>
+            <tr><td>01</td><td><b>求定义域并画区域</b></td><td>§5.1 二（p223–p225）<br>练习5.1（P226）3、4、5</td><td>① 逐项列约束；② 每个约束画一条边界曲线；③ 取交集（同时满足）；④ 标明开/闭（等号决定虚实线）</td><td>01</td></tr>
+            <tr><td>02</td><td><b>二元极限（存在）</b></td><td>§5.1 三（p225–p227）</td><td>① 尝试放缩到只含 ρ；② 用 |xy| ≤ (x²+y²)/2 一类不等式；③ 夹逼得 0</td><td>02</td></tr>
+            <tr><td>03</td><td><b>二元极限（不存在）</b></td><td>§5.1 三（p226–p227）</td><td>① 取直线 y = kx 代进去；② 若结果依赖 k，说明不同路径极限不同；③ 结论写“故极限不存在”</td><td>02</td></tr>
+            <tr><td>04</td><td><b>判断连续性</b></td><td>§5.1 三（p227–p228）</td><td>① 算极限（可能不存在）；② 与 f(x₀,y₀) 比较；③ 相等才连续</td><td>03</td></tr>
+            <tr><td>05</td><td><b>求一阶偏导</b></td><td>§5.2 二（p229–p233）<br>练习5.2（P233）</td><td>① 求 z<sub>x</sub>：把 y 当常数；② 求 z<sub>y</sub>：把 x 当常数；③ 逐项套一元公式</td><td>04</td></tr>
+            <tr><td>06</td><td><b>用定义求偏导（原点/分段点）</b></td><td>§5.2 一（p229–p231）</td><td>① 写 f(x₀+Δx, y₀) − f(x₀,y₀) 除以 Δx；② 化简取极限；③ 另一个变量同理</td><td>05</td></tr>
+            <tr><td>07</td><td><b>求二阶、混合偏导</b></td><td>§5.2 三（p234–p236）</td><td>① 先求一阶；② 再对另一个变量求一次；③ 混合偏导交换顺序验算</td><td>06</td></tr>
+            <tr><td>08</td><td><b>判断可微性（用定义）</b></td><td>§5.3（p240–p243）</td><td>① 求 z<sub>x</sub>、z<sub>y</sub>；② 算 [Δz − z<sub>x</sub>Δx − z<sub>y</sub>Δy]/ρ；③ 沿某路径不为 0 → 不可微</td><td>07</td></tr>
+            <tr><td>09</td><td><b>求全微分 dz</b></td><td>§5.3（p237–p240）</td><td>① 求 z<sub>x</sub>、z<sub>y</sub>；② 写 dz = z<sub>x</sub>dx + z<sub>y</sub>dy；③ 代入具体点</td><td>08</td></tr>
+            <tr><td>10</td><td><b>用全微分做近似计算</b></td><td>§5.3（p241–p243）</td><td>① 选 f 与点 (x₀,y₀)；② 算 Δx、Δy；③ 代 f + z<sub>x</sub>Δx + z<sub>y</sub>Δy</td><td>09</td></tr>
+            <tr><td>11</td><td><b>三者关系判断</b></td><td>§5.2–§5.3</td><td>① 记链条“偏导连续 ⇒ 可微 ⇒ 连续/偏导存在”；② 逆命题一律判假；③ 能举反例最好</td><td>10</td></tr>
+            <tr><td>12</td><td><b>多元复合求导</b>（拓展）</td><td>§5.4（p244–p248）</td><td>① 画变量树；② 逐条路径相乘；③ 同一变量多条路径则相加</td><td>11</td></tr>
+            <tr><td>13</td><td><b>隐函数求导</b>（拓展）</td><td>§5.5（p249–p252）</td><td>① 写出 F(x,y,z) = 0；② 用 ∂z/∂x = −F<sub>x</sub>/F<sub>z</sub>；③ 注意负号</td><td>12</td></tr>
+            <tr><td>14</td><td><b>无条件极值</b>（拓展）</td><td>§5.6（p253–p258）</td><td>① 解 z<sub>x</sub> = 0、z<sub>y</sub> = 0 得驻点；② 算 A、B、C 与 Δ = AC − B²；③ 按判别式下结论</td><td>13</td></tr>
+            <tr><td>15</td><td><b>条件极值（拉格朗日）</b>（拓展）</td><td>§5.7（p259–p262）</td><td>① 构造 L = f + λφ；② 解三个方程；③ 代回求最值；④ 说明实际意义</td><td>14</td></tr>
+            <tr><td>16</td><td><b>偏边际 / 偏弹性 / 约束最优化</b>（拓展）</td><td>§5.8（p263–p269）</td><td>① 求偏导即为偏边际；② 偏弹性 = (x/z)·z<sub>x</sub>；③ 有约束就用拉格朗日</td><td>15</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:13px; color:var(--ink3); margin:8px 0 0">读法：01–11 是考核范围（必须全会）；12–16 是拓展（看懂即可）。若只剩一天复习，把 05、09、11 三类练熟，本章的分数基本就到手了。</p>
+    </div>
+
+    <div class="blk-t" style="margin-top:26px">考点清单 · 按考频排序（★ = 计划要求；○ = 拓展）</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>考点</th><th>常见题型</th><th>考频</th><th>对应节</th></tr></thead>
+        <tbody>
+          <tr><td>04</td><td>一阶偏导计算</td><td>计算题（必考）</td><td>★★★★★</td><td>§5.2</td></tr>
+          <tr><td>08</td><td>全微分 dz</td><td>计算 / 填空</td><td>★★★★★</td><td>§5.3</td></tr>
+          <tr><td>10</td><td>可微 / 连续 / 偏导存在的关系</td><td>判断 / 选择</td><td>★★★★★</td><td>§5.2–5.3</td></tr>
+          <tr><td>06</td><td>二阶与混合偏导</td><td>计算 / 填空</td><td>★★★★</td><td>§5.2</td></tr>
+          <tr><td>01</td><td>定义域与区域作图</td><td>填空 / 计算第一问</td><td>★★★★</td><td>§5.1</td></tr>
+          <tr><td>02</td><td>二元极限（含路径法证不存在）</td><td>计算 / 判断</td><td>★★★★</td><td>§5.1</td></tr>
+          <tr><td>07</td><td>可微性判定（用定义）</td><td>计算（含参）</td><td>★★★</td><td>§5.3</td></tr>
+          <tr><td>09</td><td>全微分近似计算</td><td>填空 / 应用</td><td>★★★</td><td>§5.3</td></tr>
+          <tr><td>03</td><td>连续性判断</td><td>判断</td><td>★★★</td><td>§5.1</td></tr>
+          <tr><td>05</td><td>用定义求偏导（分段点）</td><td>计算</td><td>★★★</td><td>§5.2</td></tr>
+          <tr><td>13</td><td>无条件极值（拓展）</td><td>计算</td><td>○ 拓展</td><td>§5.6</td></tr>
+          <tr><td>14</td><td>拉格朗日乘数法（拓展）</td><td>应用</td><td>○ 拓展</td><td>§5.7</td></tr>
+          <tr><td>11</td><td>多元复合求导（拓展）</td><td>计算</td><td>○ 拓展</td><td>§5.4</td></tr>
+          <tr><td>12</td><td>隐函数求导（拓展）</td><td>计算</td><td>○ 拓展</td><td>§5.5</td></tr>
+          <tr><td>15</td><td>偏边际 / 偏弹性（拓展）</td><td>简答</td><td>○ 拓展</td><td>§5.8</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout plain">
+      <div class="tag">拿到一道题，先问三句话</div>
+      <p>本章的题“会就是会，不会就是不会”，差别只在有没有问对问题。</p>
+    </div>
+    <div class="flow">
+      <div class="row"><div class="k">对谁求导？</div><div class="v">对 x 求就把 y 当常数，对 y 求就把 x 当常数——<b>永远不要对另一个变量用乘积法则</b></div></div>
+      <div class="row"><div class="k">在哪个点？</div><div class="v">原点、分段线上<b>只能用定义</b>；一般点直接套公式</div></div>
+      <div class="row"><div class="k">要偏导还是全微分？</div><div class="v">偏导 = 一个方向的变化率（数值）；全微分 = 两个方向合起来的变化量（带 dx、dy）</div></div>
+      <div class="row"><div class="k">是“存在”还是“可微”？</div><div class="v">偏导存在 ≠ 连续 ≠ 可微；证可微用定义或“偏导连续 ⇒ 可微”，证不可微找一条路径使比式不趋于 0</div></div>
+    </div>
+  </section>
+
+  <!-- ================= 考点详解 ================= -->
+  <section id="points">
+    <div class="sec-head"><div class="idx">四</div><h2>考点详解 · 例题与解答</h2></div>
+    <p class="sec-intro">15 个考点：<b>01–10 为考核范围</b>（按教学计划 §5.1–§5.3），<b>11–15 为拓展</b>（§5.4 之后，理解结构即可）。每题都按教材的解法顺序写，另附易扣分处。</p>
+
+    <!-- 01 -->
+    <article class="point" id="p1">
+      <div class="point-h"><div class="num">01</div><h3>定义域与区域作图</h3><div class="star">★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">与第 1 章同一套约束，只是每条约束在平面上画成一条曲线的一侧。<b>最后必须画出区域</b>，只写不等式是拿不到全分的。</p>
+        <div class="tagrow"><span class="chip">§5.1 二 · p223–p225</span><span class="chip">填空 / 计算第一问</span><span class="chip hot">要画图</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 逐项列约束（与第 1 章六类相同）；② 每个约束画边界曲线，判断取哪一侧；③ 取<b>交集</b>；④ 有等号画实线（含边界），无等号画虚线（不含）。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求 z = ln(x + y) + √(1 − x² − y²) 的定义域，并画出该区域。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 对数要求真数为正：x + y &gt; 0，即直线 y = −x 上方的半平面（不含直线）。</span>
+            <span class="step">② 根号要求被开方式非负：1 − x² − y² ≥ 0，即 x² + y² ≤ 1，单位圆盘（含圆周）。</span>
+            <span class="step">③ 取交集：单位圆盘中位于直线 y = −x 上方的部分（直线本身不含，圆周含）。</span>
+            <span class="step res">④ 作图：画单位圆（实线）、画直线 y = −x（虚线），阴影取圆内且在直线上方的那一块。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习5.1 基础题（P226）3、4、5——都是“根号 + 对数/分式”的组合，练到能一边列式一边画图。</p></div>
+        <div class="mistake"><b>易错：</b>只写不等式不画图；把 ln 的约束写成 ≥ 0；圆盘写成 &lt; 1（题目是 ≥ 0，含边界）；交集画成并集。</div>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="point" id="p2">
+      <div class="point-h"><div class="num">02</div><h3>二元极限：路径法证“不存在”</h3><div class="star">★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">考法只有两种：<b>证不存在</b>（找两条路径给出不同值，最常取 y = kx）与<b>证存在</b>（放缩 + 夹逼）。前者出现频率高得多。</p>
+        <div class="tagrow"><span class="chip">§5.1 三 · p225–p227</span><span class="chip">计算 / 判断</span><span class="chip hot">两条路径就够</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>证不存在：① 令 y = kx（或 y = kx²）代入；② 化简得只含 k 的式子；③ 若结果随 k 变，写出两个不同的 k 得两个不同的极限值；④ 结论“故极限不存在”。<br>证存在：① 把 |f − A| 放缩成只含 ρ 的式子；② 令 ρ → 0 得 0；③ 由夹逼得极限为 A。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">(1) 讨论 lim<sub>(x,y)→(0,0)</sub> xy/(x² + y²) 是否存在；(2) 求 lim<sub>(x,y)→(0,0)</sub> xy/√(x² + y²)。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) 取路径 y = kx：f = kx²/(x² + k²x²) = k/(1 + k²)。</span>
+            <span class="step">② 当 k = 1 时极限为 1/2；取 k = 0（即沿 x 轴）时 f ≡ 0，极限为 0。两者不等，故<b>极限不存在</b>。</span>
+            <span class="step">③ (2) 用不等式 |xy| ≤ (x² + y²)/2：|f| ≤ (x² + y²)/(2√(x² + y²)) = ρ/2。</span>
+            <span class="step res">④ 令 ρ → 0 得 |f| → 0，故极限 = 0。（也可用极坐标：f = ρcosθsinθ = ρ sin2θ/2 → 0）</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>§5.1 三的例题与练习5.1（P226）；经典变式：lim (x²y)/(x⁴ + y²)（沿 y = kx² 得 k/(1+k²)，不存在）。</p></div>
+        <div class="mistake"><b>易错：</b>只代 y = kx 一次就下“存在”的结论（不同 k 都要试）；把“沿某条路径极限为 0”当成“极限存在”；极坐标代换后忘了 θ 可以任意取。</div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="point" id="p3">
+      <div class="point-h"><div class="num">03</div><h3>连续性判断</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">连续 = 极限 = 函数值。所以这道题的第一步永远是<b>算极限</b>；如果极限都不存在，直接判不连续。</p>
+        <div class="tagrow"><span class="chip">§5.1 三 · p227–p228</span><span class="chip">判断</span><span class="chip">先算极限</span></div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设 f(x, y) = { xy/(x² + y²), (x,y) ≠ (0,0)；0, (x,y) = (0,0) }，讨论 f 在原点处的连续性。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 由考点 02 已知：沿 y = kx 时极限为 k/(1 + k²)，随 k 变化，故 lim<sub>(x,y)→(0,0)</sub> f 不存在。</span>
+            <span class="step">② 既然极限不存在，就不可能等于 f(0,0) = 0。</span>
+            <span class="step res">③ 故 f 在原点处<b>不连续</b>。（这个函数就是“偏导存在但不连续”的经典反例，见考点 05。）</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>§5.1 三的连续性例题；可加练 f(x,y) = xy/√(x²+y²)（原点补 0）：由考点 02(2) 知极限为 0 = f(0,0)，故连续。</p></div>
+        <div class="mistake"><b>易错：</b>只看“函数在原点有定义”就说连续；把“沿坐标轴连续”当连续；忘记比较的是 f(x₀,y₀) 而不是 0。</div>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="point" id="p4">
+      <div class="point-h"><div class="num">04</div><h3>一阶偏导：另一个变量当常数</h3><div class="star">★★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">本章最基础也最能拿分的计算。动作只有一句：<b>对 x 求导就把 y 看成常数（甚至是数字）</b>，反之亦然。</p>
+        <div class="tagrow"><span class="chip">§5.2 二 · p229–p233</span><span class="chip">计算题（必考）</span><span class="chip hot">别对常数用乘积法则</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 求 z<sub>x</sub>：把 y 当常数，逐项对 x 用一元公式（含 y 的因子照抄，含 y 的加项直接求导为 0 或按常数处理）；② 求 z<sub>y</sub>：把 x 当常数，同理；③ 结果用 z<sub>x</sub>、z<sub>y</sub> 或 ∂z/∂x 记法写清。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设 z = x²y + e<sup>xy</sup> + y³，求 ∂z/∂x 与 ∂z/∂y。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 求 ∂z/∂x：把 y 当常数。x²y 对 x 求导得 2xy；e<sup>xy</sup> 对 x 求导得 e<sup>xy</sup>·y（链式，y 是常数乘在指数上）；y³ 是常数，导数为 0。</span>
+            <span class="step">② 故 ∂z/∂x = 2xy + y e<sup>xy</sup>。</span>
+            <span class="step">③ 求 ∂z/∂y：把 x 当常数。x²y → x²；e<sup>xy</sup> → e<sup>xy</sup>·x；y³ → 3y²。</span>
+            <span class="step res">④ 故 ∂z/∂y = x² + x e<sup>xy</sup> + 3y²。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习5.2 基础题（P233）1、3、4、5、7、8 + 提高题 1、2、4——这一批题练完，偏导计算就稳了。</p></div>
+        <div class="mistake"><b>易错：</b>对 x 求导时把 y 也当变量（对 x²y 用乘积法则得 2xy + x²·0 还写成 2xy + x²）；e<sup>xy</sup> 对 x 求导漏乘 y；漏掉最后那个只含 y 的项（它的偏导是 0，但要意识到它存在）。</div>
+      </div>
+    </article>
+
+    <!-- 05 -->
+    <article class="point" id="p5">
+      <div class="point-h"><div class="num">05</div><h3>用定义求偏导：分段点与原点</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">和一元的分段点一样：<b>分段线上不能用公式</b>。而且这道题正好能说明“偏导存在 ≠ 连续”这个反直觉结论。</p>
+        <div class="tagrow"><span class="chip">§5.2 一 · p229–p231</span><span class="chip">计算</span><span class="chip hot">偏导存在推不出连续</span></div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设 f(x, y) = { xy/(x² + y²), (x,y) ≠ (0,0)；0, (x,y) = (0,0) }，求 f<sub>x</sub>(0,0) 与 f<sub>y</sub>(0,0)，并说明这说明了什么。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 按定义，求 f<sub>x</sub>(0,0) 时把 y 固定为 0：f(Δx, 0) = 0/(Δx)² = 0。</span>
+            <span class="step">② 故 f<sub>x</sub>(0,0) = lim<sub>Δx→0</sub> [0 − 0]/Δx = 0。同理 f<sub>y</sub>(0,0) = 0（f(0, Δy) = 0）。</span>
+            <span class="step">③ 但由考点 03 已知 f 在原点不连续。</span>
+            <span class="step res">④ 结论：两个偏导都存在，函数却不连续。<b>“偏导存在 ⇒ 连续”在二元里是假命题</b>——这是与一元最本质的差别。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>§5.2 一节的原点偏导例题；可加练 f = √(x² + y²) 在原点：f<sub>x</sub>(0,0) = lim |Δx|/Δx 不存在（左右极限不等），故偏导不存在，但函数连续——反向的反例。</p></div>
+        <div class="mistake"><b>易错：</b>对分段函数在原点直接用公式（那里公式不适用）；忘记先把另一个变量代成 0；把“偏导存在”当“连续”，或把“连续”当“偏导存在”。</div>
+      </div>
+    </article>
+
+    <!-- 06 -->
+    <article class="point" id="p6">
+      <div class="point-h"><div class="num">06</div><h3>二阶偏导与混合偏导</h3><div class="star">★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">就是“求两次”。要拿分的关键是<b>别把一阶导的结果抄错</b>——二阶导的错误 90% 来自第一步。</p>
+        <div class="tagrow"><span class="chip">§5.2 三 · p234–p236</span><span class="chip">计算 / 填空</span><span class="chip">混合偏导可交换</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 先求两个一阶偏导（写清楚）；② z<sub>xx</sub> 是 z<sub>x</sub> 再对 x 求（y 仍当常数）；③ z<sub>xy</sub> 是 z<sub>x</sub> 再对 y 求；④ 用 z<sub>xy</sub> = z<sub>yx</sub> 验算。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设 z = x³y² − 3xy³，求 z<sub>xx</sub>、z<sub>yy</sub>、z<sub>xy</sub>，并验证 z<sub>xy</sub> = z<sub>yx</sub>。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① z<sub>x</sub> = 3x²y² − 3y³；z<sub>y</sub> = 2x³y − 9xy²。</span>
+            <span class="step">② z<sub>xx</sub> = (3x²y²)′<sub>x</sub> = 6xy²（−3y³ 是常数，导数为 0）。</span>
+            <span class="step">③ z<sub>yy</sub> = (2x³y − 9xy²)′<sub>y</sub> = 2x³ − 18xy。</span>
+            <span class="step">④ z<sub>xy</sub>：对 z<sub>x</sub> = 3x²y² − 3y³ 再对 y 求 → 6x²y − 9y²。</span>
+            <span class="step res">⑤ z<sub>yx</sub>：对 z<sub>y</sub> = 2x³y − 9xy² 再对 x 求 → 6x²y − 9y²。两者相等 ✓。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习5.2 提高题（P233）；可加练 z = e<sup>xy</sup>（z<sub>xy</sub> = e<sup>xy</sup>(1 + xy)）、z = ln(x² + y²)（z<sub>xx</sub> = 2(y² − x²)/(x²+y²)²）。</p></div>
+        <div class="mistake"><b>易错：</b>求 z<sub>xx</sub> 时又把 y 当变量的项算进去；混合偏导的记号顺序搞反（∂²z/∂x∂y 到底是先谁，按老师说法）；一阶导抄漏项导致后面全错。</div>
+      </div>
+    </article>
+
+    <!-- 07 -->
+    <article class="point" id="p7">
+      <div class="point-h"><div class="num">07</div><h3>可微性判定：用定义，别猜</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">“偏导存在”不等于“可微”。判可微有两条路：<b>偏导连续 ⇒ 可微</b>（充分条件，最省事）或用<b>定义</b>验证比式趋于 0。</p>
+        <div class="tagrow"><span class="chip">§5.3 · p240–p243</span><span class="chip">计算（含参）</span><span class="chip hot">比式不趋 0 就不可微</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 求 z<sub>x</sub>、z<sub>y</sub>（原点处用定义）；② 算 Δz − (z<sub>x</sub>Δx + z<sub>y</sub>Δy)，再除以 ρ = √(Δx² + Δy²)；③ 若沿某条路径（如 Δx = Δy = t）这个比式不趋于 0，则不可微；④ 若两个偏导在点附近连续，直接由充分条件说“可微”。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">讨论 f(x, y) = √|xy| 在原点处是否可微。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 偏导：f(Δx, 0) = 0，故 f<sub>x</sub>(0,0) = lim 0/Δx = 0；同理 f<sub>y</sub>(0,0) = 0。</span>
+            <span class="step">② 检验可微：Δz − 0 = √|Δx·Δy| − 0，比式 = √|ΔxΔy| / √(Δx² + Δy²)。</span>
+            <span class="step">③ 取路径 Δx = Δy = t：比式 = √(t²)/√(2t²) = |t|/(√2|t|) = 1/√2，不趋于 0。</span>
+            <span class="step res">④ 故 f 在原点<b>不可微</b>（尽管两个偏导都存在）。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>§5.3 可微性例题与练习5.3（P241–P243）；对照题：z = x² + y²（偏导处处连续，故处处可微），以及 z = xy/√(x²+y²)（原点可微，可自行验证）。</p></div>
+        <div class="mistake"><b>易错：</b>“偏导存在所以可微”；比式的分母写成 Δx 或 Δy（必须是 ρ）；只在一条路径上验算就下“可微”结论（要证可微必须对所有路径成立）。</div>
+      </div>
+    </article>
+
+    <!-- 08 -->
+    <article class="point" id="p8">
+      <div class="point-h"><div class="num">08</div><h3>全微分 dz：会偏导就会它</h3><div class="star">★★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">dz = z<sub>x</sub>dx + z<sub>y</sub>dy，本质是两个偏导的“加权和”。填空题常给一个点，要求代入。</p>
+        <div class="tagrow"><span class="chip">§5.3 · p237–p240</span><span class="chip">计算 / 填空</span><span class="chip">别忘了 dx、dy</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 求 z<sub>x</sub>、z<sub>y</sub>；② 写成 dz = z<sub>x</sub>dx + z<sub>y</sub>dy；③ 若给点，代入该点的偏导值；④ 结果一定带 dx、dy（这是“微分”与“偏导”在格式上的唯一差别）。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设 z = x²y + y³，求全微分 dz；并求在点 (1,1) 处的 dz。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① z<sub>x</sub> = 2xy，z<sub>y</sub> = x² + 3y²。</span>
+            <span class="step">② 故 dz = 2xy dx + (x² + 3y²) dy。</span>
+            <span class="step">③ 在 (1,1)：z<sub>x</sub> = 2，z<sub>y</sub> = 1 + 3 = 4。</span>
+            <span class="step res">④ 故 dz|<sub>(1,1)</sub> = 2dx + 4dy。（因两个偏导都是多项式、处处连续，故该函数处处可微。）</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>练习5.3 基础题（P241–P243）2、提高题 2；可加练 z = e<sup>x</sup>ln y（dz = e<sup>x</sup>ln y dx + (e<sup>x</sup>/y)dy）。</p></div>
+        <div class="mistake"><b>易错：</b>dz 漏写 dx 或 dy；代入点时只代一个偏导；把 dz 写成 Δz（前者是线性主部，后者是真实增量）。</div>
+      </div>
+    </article>
+
+    <!-- 09 -->
+    <article class="point" id="p9">
+      <div class="point-h"><div class="num">09</div><h3>全微分的近似计算</h3><div class="star">★★★</div></div>
+      <div class="point-body">
+        <p class="lead">与第 3 章“微分近似”一模一样的思路，只是多了一个变量。<b>选点要让函数值和偏导都好算</b>。</p>
+        <div class="tagrow"><span class="chip">§5.3 · p241–p243</span><span class="chip">填空 / 应用</span><span class="chip">选点要巧</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 把目标值写成 f(x₀+Δx, y₀+Δy)；② 选 (x₀,y₀) 为邻近且好算的点；③ 求两个偏导在该点的值；④ 代 f ≈ f(x₀,y₀) + z<sub>x</sub>Δx + z<sub>y</sub>Δy。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">用全微分近似计算 1.04<sup>2.02</sup>。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 取 f(x, y) = x<sup>y</sup>，(x₀, y₀) = (1, 2)，则 Δx = 0.04，Δy = 0.02。</span>
+            <span class="step">② f(1,2) = 1；f<sub>x</sub> = y x<sup>y−1</sup>，在 (1,2) 处为 2；f<sub>y</sub> = x<sup>y</sup> ln x，在 (1,2) 处为 1²·ln 1 = 0。</span>
+            <span class="step res">③ 故 1.04<sup>2.02</sup> ≈ 1 + 2 × 0.04 + 0 × 0.02 = 1.08。（实际值约 1.0828，误差在千分之三以内。）</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>§5.3 近似计算例题；经典变式：√(1.02² + 1.97²)（取 f = √(x²+y²)，点 (1,2)）。</p></div>
+        <div class="mistake"><b>易错：</b>x₀ 选成使函数无定义的点；Δx 的符号写错（1.04 = 1 + 0.04）；忘记先算 f(x₀,y₀) 就把增量直接加上去。</div>
+      </div>
+    </article>
+
+    <!-- 10 -->
+    <article class="point" id="p10">
+      <div class="point-h"><div class="num">10</div><h3>可微 / 连续 / 偏导存在：三者关系判断</h3><div class="star">★★★★★</div></div>
+      <div class="point-body">
+        <p class="lead">判断题的富矿，也是本章唯一“纯概念”的考点。记住一张链、三个反例，就能全对。</p>
+        <div class="tagrow"><span class="chip">§5.2–§5.3</span><span class="chip">判断 / 选择</span><span class="chip hot">三个反例必须会背</span></div>
+        <div class="blk"><div class="blk-t">记住这张链</div>
+          <div class="eq" style="margin:0">偏导数连续 ⟹ 可微 ⟹ ｛连续，偏导数存在｝　　（箭头均不可逆）</div>
+        </div>
+        <div class="blk"><div class="blk-t">三个反例（考试直接用）</div>
+          <div class="sol" style="border-left-color:var(--warn-line)">
+            <span class="step">① <b>偏导存在但不连续</b>：f = xy/(x²+y²)（原点补 0）。两个偏导都为 0，但沿 y = x 极限为 1/2。</span>
+            <span class="step">② <b>连续但偏导不存在</b>：f = √(x²+y²)。在原点连续，但 |Δx|/Δx 的极限不存在。</span>
+            <span class="step res">③ <b>偏导存在但不可微</b>：f = √|xy|。两个偏导都为 0，可微性比式沿 Δx = Δy 趋于 1/√2 ≠ 0。</span>
+          </div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">判断正误并说明理由：(1) 若 z = f(x,y) 在点 P₀ 的两个偏导数都存在，则 f 在 P₀ 连续；(2) 若 f 在 P₀ 可微，则 f 在 P₀ 的偏导数存在；(3) 若 f 的两个偏导数在 P₀ 的某邻域内存在且在 P₀ 连续，则 f 在 P₀ 可微。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① (1) <b>错</b>。反例 f = xy/(x²+y²)（原点补 0）：偏导都为 0，但极限不存在，故不连续。</span>
+            <span class="step">② (2) <b>对</b>。可微定义中 Δz = AΔx + BΔy + o(ρ)，取 Δy = 0 即得 A = z<sub>x</sub>，故偏导必存在。</span>
+            <span class="step res">③ (3) <b>对</b>。这正是“偏导连续 ⇒ 可微”的充分条件定理，一字不差。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>§5.2–§5.3 的思考题与判断题；建议把三个反例写在一张卡片上，考前看一眼。</p></div>
+        <div class="mistake"><b>易错：</b>把一元结论直接搬过来（最常见）；认为“可微”比“偏导连续”强（其实偏导连续更强）；记不清哪个箭头成立，凭感觉选。</div>
+      </div>
+    </article>
+
+    <!-- 11 -->
+    <article class="point" id="p11">
+      <div class="point-h"><div class="num">11</div><h3>拓展：多元复合函数求导（树状链式）</h3><div class="star">○ 拓展</div></div>
+      <div class="point-body">
+        <p class="lead">第 3 章链式法则的“树状版”：<b>一个变量有几条路径通到底，就把几条路径的乘积加起来</b>。考核不要求，但老师常提。</p>
+        <div class="tagrow"><span class="chip">§5.4 · p244–p248</span><span class="chip">拓展·不考</span><span class="chip">画树是唯一方法</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 画变量树（z 在上，中间变量在中，x、y 在下）；② 从 z 到 x 有几条路径，就有几项；③ 每条路径上的偏导相乘；④ 各项相加。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设 z = f(u, v)，u = x²y，v = x + y，求 ∂z/∂x。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 树：z ← u ← x（路径一），z ← v ← x（路径二）。</span>
+            <span class="step">② 路径一：∂z/∂u · ∂u/∂x = f<sub>u</sub> · 2xy。</span>
+            <span class="step">③ 路径二：∂z/∂v · ∂v/∂x = f<sub>v</sub> · 1。</span>
+            <span class="step res">④ 相加：∂z/∂x = 2xy·f<sub>u</sub> + f<sub>v</sub>（其中 f<sub>u</sub>、f<sub>v</sub> 在 (x²y, x+y) 处取值）。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>§5.4 例题（p244–p248）；若 z = f(x²y, x + y) 形式，结果同上，只是把 f<sub>u</sub> 写成 f₁。</p></div>
+        <div class="mistake"><b>易错：</b>漏掉一条路径（少一项）；把 ∂z/∂x 与 dz/dx 混淆（后者是“全导数”，还要加上对 y 的间接项）；忘记 f<sub>u</sub> 要在中间变量的值处取值。</div>
+      </div>
+    </article>
+
+    <!-- 12 -->
+    <article class="point" id="p12">
+      <div class="point-h"><div class="num">12</div><h3>拓展：隐函数求导（公式法）</h3><div class="star">○ 拓展</div></div>
+      <div class="point-body">
+        <p class="lead">由 F(x, y, z) = 0 确定 z = z(x, y) 时，有现成公式可用，<b>唯一要小心的是那个负号</b>。</p>
+        <div class="tagrow"><span class="chip">§5.5 · p249–p252</span><span class="chip">拓展·不考</span><span class="chip hot">负号别丢</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 把方程整理成 F(x, y, z) = 0；② 分别求 F<sub>x</sub>、F<sub>y</sub>、F<sub>z</sub>（求 F<sub>x</sub> 时 y、z 都当常数）；③ 用 ∂z/∂x = −F<sub>x</sub>/F<sub>z</sub>，∂z/∂y = −F<sub>y</sub>/F<sub>z</sub>。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设 x² + y² + z² = 4z 确定 z = z(x, y)，求 ∂z/∂x 与 ∂z/∂y。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 令 F = x² + y² + z² − 4z，则 F<sub>x</sub> = 2x，F<sub>y</sub> = 2y，F<sub>z</sub> = 2z − 4。</span>
+            <span class="step res">② 故 ∂z/∂x = −2x/(2z − 4) = x/(2 − z)，∂z/∂y = −2y/(2z − 4) = y/(2 − z)（z ≠ 2）。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>§5.5 例题（p249–p252）；也可用“两边直接对 x 求导”的办法验证，两种方法结果应一致。</p></div>
+        <div class="mistake"><b>易错：</b>丢掉负号；求 F<sub>x</sub> 时把 z 也当变量（z 是 x 的函数，但在 F 里作为独立变量处理）；忘记写 z ≠ 2 的条件。</div>
+      </div>
+    </article>
+
+    <!-- 13 -->
+    <article class="point" id="p13">
+      <div class="point-h"><div class="num">13</div><h3>拓展：无条件极值（二阶判别式）</h3><div class="star">○ 拓展</div></div>
+      <div class="point-body">
+        <p class="lead">第 4 章“驻点 + 二阶判据”的升维版：驻点从“一个方程”变成“两个方程联立”，判据从“f″ 符号”变成“Δ = AC − B²”。</p>
+        <div class="tagrow"><span class="chip">§5.6 · p253–p258</span><span class="chip">拓展·不考</span><span class="chip">Δ 判别法</span></div>
+        <div class="blk"><div class="blk-t">判据</div>
+          <div class="tbl-wrap" style="margin:0">
+            <table>
+              <thead><tr><th>Δ = AC − B²（A = z<sub>xx</sub>，B = z<sub>xy</sub>，C = z<sub>yy</sub>）</th><th>结论</th></tr></thead>
+              <tbody>
+                <tr><td class="m">Δ &gt; 0 且 A &lt; 0</td><td>极大值</td></tr>
+                <tr><td class="m">Δ &gt; 0 且 A &gt; 0</td><td>极小值</td></tr>
+                <tr><td class="m">Δ &lt; 0</td><td>不是极值（鞍点）</td></tr>
+                <tr><td class="m">Δ = 0</td><td>判别法失效，需另法讨论</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">求 z = x³ + y³ − 3xy 的极值。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① z<sub>x</sub> = 3x² − 3y = 0，z<sub>y</sub> = 3y² − 3x = 0。由第一式 y = x²，代入第二式 x⁴ − x = 0 → x = 0 或 x = 1。</span>
+            <span class="step">② 驻点：(0,0) 与 (1,1)。A = z<sub>xx</sub> = 6x，B = z<sub>xy</sub> = −3，C = z<sub>yy</sub> = 6y。</span>
+            <span class="step">③ 在 (0,0)：Δ = 0·0 − 9 = −9 &lt; 0，不是极值点（鞍点）。</span>
+            <span class="step res">④ 在 (1,1)：Δ = 6·6 − 9 = 27 &gt; 0，且 A = 6 &gt; 0，故为极小值，z(1,1) = 1 + 1 − 3 = −1。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>§5.6 例题（p253–p258）；经典：z = x² + y² − 2x − 4y（驻点 (1,2)，极小值 −5）。</p></div>
+        <div class="mistake"><b>易错：</b>只解出一个方程；把 Δ &lt; 0 当极小值；忘记代回求极值；A 与 C 的位置搞混（A 是 z<sub>xx</sub>，C 是 z<sub>yy</sub>）。</div>
+      </div>
+    </article>
+
+    <!-- 14 -->
+    <article class="point" id="p14">
+      <div class="point-h"><div class="num">14</div><h3>拓展：条件极值与拉格朗日乘数法</h3><div class="star">○ 拓展</div></div>
+      <div class="point-body">
+        <p class="lead">带约束的最优化，是本章在经济上最有用的部分（预算约束下的产量最大、成本最小）。模板极简：<b>L = 目标函数 + λ·约束</b>。</p>
+        <div class="tagrow"><span class="chip">§5.7 · p259–p262</span><span class="chip">拓展·不考</span><span class="chip">三个方程都要用</span></div>
+        <div class="blk"><div class="blk-t">标准动作</div>
+          <div class="callout plain" style="margin:0"><p>① 写约束 φ(x,y) = 0；② 构造 L = f(x,y) + λφ(x,y)；③ 解方程组 L<sub>x</sub> = 0、L<sub>y</sub> = 0、L<sub>λ</sub> = 0；④ 得候选点后代回目标函数；⑤ 由实际意义说明是最大还是最小。</p></div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">某企业生产函数 Q = 10K<sup>0.5</sup>L<sup>0.5</sup>，要素价格 r = 2（资本）、w = 3（劳动），成本预算 C = 120。求产量最大时的要素组合与最大产量。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① 约束：2K + 3L = 120，即 φ = 2K + 3L − 120 = 0。构造 L* = 10K<sup>0.5</sup>L<sup>0.5</sup> + λ(2K + 3L − 120)。</span>
+            <span class="step">② 求偏导：∂/∂K：5K<sup>−0.5</sup>L<sup>0.5</sup> + 2λ = 0；∂/∂L：5K<sup>0.5</sup>L<sup>−0.5</sup> + 3λ = 0。</span>
+            <span class="step">③ 两式相除消去 λ：L/K = 2/3，即 3L = 2K，L = 2K/3。</span>
+            <span class="step">④ 代入约束：2K + 3(2K/3) = 4K = 120 → K = 30，L = 20。</span>
+            <span class="step res">⑤ 最大产量 Q = 10√(30 × 20) = 10√600 ≈ 244.9（单位）。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>§5.7 例题（p259–p262）；最简单的版本：约束 x + y = 2 下求 xy 的最大值（答案 x = y = 1，最大值 1）。</p></div>
+        <div class="mistake"><b>易错：</b>构造了 L 却漏掉约束方程（解不出）；消 λ 时两式相除不讨论为 0 的情形；求出 K、L 就交卷（题目要的是产量，要代回）。</div>
+      </div>
+    </article>
+
+    <!-- 15 -->
+    <article class="point" id="p15">
+      <div class="point-h"><div class="num">15</div><h3>拓展：偏边际、偏弹性与经济应用</h3><div class="star">○ 拓展</div></div>
+      <div class="point-body">
+        <p class="lead">第 3 章“边际与弹性”的多元版：边际变成“对某一个变量的偏导”，弹性变成“对某一个变量的百分比反应”。</p>
+        <div class="tagrow"><span class="chip">§5.8 · p263–p269</span><span class="chip">拓展·不考</span><span class="chip">结构同第 3 章</span></div>
+        <div class="blk"><div class="blk-t">定义</div>
+          <div class="eq left" style="text-align:left">
+            偏边际：∂Q/∂p₁（其他价格不变时，p₁ 变动 1 单位引起的需求量变化）<br>
+            偏弹性：E₁ = (p₁/Q)·(∂Q/∂p₁)（p₁ 涨 1%，需求量变化百分之几）
+            <span class="note">按此式算出的 E₁ 带符号：需求函数递减，故 E₁ 为负。判“弹性大小”看 |E₁| 与 1 比——第 3 章的习惯是先把负号提出来、报正值，两种写法结果完全一致，只要别拿负数和 1 比大小。</span>
+          </div>
+        </div>
+        <div class="blk"><div class="blk-t">典型例题</div>
+          <div class="ex"><div class="q">设某商品的需求量 Q = 100 − 2p₁ + p₂（p₁ 为自身价格，p₂ 为替代品价格）。求 (1) 对 p₁ 的偏弹性；(2) 在 p₁ = 20、p₂ = 10 时的偏弹性并解释。</div></div>
+        </div>
+        <div class="blk"><div class="blk-t">解答</div>
+          <div class="sol">
+            <span class="step">① ∂Q/∂p₁ = −2，故 E₁ = (p₁/Q)(−2) = −2p₁/(100 − 2p₁ + p₂)。</span>
+            <span class="step">② p₁ = 20、p₂ = 10 时 Q = 100 − 40 + 10 = 70，E₁ = (20/70)(−2) = −0.571。</span>
+            <span class="step res">③ 解释：自身价格上涨 1%，需求下降约 0.57%（缺乏弹性）；同时 ∂Q/∂p₂ = 1 &gt; 0，说明 p₂ 上涨会使本商品需求增加——这就是“替代品”。</span>
+          </div>
+        </div>
+        <div class="callout ok" style="margin-top:16px; margin-bottom:0"><div class="tag">同型练习（教材）</div><p>§5.8 例题（p263–p269）；若给的是生产函数，则“偏边际”= 边际产量 ∂Q/∂L、∂Q/∂K。</p></div>
+        <div class="mistake"><b>易错：</b>求 ∂Q/∂p₁ 时把 p₂ 也当变量；弹性忘乘 (p/Q)；把“替代品（∂Q/∂p₂ &gt; 0）”与“互补品（&lt; 0）”说反。</div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ================= 速查 ================= -->
+  <section id="cheat">
+    <div class="sec-head"><div class="idx">五</div><h2>考前速查页</h2></div>
+    <p class="sec-intro">进考场前 10 分钟只看这一页（本章只考 §5.1–§5.3，速查也只放考核范围内的内容）。</p>
+
+    <div class="kb">
+      <div class="kb-h"><span class="no">A</span><h3>三个核心式子</h3></div>
+      <div class="eq left" style="text-align:left; line-height:2.2">
+        <span class="m">偏导：z<sub>x</sub> = lim<sub>Δx→0</sub> [f(x₀+Δx, y₀) − f(x₀,y₀)]/Δx　（求 z<sub>x</sub> 时 y 是常数）</span><br>
+        <span class="m">全增量：Δz = f(x₀+Δx, y₀+Δy) − f(x₀,y₀)</span><br>
+        <span class="m">可微：Δz = AΔx + BΔy + o(ρ)，ρ = √(Δx²+Δy²)；且 A = z<sub>x</sub>、B = z<sub>y</sub></span><br>
+        <span class="m">全微分：dz = z<sub>x</sub>dx + z<sub>y</sub>dy；近似：f(x₀+Δx, y₀+Δy) ≈ f(x₀,y₀) + z<sub>x</sub>Δx + z<sub>y</sub>Δy</span>
+      </div>
+    </div>
+
+    <div class="kb">
+      <div class="kb-h"><span class="no">B</span><h3>三者关系（一条链 + 三个反例）</h3></div>
+      <p style="margin-bottom:8px"><b>偏导连续 ⟹ 可微 ⟹ ｛连续，偏导存在｝</b>，箭头都不可逆。</p>
+      <ul style="margin-bottom:0">
+        <li>偏导存在但不连续：<span class="m">xy/(x²+y²)</span>（原点补 0）</li>
+        <li>连续但偏导不存在：<span class="m">√(x²+y²)</span>（原点）</li>
+        <li>偏导存在但不可微：<span class="m">√|xy|</span>（原点）</li>
+      </ul>
+    </div>
+
+    <div class="kb">
+      <div class="kb-h"><span class="no">C</span><h3>五种常见曲面的方程</h3></div>
+      <ul style="margin-bottom:0">
+        <li>球面：(x−x₀)² + (y−y₀)² + (z−z₀)² = R²</li>
+        <li>圆柱面：x² + y² = R²（缺 z）</li>
+        <li>旋转抛物面：z = x² + y²（开口向上的碗）</li>
+        <li>双曲抛物面（马鞍面）：z = x² − y²</li>
+        <li>平面：Ax + By + Cz + D = 0</li>
+      </ul>
+    </div>
+
+    <div class="kb">
+      <div class="kb-h"><span class="no">D</span><h3>十句“看到就想起”的话</h3></div>
+      <ul style="margin-bottom:0">
+        <li>看到“求定义域” → 列约束、画区域、取交集</li>
+        <li>看到二元极限 → 先想“取 y = kx 试试”</li>
+        <li>看到“极限存在” → 必须放缩 + 夹逼，不能只验一条路径</li>
+        <li>看到“求 z<sub>x</sub>” → 把 y 当常数，别用乘积法则</li>
+        <li>看到原点/分段线 → 只能用定义</li>
+        <li>看到“求二阶偏导” → 一阶先写对，混合偏导可交换验算</li>
+        <li>看到“是否可微” → 先看偏导是否连续（充分条件），否则用 ρ 比式</li>
+        <li>看到“求 dz” → 结果必须带 dx、dy</li>
+        <li>看到“近似计算” → 选好算的点，算 Δx、Δy</li>
+        <li>看到“偏导存在所以连续” → 直接判错</li>
+      </ul>
+    </div>
+
+    <div class="callout warn" style="margin-top:6px">
+      <div class="tag">本章十条高频错误（写在草稿纸最上面）</div>
+      <p>① 对 x 求导时把 y 也当变量；② 原点用公式求偏导；③ 偏导存在就判连续；④ 只验一条路径就说极限存在；⑤ 可微比式分母写成 Δx；⑥ dz 漏写 dx 或 dy；⑦ 混合偏导记号顺序搞反；⑧ 定义域不画图；⑨ 近似计算 Δx 符号写反；⑩ 把“连续”当“可微”。</p>
+    </div>
+  </section>
+
+  <!-- ================= 对照教学计划 ================= -->
+  <section id="plan">
+    <div class="sec-head"><div class="idx">六</div><h2>对照教学计划：这一章要求你到什么程度</h2></div>
+    <p class="sec-intro">依据《2026—2027 学年度第一学期 微积分 I 教学进度计划表》（黄新阳，软件工程 002195-11 班，48 学时），第 5 章只有 <b>4 学时</b>（第 16–17 周），内容为 5.1、5.2、5.3，期末考试的<b>范围也明确写“第五章节 5.1，5.2，5.3”</b>。这是全书唯一“教材有、计划没排”的一章，复习时必须分清主次。</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>计划要求</th><th>具体内容</th><th>本材料对应位置</th></tr></thead>
+        <tbody>
+          <tr><td>课堂内容（考）</td><td>§5.1 多元函数基本概念（平面区域、空间解析几何简介、多元函数的极限与连续）；§5.2 偏导数（概念、计算、高阶偏导数）；§5.3 多元函数的全微分</td><td>二、必备基础 01–08；考点 01–10</td></tr>
+          <tr><td>课堂内容（未排）</td><td>§5.4 复合函数求导、§5.5 隐函数求导、§5.6 极值、§5.7 条件极值、§5.8 经济应用</td><td>二、必备基础 09（概览）；考点 11–15（拓展）</td></tr>
+          <tr><td>布置作业</td><td>练习5.1 基础题（P226）3、4、5；练习5.2 基础题（P233）1、3、4、5、7、8 + 提高 1、2、4；练习5.3 基础题 2 + 提高 2；习题五 2、3、6、7</td><td>三、题型总结 + 各考点的“同型练习”</td></tr>
+          <tr><td>考核范围</td><td>期末闭卷：第 1–4 章 + 第 5 章 5.1–5.3（本章通常只出计算题与判断题，1–2 道）</td><td>四、考点详解的 ★ 部分</td></tr>
+          <tr><td>达标标准</td><td>偏导能算对（含高阶）；全微分能写出；三者关系能判断；会画简单定义域</td><td>考点 04、06、08、10（四张卡片必须能独立默写）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout ok" style="margin-bottom:0">
+      <div class="tag">4 学时怎么用（建议）</div>
+      <p>1 学时给 §5.1（区域 + 极限，重点是“路径法”）；2 学时给 §5.2（偏导计算 + 高阶偏导，这是分数主体）；1 学时给 §5.3（全微分 + 三者关系）。<b>拓展部分不要花时间</b>：§5.4 之后的复合、隐函数、极值虽然教材写了，但计划未排、期末不考，性价比极低。</p>
+    </div>
+  </section>
+
+  <div class="endnote">
+    <p><b>说明：</b>本报告按教材《经济管理应用数学基础——微积分（上）》（齐亚伟等，高等教育出版社 2022 年 9 月第 1 版）第 5 章的章节顺序组织；<b>考核范围依据教学进度计划表，仅 §5.1–§5.3</b>，§5.4 之后标注为“拓展”并给出结构概览。例题为按教材题型自拟的同型题（数值重新设计并已逐题验算），教材原题位置以节号与作业页码标注。</p>
+    <p>建议用法：只看考点 01–10，把 04（偏导）、08（全微分）、10（三者关系）三张卡片练成条件反射；拓展部分通读一遍即可，不必刷题。</p>
+  </div>
+</div>
+
+<a class="totop" href="#top" aria-label="回到顶部">↑</a>
+<script>
+(function () {
+  var t = document.querySelector('.totop');
+  if (!t) return;
+  function sync() {
+    if (window.pageYOffset > 600) { t.classList.add('show'); }
+    else { t.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', sync, { passive: true });
+  sync();
+})();
+</script>
+
+</body>
+</html>
