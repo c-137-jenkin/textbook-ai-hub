@@ -8,7 +8,7 @@
 ## 打开方式
 
 - **本地**：解压后双击 `index.html` 即可。
-- **在线**：托管到 GitHub Pages 后访问 `https://<你的用户名>.github.io/<仓库名>/`（见下文）。
+- **在线**：点击此处即可开始阅读https://c-137-jenkin.github.io/textbook-ai-hub/
 
 | 文件 | 内容 |
 |---|---|
